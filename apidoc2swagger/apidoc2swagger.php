@@ -28,7 +28,7 @@ class apidoc2swagger
             "swagger" => '2.0', //The swagger version which we are using
             "info" => [
                 "title" => "FileCloud API",
-                "description" => "Auto generated API documentation.",
+                "description" => "The FileCloud APIs provide developers with the tools necessary to build a variety of apps and clients. This allows extensibility and integration of FileCloud with your existing enterprise systems and frameworks. FileCloud developer API is simple to use and integrate.",
                 "version" => $apidoc["version"]
             ],
             "schemes" => array("https", "http"),
