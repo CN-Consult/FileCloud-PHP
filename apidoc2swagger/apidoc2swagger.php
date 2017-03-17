@@ -20,9 +20,9 @@ class apidoc2swagger
      * @param $_apiDocFileName String The filename of the apidoc json file.
      * @param $_swaggerFileName String The filename of the swagger json file that will be created.
      */
-    public function convert($_apiDocFileName, $_swaggerFileName)
+    public function convert($_apiDocFileName = "FileCloud-apidoc.json", $_swaggerFileName = "FileCloud-swagger.json")
     {
-        $apidoc = json_decode(file_get_contents($_apiDocFileName), true);
+        $apidoc = json_decode(file_get_contents(__DIR__."/".$_apiDocFileName), true);
 
         $this->swaggerArray = [
             "swagger" => '2.0', //The swagger version which we are using
@@ -81,7 +81,7 @@ class apidoc2swagger
             }
         }
 
-        file_put_contents($_swaggerFileName, json_encode($this->swaggerArray));
+        file_put_contents(__DIR__."/".$_swaggerFileName, json_encode($this->swaggerArray));
     }
 
     /**
@@ -156,4 +156,5 @@ class apidoc2swagger
 }
 
 $converter = new apidoc2swagger();
-$converter->convert($argv[1], $argv[2]);
+if (isset($argv[1]) && isset($argv[2])) $converter->convert($argv[1], $argv[2]);
+else $converter->convert();
