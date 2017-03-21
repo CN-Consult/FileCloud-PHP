@@ -1,5 +1,13 @@
 <?php
 /**
+ * This file is part of FileCloud-PHP.
+ * Please check the file LICENSE for information about the license.
+ *
+ * This is a script that is used to generate a swagger-file from an apidoc-file.
+ * When used without parameters the source and destination files will have the following default names:
+ * Source: "FileCloud-apidoc.json"; Destination: "FileCloud-swagger.json".
+ * By providing parameters you can change these file names as you wish.
+ * Example: php apidoc2swagger.php apidocFile.json swaggerFile.json
  *
  * @file
  * @version 1.0
@@ -9,6 +17,7 @@
 
 /**
  * This class converts an apidoc generated, json encoded filecloud api, to a swagger compatible json file.
+ * Use the method convert() to convert an apidoc-file to a swagger-file.
  */
 class apidoc2swagger
 {
@@ -90,7 +99,7 @@ class apidoc2swagger
      * @param arrayObject $_apiCall The object of an api call like "createfolder".
      * @return array $response The response reference for given api call.
      */
-    function createResponseReference($_apiCall)
+    private function createResponseReference($_apiCall)
     {
         if (array_key_exists("name", $_apiCall) && array_key_exists("success", $_apiCall) && array_key_exists("fields", $_apiCall["success"]) && array_key_exists("Success 200", $_apiCall["success"]["fields"]))
         {
@@ -125,7 +134,7 @@ class apidoc2swagger
      *
      * @param arrayObject $_apiCall The object of an api call like "createfolder".
      */
-    function createResponseDefinitions($_apiCall)
+    private function createResponseDefinitions($_apiCall)
     {
         $name = ucfirst($_apiCall["name"])."Response";
         $definitions = array();
