@@ -67,18 +67,18 @@ class GetrmcclientsResponse implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'rid' => 'string',
-        'remote_client_id' => 'string',
-        'remote_client_api_level' => 'string',
-        'remote_client_disp_name' => 'string',
-        'mesremote_client_os_typesage' => 'string',
-        'remote_client_app_version' => 'string',
-        'remote_client_os_version' => 'string',
+        'remoteClientId' => 'string',
+        'remoteClientApiLevel' => 'string',
+        'remoteClientDispName' => 'string',
+        'mesremoteClientOsTypesage' => 'string',
+        'remoteClientAppVersion' => 'string',
+        'remoteClientOsVersion' => 'string',
         'isblocked' => 'string',
-        'remote_client_last_login' => 'string',
+        'remoteClientLastLogin' => 'string',
         'userid' => 'string',
-        'pending_actions_count' => 'string',
-        'remote_client_status' => 'string',
-        'server_code' => 'string'
+        'pendingActionsCount' => 'string',
+        'remoteClientStatus' => 'string',
+        'serverCode' => 'string'
     ];
 
     public static function swaggerTypes()
@@ -92,18 +92,18 @@ class GetrmcclientsResponse implements ArrayAccess
      */
     protected static $attributeMap = [
         'rid' => 'rid',
-        'remote_client_id' => 'remote_client_id',
-        'remote_client_api_level' => 'remote_client_api_level',
-        'remote_client_disp_name' => 'remote_client_disp_name',
-        'mesremote_client_os_typesage' => 'mesremote_client_os_typesage',
-        'remote_client_app_version' => 'remote_client_app_version',
-        'remote_client_os_version' => 'remote_client_os_version',
+        'remoteClientId' => 'remote_client_id',
+        'remoteClientApiLevel' => 'remote_client_api_level',
+        'remoteClientDispName' => 'remote_client_disp_name',
+        'mesremoteClientOsTypesage' => 'mesremote_client_os_typesage',
+        'remoteClientAppVersion' => 'remote_client_app_version',
+        'remoteClientOsVersion' => 'remote_client_os_version',
         'isblocked' => 'isblocked',
-        'remote_client_last_login' => 'remote_client_last_login',
+        'remoteClientLastLogin' => 'remote_client_last_login',
         'userid' => 'userid',
-        'pending_actions_count' => 'pending_actions_count',
-        'remote_client_status' => 'remote_client_status',
-        'server_code' => 'server_code'
+        'pendingActionsCount' => 'pending_actions_count',
+        'remoteClientStatus' => 'remote_client_status',
+        'serverCode' => 'server_code'
     ];
 
 
@@ -113,18 +113,18 @@ class GetrmcclientsResponse implements ArrayAccess
      */
     protected static $setters = [
         'rid' => 'setRid',
-        'remote_client_id' => 'setRemoteClientId',
-        'remote_client_api_level' => 'setRemoteClientApiLevel',
-        'remote_client_disp_name' => 'setRemoteClientDispName',
-        'mesremote_client_os_typesage' => 'setMesremoteClientOsTypesage',
-        'remote_client_app_version' => 'setRemoteClientAppVersion',
-        'remote_client_os_version' => 'setRemoteClientOsVersion',
+        'remoteClientId' => 'setRemoteClientId',
+        'remoteClientApiLevel' => 'setRemoteClientApiLevel',
+        'remoteClientDispName' => 'setRemoteClientDispName',
+        'mesremoteClientOsTypesage' => 'setMesremoteClientOsTypesage',
+        'remoteClientAppVersion' => 'setRemoteClientAppVersion',
+        'remoteClientOsVersion' => 'setRemoteClientOsVersion',
         'isblocked' => 'setIsblocked',
-        'remote_client_last_login' => 'setRemoteClientLastLogin',
+        'remoteClientLastLogin' => 'setRemoteClientLastLogin',
         'userid' => 'setUserid',
-        'pending_actions_count' => 'setPendingActionsCount',
-        'remote_client_status' => 'setRemoteClientStatus',
-        'server_code' => 'setServerCode'
+        'pendingActionsCount' => 'setPendingActionsCount',
+        'remoteClientStatus' => 'setRemoteClientStatus',
+        'serverCode' => 'setServerCode'
     ];
 
 
@@ -134,18 +134,18 @@ class GetrmcclientsResponse implements ArrayAccess
      */
     protected static $getters = [
         'rid' => 'getRid',
-        'remote_client_id' => 'getRemoteClientId',
-        'remote_client_api_level' => 'getRemoteClientApiLevel',
-        'remote_client_disp_name' => 'getRemoteClientDispName',
-        'mesremote_client_os_typesage' => 'getMesremoteClientOsTypesage',
-        'remote_client_app_version' => 'getRemoteClientAppVersion',
-        'remote_client_os_version' => 'getRemoteClientOsVersion',
+        'remoteClientId' => 'getRemoteClientId',
+        'remoteClientApiLevel' => 'getRemoteClientApiLevel',
+        'remoteClientDispName' => 'getRemoteClientDispName',
+        'mesremoteClientOsTypesage' => 'getMesremoteClientOsTypesage',
+        'remoteClientAppVersion' => 'getRemoteClientAppVersion',
+        'remoteClientOsVersion' => 'getRemoteClientOsVersion',
         'isblocked' => 'getIsblocked',
-        'remote_client_last_login' => 'getRemoteClientLastLogin',
+        'remoteClientLastLogin' => 'getRemoteClientLastLogin',
         'userid' => 'getUserid',
-        'pending_actions_count' => 'getPendingActionsCount',
-        'remote_client_status' => 'getRemoteClientStatus',
-        'server_code' => 'getServerCode'
+        'pendingActionsCount' => 'getPendingActionsCount',
+        'remoteClientStatus' => 'getRemoteClientStatus',
+        'serverCode' => 'getServerCode'
     ];
 
     public static function attributeMap()
@@ -180,18 +180,18 @@ class GetrmcclientsResponse implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['rid'] = isset($data['rid']) ? $data['rid'] : null;
-        $this->container['remote_client_id'] = isset($data['remote_client_id']) ? $data['remote_client_id'] : null;
-        $this->container['remote_client_api_level'] = isset($data['remote_client_api_level']) ? $data['remote_client_api_level'] : null;
-        $this->container['remote_client_disp_name'] = isset($data['remote_client_disp_name']) ? $data['remote_client_disp_name'] : null;
-        $this->container['mesremote_client_os_typesage'] = isset($data['mesremote_client_os_typesage']) ? $data['mesremote_client_os_typesage'] : null;
-        $this->container['remote_client_app_version'] = isset($data['remote_client_app_version']) ? $data['remote_client_app_version'] : null;
-        $this->container['remote_client_os_version'] = isset($data['remote_client_os_version']) ? $data['remote_client_os_version'] : null;
+        $this->container['remoteClientId'] = isset($data['remoteClientId']) ? $data['remoteClientId'] : null;
+        $this->container['remoteClientApiLevel'] = isset($data['remoteClientApiLevel']) ? $data['remoteClientApiLevel'] : null;
+        $this->container['remoteClientDispName'] = isset($data['remoteClientDispName']) ? $data['remoteClientDispName'] : null;
+        $this->container['mesremoteClientOsTypesage'] = isset($data['mesremoteClientOsTypesage']) ? $data['mesremoteClientOsTypesage'] : null;
+        $this->container['remoteClientAppVersion'] = isset($data['remoteClientAppVersion']) ? $data['remoteClientAppVersion'] : null;
+        $this->container['remoteClientOsVersion'] = isset($data['remoteClientOsVersion']) ? $data['remoteClientOsVersion'] : null;
         $this->container['isblocked'] = isset($data['isblocked']) ? $data['isblocked'] : null;
-        $this->container['remote_client_last_login'] = isset($data['remote_client_last_login']) ? $data['remote_client_last_login'] : null;
+        $this->container['remoteClientLastLogin'] = isset($data['remoteClientLastLogin']) ? $data['remoteClientLastLogin'] : null;
         $this->container['userid'] = isset($data['userid']) ? $data['userid'] : null;
-        $this->container['pending_actions_count'] = isset($data['pending_actions_count']) ? $data['pending_actions_count'] : null;
-        $this->container['remote_client_status'] = isset($data['remote_client_status']) ? $data['remote_client_status'] : null;
-        $this->container['server_code'] = isset($data['server_code']) ? $data['server_code'] : null;
+        $this->container['pendingActionsCount'] = isset($data['pendingActionsCount']) ? $data['pendingActionsCount'] : null;
+        $this->container['remoteClientStatus'] = isset($data['remoteClientStatus']) ? $data['remoteClientStatus'] : null;
+        $this->container['serverCode'] = isset($data['serverCode']) ? $data['serverCode'] : null;
     }
 
     /**
@@ -205,41 +205,41 @@ class GetrmcclientsResponse implements ArrayAccess
         if ($this->container['rid'] === null) {
             $invalid_properties[] = "'rid' can't be null";
         }
-        if ($this->container['remote_client_id'] === null) {
-            $invalid_properties[] = "'remote_client_id' can't be null";
+        if ($this->container['remoteClientId'] === null) {
+            $invalid_properties[] = "'remoteClientId' can't be null";
         }
-        if ($this->container['remote_client_api_level'] === null) {
-            $invalid_properties[] = "'remote_client_api_level' can't be null";
+        if ($this->container['remoteClientApiLevel'] === null) {
+            $invalid_properties[] = "'remoteClientApiLevel' can't be null";
         }
-        if ($this->container['remote_client_disp_name'] === null) {
-            $invalid_properties[] = "'remote_client_disp_name' can't be null";
+        if ($this->container['remoteClientDispName'] === null) {
+            $invalid_properties[] = "'remoteClientDispName' can't be null";
         }
-        if ($this->container['mesremote_client_os_typesage'] === null) {
-            $invalid_properties[] = "'mesremote_client_os_typesage' can't be null";
+        if ($this->container['mesremoteClientOsTypesage'] === null) {
+            $invalid_properties[] = "'mesremoteClientOsTypesage' can't be null";
         }
-        if ($this->container['remote_client_app_version'] === null) {
-            $invalid_properties[] = "'remote_client_app_version' can't be null";
+        if ($this->container['remoteClientAppVersion'] === null) {
+            $invalid_properties[] = "'remoteClientAppVersion' can't be null";
         }
-        if ($this->container['remote_client_os_version'] === null) {
-            $invalid_properties[] = "'remote_client_os_version' can't be null";
+        if ($this->container['remoteClientOsVersion'] === null) {
+            $invalid_properties[] = "'remoteClientOsVersion' can't be null";
         }
         if ($this->container['isblocked'] === null) {
             $invalid_properties[] = "'isblocked' can't be null";
         }
-        if ($this->container['remote_client_last_login'] === null) {
-            $invalid_properties[] = "'remote_client_last_login' can't be null";
+        if ($this->container['remoteClientLastLogin'] === null) {
+            $invalid_properties[] = "'remoteClientLastLogin' can't be null";
         }
         if ($this->container['userid'] === null) {
             $invalid_properties[] = "'userid' can't be null";
         }
-        if ($this->container['pending_actions_count'] === null) {
-            $invalid_properties[] = "'pending_actions_count' can't be null";
+        if ($this->container['pendingActionsCount'] === null) {
+            $invalid_properties[] = "'pendingActionsCount' can't be null";
         }
-        if ($this->container['remote_client_status'] === null) {
-            $invalid_properties[] = "'remote_client_status' can't be null";
+        if ($this->container['remoteClientStatus'] === null) {
+            $invalid_properties[] = "'remoteClientStatus' can't be null";
         }
-        if ($this->container['server_code'] === null) {
-            $invalid_properties[] = "'server_code' can't be null";
+        if ($this->container['serverCode'] === null) {
+            $invalid_properties[] = "'serverCode' can't be null";
         }
         return $invalid_properties;
     }
@@ -255,40 +255,40 @@ class GetrmcclientsResponse implements ArrayAccess
         if ($this->container['rid'] === null) {
             return false;
         }
-        if ($this->container['remote_client_id'] === null) {
+        if ($this->container['remoteClientId'] === null) {
             return false;
         }
-        if ($this->container['remote_client_api_level'] === null) {
+        if ($this->container['remoteClientApiLevel'] === null) {
             return false;
         }
-        if ($this->container['remote_client_disp_name'] === null) {
+        if ($this->container['remoteClientDispName'] === null) {
             return false;
         }
-        if ($this->container['mesremote_client_os_typesage'] === null) {
+        if ($this->container['mesremoteClientOsTypesage'] === null) {
             return false;
         }
-        if ($this->container['remote_client_app_version'] === null) {
+        if ($this->container['remoteClientAppVersion'] === null) {
             return false;
         }
-        if ($this->container['remote_client_os_version'] === null) {
+        if ($this->container['remoteClientOsVersion'] === null) {
             return false;
         }
         if ($this->container['isblocked'] === null) {
             return false;
         }
-        if ($this->container['remote_client_last_login'] === null) {
+        if ($this->container['remoteClientLastLogin'] === null) {
             return false;
         }
         if ($this->container['userid'] === null) {
             return false;
         }
-        if ($this->container['pending_actions_count'] === null) {
+        if ($this->container['pendingActionsCount'] === null) {
             return false;
         }
-        if ($this->container['remote_client_status'] === null) {
+        if ($this->container['remoteClientStatus'] === null) {
             return false;
         }
-        if ($this->container['server_code'] === null) {
+        if ($this->container['serverCode'] === null) {
             return false;
         }
         return true;
@@ -317,127 +317,127 @@ class GetrmcclientsResponse implements ArrayAccess
     }
 
     /**
-     * Gets remote_client_id
+     * Gets remoteClientId
      * @return string
      */
     public function getRemoteClientId()
     {
-        return $this->container['remote_client_id'];
+        return $this->container['remoteClientId'];
     }
 
     /**
-     * Sets remote_client_id
-     * @param string $remote_client_id the unique identifier for the client device
+     * Sets remoteClientId
+     * @param string $remoteClientId the unique identifier for the client device
      * @return $this
      */
-    public function setRemoteClientId($remote_client_id)
+    public function setRemoteClientId($remoteClientId)
     {
-        $this->container['remote_client_id'] = $remote_client_id;
+        $this->container['remoteClientId'] = $remoteClientId;
 
         return $this;
     }
 
     /**
-     * Gets remote_client_api_level
+     * Gets remoteClientApiLevel
      * @return string
      */
     public function getRemoteClientApiLevel()
     {
-        return $this->container['remote_client_api_level'];
+        return $this->container['remoteClientApiLevel'];
     }
 
     /**
-     * Sets remote_client_api_level
-     * @param string $remote_client_api_level the api-level is 4 (latest required client api-level is 4)
+     * Sets remoteClientApiLevel
+     * @param string $remoteClientApiLevel the api-level is 4 (latest required client api-level is 4)
      * @return $this
      */
-    public function setRemoteClientApiLevel($remote_client_api_level)
+    public function setRemoteClientApiLevel($remoteClientApiLevel)
     {
-        $this->container['remote_client_api_level'] = $remote_client_api_level;
+        $this->container['remoteClientApiLevel'] = $remoteClientApiLevel;
 
         return $this;
     }
 
     /**
-     * Gets remote_client_disp_name
+     * Gets remoteClientDispName
      * @return string
      */
     public function getRemoteClientDispName()
     {
-        return $this->container['remote_client_disp_name'];
+        return $this->container['remoteClientDispName'];
     }
 
     /**
-     * Sets remote_client_disp_name
-     * @param string $remote_client_disp_name the client device name
+     * Sets remoteClientDispName
+     * @param string $remoteClientDispName the client device name
      * @return $this
      */
-    public function setRemoteClientDispName($remote_client_disp_name)
+    public function setRemoteClientDispName($remoteClientDispName)
     {
-        $this->container['remote_client_disp_name'] = $remote_client_disp_name;
+        $this->container['remoteClientDispName'] = $remoteClientDispName;
 
         return $this;
     }
 
     /**
-     * Gets mesremote_client_os_typesage
+     * Gets mesremoteClientOsTypesage
      * @return string
      */
     public function getMesremoteClientOsTypesage()
     {
-        return $this->container['mesremote_client_os_typesage'];
+        return $this->container['mesremoteClientOsTypesage'];
     }
 
     /**
-     * Sets mesremote_client_os_typesage
-     * @param string $mesremote_client_os_typesage the client device os type
+     * Sets mesremoteClientOsTypesage
+     * @param string $mesremoteClientOsTypesage the client device os type
      * @return $this
      */
-    public function setMesremoteClientOsTypesage($mesremote_client_os_typesage)
+    public function setMesremoteClientOsTypesage($mesremoteClientOsTypesage)
     {
-        $this->container['mesremote_client_os_typesage'] = $mesremote_client_os_typesage;
+        $this->container['mesremoteClientOsTypesage'] = $mesremoteClientOsTypesage;
 
         return $this;
     }
 
     /**
-     * Gets remote_client_app_version
+     * Gets remoteClientAppVersion
      * @return string
      */
     public function getRemoteClientAppVersion()
     {
-        return $this->container['remote_client_app_version'];
+        return $this->container['remoteClientAppVersion'];
     }
 
     /**
-     * Sets remote_client_app_version
-     * @param string $remote_client_app_version the client app version
+     * Sets remoteClientAppVersion
+     * @param string $remoteClientAppVersion the client app version
      * @return $this
      */
-    public function setRemoteClientAppVersion($remote_client_app_version)
+    public function setRemoteClientAppVersion($remoteClientAppVersion)
     {
-        $this->container['remote_client_app_version'] = $remote_client_app_version;
+        $this->container['remoteClientAppVersion'] = $remoteClientAppVersion;
 
         return $this;
     }
 
     /**
-     * Gets remote_client_os_version
+     * Gets remoteClientOsVersion
      * @return string
      */
     public function getRemoteClientOsVersion()
     {
-        return $this->container['remote_client_os_version'];
+        return $this->container['remoteClientOsVersion'];
     }
 
     /**
-     * Sets remote_client_os_version
-     * @param string $remote_client_os_version the device os version
+     * Sets remoteClientOsVersion
+     * @param string $remoteClientOsVersion the device os version
      * @return $this
      */
-    public function setRemoteClientOsVersion($remote_client_os_version)
+    public function setRemoteClientOsVersion($remoteClientOsVersion)
     {
-        $this->container['remote_client_os_version'] = $remote_client_os_version;
+        $this->container['remoteClientOsVersion'] = $remoteClientOsVersion;
 
         return $this;
     }
@@ -464,22 +464,22 @@ class GetrmcclientsResponse implements ArrayAccess
     }
 
     /**
-     * Gets remote_client_last_login
+     * Gets remoteClientLastLogin
      * @return string
      */
     public function getRemoteClientLastLogin()
     {
-        return $this->container['remote_client_last_login'];
+        return $this->container['remoteClientLastLogin'];
     }
 
     /**
-     * Sets remote_client_last_login
-     * @param string $remote_client_last_login the last login date and time of client
+     * Sets remoteClientLastLogin
+     * @param string $remoteClientLastLogin the last login date and time of client
      * @return $this
      */
-    public function setRemoteClientLastLogin($remote_client_last_login)
+    public function setRemoteClientLastLogin($remoteClientLastLogin)
     {
-        $this->container['remote_client_last_login'] = $remote_client_last_login;
+        $this->container['remoteClientLastLogin'] = $remoteClientLastLogin;
 
         return $this;
     }
@@ -506,64 +506,64 @@ class GetrmcclientsResponse implements ArrayAccess
     }
 
     /**
-     * Gets pending_actions_count
+     * Gets pendingActionsCount
      * @return string
      */
     public function getPendingActionsCount()
     {
-        return $this->container['pending_actions_count'];
+        return $this->container['pendingActionsCount'];
     }
 
     /**
-     * Sets pending_actions_count
-     * @param string $pending_actions_count number of commands pending to be executed on client
+     * Sets pendingActionsCount
+     * @param string $pendingActionsCount number of commands pending to be executed on client
      * @return $this
      */
-    public function setPendingActionsCount($pending_actions_count)
+    public function setPendingActionsCount($pendingActionsCount)
     {
-        $this->container['pending_actions_count'] = $pending_actions_count;
+        $this->container['pendingActionsCount'] = $pendingActionsCount;
 
         return $this;
     }
 
     /**
-     * Gets remote_client_status
+     * Gets remoteClientStatus
      * @return string
      */
     public function getRemoteClientStatus()
     {
-        return $this->container['remote_client_status'];
+        return $this->container['remoteClientStatus'];
     }
 
     /**
-     * Sets remote_client_status
-     * @param string $remote_client_status 0|1|2 default | waiting for approval | approved
+     * Sets remoteClientStatus
+     * @param string $remoteClientStatus 0|1|2 default | waiting for approval | approved
      * @return $this
      */
-    public function setRemoteClientStatus($remote_client_status)
+    public function setRemoteClientStatus($remoteClientStatus)
     {
-        $this->container['remote_client_status'] = $remote_client_status;
+        $this->container['remoteClientStatus'] = $remoteClientStatus;
 
         return $this;
     }
 
     /**
-     * Gets server_code
+     * Gets serverCode
      * @return string
      */
     public function getServerCode()
     {
-        return $this->container['server_code'];
+        return $this->container['serverCode'];
     }
 
     /**
-     * Sets server_code
-     * @param string $server_code server code
+     * Sets serverCode
+     * @param string $serverCode server code
      * @return $this
      */
-    public function setServerCode($server_code)
+    public function setServerCode($serverCode)
     {
-        $this->container['server_code'] = $server_code;
+        $this->container['serverCode'] = $serverCode;
 
         return $this;
     }

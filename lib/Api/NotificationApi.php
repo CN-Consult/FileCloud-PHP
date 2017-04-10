@@ -1,6 +1,6 @@
 <?php
 /**
- * SystemApi
+ * NotificationApi
  * PHP version 5
  *
  * @category Class
@@ -46,7 +46,7 @@ use \Swagger\Client\Configuration;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * SystemApi Class Doc Comment
+ * NotificationApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
@@ -54,7 +54,7 @@ use \Swagger\Client\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SystemApi
+class NotificationApi
 {
     /**
      * API Client
@@ -93,7 +93,7 @@ class SystemApi
      *
      * @param \Swagger\Client\ApiClient $apiClient set the API client
      *
-     * @return SystemApi
+     * @return NotificationApi
      */
     public function setApiClient(\Swagger\Client\ApiClient $apiClient)
     {
@@ -102,31 +102,37 @@ class SystemApi
     }
 
     /**
-     * Operation getAuthenticationInfo
+     * Operation addNotificationFilter
      *
      * 
      *
+     * @param string $path Path name (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getAuthenticationInfo()
+    public function addNotificationFilter($path)
     {
-        list($response) = $this->getAuthenticationInfoWithHttpInfo();
+        list($response) = $this->addNotificationFilterWithHttpInfo($path);
         return $response;
     }
 
     /**
-     * Operation getAuthenticationInfoWithHttpInfo
+     * Operation addNotificationFilterWithHttpInfo
      *
      * 
      *
+     * @param string $path Path name (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuthenticationInfoWithHttpInfo()
+    public function addNotificationFilterWithHttpInfo($path)
     {
+        // verify the required parameter 'path' is set
+        if ($path === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $path when calling addNotificationFilter');
+        }
         // parse inputs
-        $resourcePath = "/core/getauthenticationinfo";
+        $resourcePath = "/core/addnotificationfilter";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -135,11 +141,15 @@ class SystemApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
 
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
+        // form params
+        if ($path !== null) {
+            $formParams['path'] = $this->apiClient->getSerializer()->toFormValue($path);
+        }
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -151,12 +161,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getauthenticationinfo'
+                '/core/addnotificationfilter'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
@@ -173,43 +183,37 @@ class SystemApi
     }
 
     /**
-     * Operation getDiskUsageDetails
+     * Operation isNotificationFilterSet
      *
      * 
      *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
+     * @param string $path Path name (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getDiskUsageDetails($username, $level)
+    public function isNotificationFilterSet($path)
     {
-        list($response) = $this->getDiskUsageDetailsWithHttpInfo($username, $level);
+        list($response) = $this->isNotificationFilterSetWithHttpInfo($path);
         return $response;
     }
 
     /**
-     * Operation getDiskUsageDetailsWithHttpInfo
+     * Operation isNotificationFilterSetWithHttpInfo
      *
      * 
      *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
+     * @param string $path Path name (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDiskUsageDetailsWithHttpInfo($username, $level)
+    public function isNotificationFilterSetWithHttpInfo($path)
     {
-        // verify the required parameter 'username' is set
-        if ($username === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $username when calling getDiskUsageDetails');
-        }
-        // verify the required parameter 'level' is set
-        if ($level === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $level when calling getDiskUsageDetails');
+        // verify the required parameter 'path' is set
+        if ($path === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $path when calling isNotificationFilterSet');
         }
         // parse inputs
-        $resourcePath = "/core/getdiskusagedetails";
+        $resourcePath = "/core/isnotificationfilterset";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -218,19 +222,15 @@ class SystemApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
 
-        // query params
-        if ($username !== null) {
-            $queryParams['username'] = $this->apiClient->getSerializer()->toQueryValue($username);
-        }
-        // query params
-        if ($level !== null) {
-            $queryParams['level'] = $this->apiClient->getSerializer()->toQueryValue($level);
-        }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
+        // form params
+        if ($path !== null) {
+            $formParams['path'] = $this->apiClient->getSerializer()->toFormValue($path);
+        }
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -242,12 +242,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getdiskusagedetails'
+                '/core/isnotificationfilterset'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
@@ -264,31 +264,37 @@ class SystemApi
     }
 
     /**
-     * Operation getLanguageList
+     * Operation removeNotificationFilter
      *
      * 
      *
+     * @param string $path Path name (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getLanguageList()
+    public function removeNotificationFilter($path)
     {
-        list($response) = $this->getLanguageListWithHttpInfo();
+        list($response) = $this->removeNotificationFilterWithHttpInfo($path);
         return $response;
     }
 
     /**
-     * Operation getLanguageListWithHttpInfo
+     * Operation removeNotificationFilterWithHttpInfo
      *
      * 
      *
+     * @param string $path Path name (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLanguageListWithHttpInfo()
+    public function removeNotificationFilterWithHttpInfo($path)
     {
+        // verify the required parameter 'path' is set
+        if ($path === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $path when calling removeNotificationFilter');
+        }
         // parse inputs
-        $resourcePath = "/core/getlanguagelist";
+        $resourcePath = "/core/removenotificationfilter";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -297,11 +303,15 @@ class SystemApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
 
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
+        // form params
+        if ($path !== null) {
+            $formParams['path'] = $this->apiClient->getSerializer()->toFormValue($path);
+        }
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -313,83 +323,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getlanguagelist'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getSystemStatus
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return string
-     */
-    public function getSystemStatus()
-    {
-        list($response) = $this->getSystemStatusWithHttpInfo();
-        return $response;
-    }
-
-    /**
-     * Operation getSystemStatusWithHttpInfo
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getSystemStatusWithHttpInfo()
-    {
-        // parse inputs
-        $resourcePath = "/core/getsystemstatus";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept([]);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                'string',
-                '/core/getsystemstatus'
+                '/core/removenotificationfilter'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];

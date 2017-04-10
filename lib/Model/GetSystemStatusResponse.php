@@ -72,7 +72,7 @@ class GetSystemStatusResponse implements ArrayAccess
         'apilevel' => 'float',
         'peerid' => 'string',
         'displayname' => 'string',
-        'os' => 'string',
+        'oS' => 'string',
         'oem' => 'string',
         'needsupdate' => 'float',
         'iscritical' => 'float',
@@ -152,7 +152,7 @@ class GetSystemStatusResponse implements ArrayAccess
         'apilevel' => 'apilevel',
         'peerid' => 'peerid',
         'displayname' => 'displayname',
-        'os' => 'OS',
+        'oS' => 'OS',
         'oem' => 'oem',
         'needsupdate' => 'needsupdate',
         'iscritical' => 'iscritical',
@@ -228,7 +228,7 @@ class GetSystemStatusResponse implements ArrayAccess
         'apilevel' => 'setApilevel',
         'peerid' => 'setPeerid',
         'displayname' => 'setDisplayname',
-        'os' => 'setOs',
+        'oS' => 'setOS',
         'oem' => 'setOem',
         'needsupdate' => 'setNeedsupdate',
         'iscritical' => 'setIscritical',
@@ -304,7 +304,7 @@ class GetSystemStatusResponse implements ArrayAccess
         'apilevel' => 'getApilevel',
         'peerid' => 'getPeerid',
         'displayname' => 'getDisplayname',
-        'os' => 'getOs',
+        'oS' => 'getOS',
         'oem' => 'getOem',
         'needsupdate' => 'getNeedsupdate',
         'iscritical' => 'getIscritical',
@@ -405,7 +405,7 @@ class GetSystemStatusResponse implements ArrayAccess
         $this->container['apilevel'] = isset($data['apilevel']) ? $data['apilevel'] : null;
         $this->container['peerid'] = isset($data['peerid']) ? $data['peerid'] : null;
         $this->container['displayname'] = isset($data['displayname']) ? $data['displayname'] : null;
-        $this->container['os'] = isset($data['os']) ? $data['os'] : null;
+        $this->container['oS'] = isset($data['oS']) ? $data['oS'] : null;
         $this->container['oem'] = isset($data['oem']) ? $data['oem'] : null;
         $this->container['needsupdate'] = isset($data['needsupdate']) ? $data['needsupdate'] : null;
         $this->container['iscritical'] = isset($data['iscritical']) ? $data['iscritical'] : null;
@@ -495,8 +495,8 @@ class GetSystemStatusResponse implements ArrayAccess
         if ($this->container['displayname'] === null) {
             $invalid_properties[] = "'displayname' can't be null";
         }
-        if ($this->container['os'] === null) {
-            $invalid_properties[] = "'os' can't be null";
+        if ($this->container['oS'] === null) {
+            $invalid_properties[] = "'oS' can't be null";
         }
         if ($this->container['oem'] === null) {
             $invalid_properties[] = "'oem' can't be null";
@@ -710,7 +710,7 @@ class GetSystemStatusResponse implements ArrayAccess
         if ($this->container['displayname'] === null) {
             return false;
         }
-        if ($this->container['os'] === null) {
+        if ($this->container['oS'] === null) {
             return false;
         }
         if ($this->container['oem'] === null) {
@@ -1027,22 +1027,22 @@ class GetSystemStatusResponse implements ArrayAccess
     }
 
     /**
-     * Gets os
+     * Gets oS
      * @return string
      */
-    public function getOs()
+    public function getOS()
     {
-        return $this->container['os'];
+        return $this->container['oS'];
     }
 
     /**
-     * Sets os
-     * @param string $os os is always tonido_cloud
+     * Sets oS
+     * @param string $oS os is always tonido_cloud
      * @return $this
      */
-    public function setOs($os)
+    public function setOS($oS)
     {
-        $this->container['os'] = $os;
+        $this->container['oS'] = $oS;
 
         return $this;
     }

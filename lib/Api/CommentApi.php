@@ -1,6 +1,6 @@
 <?php
 /**
- * SystemApi
+ * CommentApi
  * PHP version 5
  *
  * @category Class
@@ -46,7 +46,7 @@ use \Swagger\Client\Configuration;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * SystemApi Class Doc Comment
+ * CommentApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
@@ -54,7 +54,7 @@ use \Swagger\Client\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SystemApi
+class CommentApi
 {
     /**
      * API Client
@@ -93,7 +93,7 @@ class SystemApi
      *
      * @param \Swagger\Client\ApiClient $apiClient set the API client
      *
-     * @return SystemApi
+     * @return CommentApi
      */
     public function setApiClient(\Swagger\Client\ApiClient $apiClient)
     {
@@ -102,31 +102,55 @@ class SystemApi
     }
 
     /**
-     * Operation getAuthenticationInfo
+     * Operation addCommentForItem
      *
      * 
      *
+     * @param string $fullpath Specify the full path where you want to add comment (required)
+     * @param string $parent Specify the parent name (required)
+     * @param string $isfile Specify 0 if the path is a folder , 1 if the path is a file (required)
+     * @param string $text Add the comment you want to add (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getAuthenticationInfo()
+    public function addCommentForItem($fullpath, $parent, $isfile, $text)
     {
-        list($response) = $this->getAuthenticationInfoWithHttpInfo();
+        list($response) = $this->addCommentForItemWithHttpInfo($fullpath, $parent, $isfile, $text);
         return $response;
     }
 
     /**
-     * Operation getAuthenticationInfoWithHttpInfo
+     * Operation addCommentForItemWithHttpInfo
      *
      * 
      *
+     * @param string $fullpath Specify the full path where you want to add comment (required)
+     * @param string $parent Specify the parent name (required)
+     * @param string $isfile Specify 0 if the path is a folder , 1 if the path is a file (required)
+     * @param string $text Add the comment you want to add (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuthenticationInfoWithHttpInfo()
+    public function addCommentForItemWithHttpInfo($fullpath, $parent, $isfile, $text)
     {
+        // verify the required parameter 'fullpath' is set
+        if ($fullpath === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $fullpath when calling addCommentForItem');
+        }
+        // verify the required parameter 'parent' is set
+        if ($parent === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $parent when calling addCommentForItem');
+        }
+        // verify the required parameter 'isfile' is set
+        if ($isfile === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $isfile when calling addCommentForItem');
+        }
+        // verify the required parameter 'text' is set
+        if ($text === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $text when calling addCommentForItem');
+        }
         // parse inputs
-        $resourcePath = "/core/getauthenticationinfo";
+        $resourcePath = "/core/addcommentforitem";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -135,11 +159,27 @@ class SystemApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
 
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
+        // form params
+        if ($fullpath !== null) {
+            $formParams['fullpath'] = $this->apiClient->getSerializer()->toFormValue($fullpath);
+        }
+        // form params
+        if ($parent !== null) {
+            $formParams['parent'] = $this->apiClient->getSerializer()->toFormValue($parent);
+        }
+        // form params
+        if ($isfile !== null) {
+            $formParams['isfile'] = $this->apiClient->getSerializer()->toFormValue($isfile);
+        }
+        // form params
+        if ($text !== null) {
+            $formParams['text'] = $this->apiClient->getSerializer()->toFormValue($text);
+        }
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -151,12 +191,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getauthenticationinfo'
+                '/core/addcommentforitem'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
@@ -173,43 +213,37 @@ class SystemApi
     }
 
     /**
-     * Operation getDiskUsageDetails
+     * Operation getCommentsForItem
      *
      * 
      *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
+     * @param string $fullpath Specify the full path where you want to add comment (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getDiskUsageDetails($username, $level)
+    public function getCommentsForItem($fullpath)
     {
-        list($response) = $this->getDiskUsageDetailsWithHttpInfo($username, $level);
+        list($response) = $this->getCommentsForItemWithHttpInfo($fullpath);
         return $response;
     }
 
     /**
-     * Operation getDiskUsageDetailsWithHttpInfo
+     * Operation getCommentsForItemWithHttpInfo
      *
      * 
      *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
+     * @param string $fullpath Specify the full path where you want to add comment (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDiskUsageDetailsWithHttpInfo($username, $level)
+    public function getCommentsForItemWithHttpInfo($fullpath)
     {
-        // verify the required parameter 'username' is set
-        if ($username === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $username when calling getDiskUsageDetails');
-        }
-        // verify the required parameter 'level' is set
-        if ($level === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $level when calling getDiskUsageDetails');
+        // verify the required parameter 'fullpath' is set
+        if ($fullpath === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $fullpath when calling getCommentsForItem');
         }
         // parse inputs
-        $resourcePath = "/core/getdiskusagedetails";
+        $resourcePath = "/core/getcommentsforitem";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -221,12 +255,8 @@ class SystemApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // query params
-        if ($username !== null) {
-            $queryParams['username'] = $this->apiClient->getSerializer()->toQueryValue($username);
-        }
-        // query params
-        if ($level !== null) {
-            $queryParams['level'] = $this->apiClient->getSerializer()->toQueryValue($level);
+        if ($fullpath !== null) {
+            $queryParams['fullpath'] = $this->apiClient->getSerializer()->toQueryValue($fullpath);
         }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -247,7 +277,7 @@ class SystemApi
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getdiskusagedetails'
+                '/core/getcommentsforitem'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
@@ -264,31 +294,43 @@ class SystemApi
     }
 
     /**
-     * Operation getLanguageList
+     * Operation removeCommentForItem
      *
      * 
      *
+     * @param string $fullpath Specify the full path where you want to remove the comment (required)
+     * @param string $id Id number of the comment (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getLanguageList()
+    public function removeCommentForItem($fullpath, $id)
     {
-        list($response) = $this->getLanguageListWithHttpInfo();
+        list($response) = $this->removeCommentForItemWithHttpInfo($fullpath, $id);
         return $response;
     }
 
     /**
-     * Operation getLanguageListWithHttpInfo
+     * Operation removeCommentForItemWithHttpInfo
      *
      * 
      *
+     * @param string $fullpath Specify the full path where you want to remove the comment (required)
+     * @param string $id Id number of the comment (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLanguageListWithHttpInfo()
+    public function removeCommentForItemWithHttpInfo($fullpath, $id)
     {
+        // verify the required parameter 'fullpath' is set
+        if ($fullpath === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $fullpath when calling removeCommentForItem');
+        }
+        // verify the required parameter 'id' is set
+        if ($id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $id when calling removeCommentForItem');
+        }
         // parse inputs
-        $resourcePath = "/core/getlanguagelist";
+        $resourcePath = "/core/removecommentforitem";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -297,11 +339,19 @@ class SystemApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
 
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
+        // form params
+        if ($fullpath !== null) {
+            $formParams['fullpath'] = $this->apiClient->getSerializer()->toFormValue($fullpath);
+        }
+        // form params
+        if ($id !== null) {
+            $formParams['id'] = $this->apiClient->getSerializer()->toFormValue($id);
+        }
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -313,83 +363,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getlanguagelist'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getSystemStatus
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return string
-     */
-    public function getSystemStatus()
-    {
-        list($response) = $this->getSystemStatusWithHttpInfo();
-        return $response;
-    }
-
-    /**
-     * Operation getSystemStatusWithHttpInfo
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getSystemStatusWithHttpInfo()
-    {
-        // parse inputs
-        $resourcePath = "/core/getsystemstatus";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept([]);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                'string',
-                '/core/getsystemstatus'
+                '/core/removecommentforitem'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];

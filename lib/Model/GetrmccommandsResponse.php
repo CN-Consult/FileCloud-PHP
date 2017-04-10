@@ -68,8 +68,8 @@ class GetrmccommandsResponse implements ArrayAccess
     protected static $swaggerTypes = [
         'total' => 'string',
         'rid' => 'string',
-        'remote_command_id' => 'string',
-        'remote_client_id' => 'string',
+        'remoteCommandId' => 'string',
+        'remoteClientId' => 'string',
         'message' => 'string',
         'userid' => 'string'
     ];
@@ -86,8 +86,8 @@ class GetrmccommandsResponse implements ArrayAccess
     protected static $attributeMap = [
         'total' => 'total',
         'rid' => 'rid',
-        'remote_command_id' => 'remote_command_id',
-        'remote_client_id' => 'remote_client_id',
+        'remoteCommandId' => 'remote_command_id',
+        'remoteClientId' => 'remote_client_id',
         'message' => 'message',
         'userid' => 'userid'
     ];
@@ -100,8 +100,8 @@ class GetrmccommandsResponse implements ArrayAccess
     protected static $setters = [
         'total' => 'setTotal',
         'rid' => 'setRid',
-        'remote_command_id' => 'setRemoteCommandId',
-        'remote_client_id' => 'setRemoteClientId',
+        'remoteCommandId' => 'setRemoteCommandId',
+        'remoteClientId' => 'setRemoteClientId',
         'message' => 'setMessage',
         'userid' => 'setUserid'
     ];
@@ -114,8 +114,8 @@ class GetrmccommandsResponse implements ArrayAccess
     protected static $getters = [
         'total' => 'getTotal',
         'rid' => 'getRid',
-        'remote_command_id' => 'getRemoteCommandId',
-        'remote_client_id' => 'getRemoteClientId',
+        'remoteCommandId' => 'getRemoteCommandId',
+        'remoteClientId' => 'getRemoteClientId',
         'message' => 'getMessage',
         'userid' => 'getUserid'
     ];
@@ -153,8 +153,8 @@ class GetrmccommandsResponse implements ArrayAccess
     {
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
         $this->container['rid'] = isset($data['rid']) ? $data['rid'] : null;
-        $this->container['remote_command_id'] = isset($data['remote_command_id']) ? $data['remote_command_id'] : null;
-        $this->container['remote_client_id'] = isset($data['remote_client_id']) ? $data['remote_client_id'] : null;
+        $this->container['remoteCommandId'] = isset($data['remoteCommandId']) ? $data['remoteCommandId'] : null;
+        $this->container['remoteClientId'] = isset($data['remoteClientId']) ? $data['remoteClientId'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['userid'] = isset($data['userid']) ? $data['userid'] : null;
     }
@@ -173,11 +173,11 @@ class GetrmccommandsResponse implements ArrayAccess
         if ($this->container['rid'] === null) {
             $invalid_properties[] = "'rid' can't be null";
         }
-        if ($this->container['remote_command_id'] === null) {
-            $invalid_properties[] = "'remote_command_id' can't be null";
+        if ($this->container['remoteCommandId'] === null) {
+            $invalid_properties[] = "'remoteCommandId' can't be null";
         }
-        if ($this->container['remote_client_id'] === null) {
-            $invalid_properties[] = "'remote_client_id' can't be null";
+        if ($this->container['remoteClientId'] === null) {
+            $invalid_properties[] = "'remoteClientId' can't be null";
         }
         if ($this->container['message'] === null) {
             $invalid_properties[] = "'message' can't be null";
@@ -202,10 +202,10 @@ class GetrmccommandsResponse implements ArrayAccess
         if ($this->container['rid'] === null) {
             return false;
         }
-        if ($this->container['remote_command_id'] === null) {
+        if ($this->container['remoteCommandId'] === null) {
             return false;
         }
-        if ($this->container['remote_client_id'] === null) {
+        if ($this->container['remoteClientId'] === null) {
             return false;
         }
         if ($this->container['message'] === null) {
@@ -261,43 +261,43 @@ class GetrmccommandsResponse implements ArrayAccess
     }
 
     /**
-     * Gets remote_command_id
+     * Gets remoteCommandId
      * @return string
      */
     public function getRemoteCommandId()
     {
-        return $this->container['remote_command_id'];
+        return $this->container['remoteCommandId'];
     }
 
     /**
-     * Sets remote_command_id
-     * @param string $remote_command_id remote command id number
+     * Sets remoteCommandId
+     * @param string $remoteCommandId remote command id number
      * @return $this
      */
-    public function setRemoteCommandId($remote_command_id)
+    public function setRemoteCommandId($remoteCommandId)
     {
-        $this->container['remote_command_id'] = $remote_command_id;
+        $this->container['remoteCommandId'] = $remoteCommandId;
 
         return $this;
     }
 
     /**
-     * Gets remote_client_id
+     * Gets remoteClientId
      * @return string
      */
     public function getRemoteClientId()
     {
-        return $this->container['remote_client_id'];
+        return $this->container['remoteClientId'];
     }
 
     /**
-     * Sets remote_client_id
-     * @param string $remote_client_id remote client id number
+     * Sets remoteClientId
+     * @param string $remoteClientId remote client id number
      * @return $this
      */
-    public function setRemoteClientId($remote_client_id)
+    public function setRemoteClientId($remoteClientId)
     {
-        $this->container['remote_client_id'] = $remote_client_id;
+        $this->container['remoteClientId'] = $remoteClientId;
 
         return $this;
     }

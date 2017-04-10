@@ -1,6 +1,6 @@
 <?php
 /**
- * SystemApiTest
+ * FileApiTest
  * PHP version 5
  *
  * @category Class
@@ -46,7 +46,7 @@ use \Swagger\Client\ApiException;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * SystemApiTest Class Doc Comment
+ * FileApiTest Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
@@ -54,7 +54,7 @@ use \Swagger\Client\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SystemApiTest extends \PHPUnit_Framework_TestCase
+class FileApiTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -90,45 +90,199 @@ class SystemApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for getAuthenticationInfo
+     * Test case for copyFile
      *
      * .
      *
      */
-    public function testGetAuthenticationInfo()
+    public function testCopyFile()
     {
 
     }
 
     /**
-     * Test case for getDiskUsageDetails
+     * Test case for createFolder
      *
      * .
      *
      */
-    public function testGetDiskUsageDetails()
+    public function testCreateFolder()
     {
 
     }
 
     /**
-     * Test case for getLanguageList
+     * Test case for deleteFile
      *
      * .
      *
      */
-    public function testGetLanguageList()
+    public function testDeleteFile()
     {
 
     }
 
     /**
-     * Test case for getSystemStatus
+     * Test case for deletePartialUploads
      *
      * .
      *
      */
-    public function testGetSystemStatus()
+    public function testDeletePartialUploads()
+    {
+
+    }
+
+    /**
+     * Test case for docEdit
+     *
+     * .
+     *
+     */
+    public function testDocEdit()
+    {
+
+    }
+
+    /**
+     * Test case for downloadFile
+     *
+     * .
+     *
+     */
+    public function testDownloadFile()
+    {
+
+    }
+
+    /**
+     * Test case for downloadFileMulti
+     *
+     * .
+     *
+     */
+    public function testDownloadFileMulti()
+    {
+
+    }
+
+    /**
+     * Test case for emptyRecycleBin
+     *
+     * .
+     *
+     */
+    public function testEmptyRecycleBin()
+    {
+
+    }
+
+    /**
+     * Test case for fileExists
+     *
+     * .
+     *
+     */
+    public function testFileExists()
+    {
+
+    }
+
+    /**
+     * Test case for fileInfo
+     *
+     * .
+     *
+     */
+    public function testFileInfo()
+    {
+
+    }
+
+    /**
+     * Test case for getAccessDetailsForPath
+     *
+     * .
+     *
+     */
+    public function testGetAccessDetailsForPath()
+    {
+
+    }
+
+    /**
+     * Test case for getFileList
+     *
+     * .
+     *
+     */
+    public function testGetFileList()
+    {
+
+    }
+
+    /**
+     * Test case for getFolderProperties
+     *
+     * .
+     *
+     */
+    public function testGetFolderProperties()
+    {
+
+    }
+
+    /**
+     * Test case for renameFile
+     *
+     * .
+     *
+     */
+    public function testRenameFile()
+    {
+
+    }
+
+    /**
+     * Test case for renameOrMove
+     *
+     * .
+     *
+     */
+    public function testRenameOrMove()
+    {
+
+    }
+
+    /**
+     * Test case for search
+     *
+     * .
+     *
+     */
+    public function testSearch()
+    {
+
+    }
+
+    /**
+     * Test case for searchExt
+     *
+     * .
+     *
+     */
+    public function testSearchExt()
+    {
+
+    }
+
+    /**
+     * Test case for upload
+     *
+     * .
+     *
+     */
+    public function testUpload()
     {
 
     }

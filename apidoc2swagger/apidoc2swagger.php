@@ -55,7 +55,8 @@ class apidoc2swagger
                 $pathArray = (object)array(
                     $requestType => (object)array(
                         "description" => strip_tags($apiCall["description"]),
-                        "tags" => array($apiCall["group"]),
+                        "operationId" => $this->getOperationId($apiCall["url"]),
+                        "tags" => array(str_replace("RelatedAPI", "", str_replace("_", "", $apiCall["group"]))),
                         "responses" => array(
                             200 => $response,
                         )
@@ -72,12 +73,35 @@ class apidoc2swagger
                         $required = true;
                         if (strpos(strtolower($parameter["description"]), "(optional)") !== false) $required = false;
 
+                        $in = "";
+                        if (strtolower($apiCall["type"]) == "get") $in = "query";
+                        else if (strtolower($apiCall["type"]) == "post" && $apiCall["url"] != "/core/upload")
+                        {
+                            $in = "formData";
+                            $pathArray->$requestType->consumes = array("application/x-www-form-urlencoded");
+                        }
+                        else if (strtolower($apiCall["type"]) == "post" && $apiCall["url"] == "/core/upload")
+                        {
+                            $in = "query";
+                            $pathArray->$requestType->consumes = array("multipart/form-data");
+                        }
+
                         array_push($pathArray->$requestType->parameters, (object)array(
                             "name" => $parameter["field"],
-                            "in" => "query",
+                            "in" => $in,
                             "type" => $type,
                             "description" => trim(strip_tags($parameter["description"])),
                             "required" => $required
+                        ));
+                    }
+                    if ($apiCall["url"] == "/core/upload")
+                    {
+                        array_push($pathArray->$requestType->parameters, (object)array(
+                            "name" => "file_contents",
+                            "in" => "formData",
+                            "type" => "file",
+                            "description" => "The path to the file you want to upload.",
+                            "required" => true
                         ));
                     }
                 }
@@ -109,7 +133,7 @@ class apidoc2swagger
                 "description" => "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request, the response will contain an entity describing or containing the result of the action.",
                 "schema" => array(
                     "title" => $name."s",
-                    "type" => "array"
+                    "type" => "string"
                 )
             );
 
@@ -161,6 +185,27 @@ class apidoc2swagger
 
         $this->swaggerArray["definitions"][$name]["properties"] = $definitions;
         $this->swaggerArray["definitions"][$name]["required"] = $required;
+    }
+
+    /**
+     * Searches the operationidmapping.txt file for a "camelCased" operationId.
+     * This file contains mapping for the operation urls like so: /core/renameormove=renameOrMove.
+     *
+     * @param String $_url The ulr of an operation. E.g. /core/renameormove
+     * @return mixed The "camelCased" operationId for the given url. E.g. renameOrMove
+     * @throws Exception when $_url is missing in operationidmapping.txt
+     */
+    private function getOperationId($_url)
+    {
+        $lines = file(__DIR__."/operationidmapping.txt");
+        foreach ($lines as $line)
+        {
+            if (strpos($line, $_url) !== false)
+            {
+                return preg_replace("/\r|\n/", "", str_replace($_url."=", "", $line));
+            }
+        }
+        throw new Exception('The URL $_url is missing in operationidmapping.txt!');
     }
 }
 

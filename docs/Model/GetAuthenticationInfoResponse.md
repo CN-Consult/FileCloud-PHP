@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **guesthashurl** | **string** | guest hash url value | 
 **isremote** | **float** | whether is remote or not | 
 **reasoncode** | **float** | whether reason code set or not | 
-**os** | **string** | always set tonido_cloud | 
+**oS** | **string** | always set tonido_cloud | 
 **authtype** | **string** | specifies the authentication type (default | ad | ldap) | 
 **enablesaml** | **string** | 1|0 specifies whether saml is enabled or no | 
 **userlevel** | **string** | specifies users access level (full | guest | limited) | 
