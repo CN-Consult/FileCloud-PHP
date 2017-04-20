@@ -22,6 +22,7 @@
 class apidoc2swagger
 {
     private $swaggerArray;
+    private $operationMapping;
 
     /**
      * This is the main function of the class, it reads the apidoc file and creates a swagger compatible json file.
@@ -69,19 +70,19 @@ class apidoc2swagger
                     foreach ($apiCall["parameter"]["fields"]["Parameter"] as $parameter)
                     {
                         $type = trim(strtolower(strip_tags($parameter["type"])));
-                        if ($type == "date") $type = "string";
+                        if ($type == "date") $type = "string"; // swagger doesn't support date as a type so we handle it like a string
                         $required = true;
                         if (strpos(strtolower($parameter["description"]), "(optional)") !== false) $required = false;
 
                         $in = "";
                         if (strtolower($apiCall["type"]) == "get") $in = "query";
                         else if (strtolower($apiCall["type"]) == "post" && $apiCall["url"] != "/core/upload")
-                        {
+                        {// post requests need the value formData for "in" but /core/upload is a special case which is handled in the next case
                             $in = "formData";
                             $pathArray->$requestType->consumes = array("application/x-www-form-urlencoded");
                         }
                         else if (strtolower($apiCall["type"]) == "post" && $apiCall["url"] == "/core/upload")
-                        {
+                        {// /core/upload is a special case where the most parameters are "in" query and the consumes property needs to be "multipart/form-data"
                             $in = "query";
                             $pathArray->$requestType->consumes = array("multipart/form-data");
                         }
@@ -95,7 +96,7 @@ class apidoc2swagger
                         ));
                     }
                     if ($apiCall["url"] == "/core/upload")
-                    {
+                    {// /core/upload is a special case where only the parameter "file_contents" is "in" formData so we add this parameter here
                         array_push($pathArray->$requestType->parameters, (object)array(
                             "name" => "file_contents",
                             "in" => "formData",
@@ -197,15 +198,9 @@ class apidoc2swagger
      */
     private function getOperationId($_url)
     {
-        $lines = file(__DIR__."/operationidmapping.txt");
-        foreach ($lines as $line)
-        {
-            if (strpos($line, $_url) !== false)
-            {
-                return preg_replace("/\r|\n/", "", str_replace($_url."=", "", $line));
-            }
-        }
-        throw new Exception('The URL $_url is missing in operationidmapping.txt!');
+        if (!$this->operationMapping) $this->operationMapping=parse_ini_file(__DIR__."/operationidmapping.txt");
+        if (isset($this->operationMapping[$_url])) return $this->operationMapping[$_url];
+        else throw new Exception('The URL $_url is missing in operationidmapping.txt!');
     }
 }
 
