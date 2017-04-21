@@ -144,9 +144,9 @@ class GetSystemStatusResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "os"
+     * Test attribute "oS"
      */
-    public function testPropertyOs()
+    public function testPropertyOS()
     {
 
     }

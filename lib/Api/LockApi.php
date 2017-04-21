@@ -1,6 +1,6 @@
 <?php
 /**
- * SystemApi
+ * LockApi
  * PHP version 5
  *
  * @category Class
@@ -46,7 +46,7 @@ use \Swagger\Client\Configuration;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * SystemApi Class Doc Comment
+ * LockApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
@@ -54,7 +54,7 @@ use \Swagger\Client\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SystemApi
+class LockApi
 {
     /**
      * API Client
@@ -93,7 +93,7 @@ class SystemApi
      *
      * @param \Swagger\Client\ApiClient $apiClient set the API client
      *
-     * @return SystemApi
+     * @return LockApi
      */
     public function setApiClient(\Swagger\Client\ApiClient $apiClient)
     {
@@ -102,114 +102,37 @@ class SystemApi
     }
 
     /**
-     * Operation getAuthenticationInfo
+     * Operation getAllLocks
      *
      * 
      *
+     * @param string $userid Specify the user-name. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getAuthenticationInfo()
+    public function getAllLocks($userid)
     {
-        list($response) = $this->getAuthenticationInfoWithHttpInfo();
+        list($response) = $this->getAllLocksWithHttpInfo($userid);
         return $response;
     }
 
     /**
-     * Operation getAuthenticationInfoWithHttpInfo
+     * Operation getAllLocksWithHttpInfo
      *
      * 
      *
+     * @param string $userid Specify the user-name. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuthenticationInfoWithHttpInfo()
+    public function getAllLocksWithHttpInfo($userid)
     {
-        // parse inputs
-        $resourcePath = "/core/getauthenticationinfo";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept([]);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                'string',
-                '/core/getauthenticationinfo'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getDiskUsageDetails
-     *
-     * 
-     *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return string
-     */
-    public function getDiskUsageDetails($username, $level)
-    {
-        list($response) = $this->getDiskUsageDetailsWithHttpInfo($username, $level);
-        return $response;
-    }
-
-    /**
-     * Operation getDiskUsageDetailsWithHttpInfo
-     *
-     * 
-     *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getDiskUsageDetailsWithHttpInfo($username, $level)
-    {
-        // verify the required parameter 'username' is set
-        if ($username === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $username when calling getDiskUsageDetails');
-        }
-        // verify the required parameter 'level' is set
-        if ($level === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $level when calling getDiskUsageDetails');
+        // verify the required parameter 'userid' is set
+        if ($userid === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $userid when calling getAllLocks');
         }
         // parse inputs
-        $resourcePath = "/core/getdiskusagedetails";
+        $resourcePath = "/core/getalllocks";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -221,12 +144,89 @@ class SystemApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // query params
-        if ($username !== null) {
-            $queryParams['username'] = $this->apiClient->getSerializer()->toQueryValue($username);
+        if ($userid !== null) {
+            $queryParams['userid'] = $this->apiClient->getSerializer()->toQueryValue($userid);
         }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                'string',
+                '/core/getalllocks'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getFileLockInfo
+     *
+     * 
+     *
+     * @param string $path Specify the path you want to unlock (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return string
+     */
+    public function getFileLockInfo($path)
+    {
+        list($response) = $this->getFileLockInfoWithHttpInfo($path);
+        return $response;
+    }
+
+    /**
+     * Operation getFileLockInfoWithHttpInfo
+     *
+     * 
+     *
+     * @param string $path Specify the path you want to unlock (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getFileLockInfoWithHttpInfo($path)
+    {
+        // verify the required parameter 'path' is set
+        if ($path === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $path when calling getFileLockInfo');
+        }
+        // parse inputs
+        $resourcePath = "/core/getfilelockinfo";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept([]);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+
         // query params
-        if ($level !== null) {
-            $queryParams['level'] = $this->apiClient->getSerializer()->toQueryValue($level);
+        if ($path !== null) {
+            $queryParams['path'] = $this->apiClient->getSerializer()->toQueryValue($path);
         }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -247,7 +247,7 @@ class SystemApi
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getdiskusagedetails'
+                '/core/getfilelockinfo'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
@@ -264,31 +264,41 @@ class SystemApi
     }
 
     /**
-     * Operation getLanguageList
+     * Operation lock
      *
      * 
      *
+     * @param string $path Specify the path you want to lock (required)
+     * @param string $expiration (Optional) Set an expiration date for locked file/folder (optional)
+     * @param string $readlock (Optional) Set if you want to restrict download of the locked file/folder. (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getLanguageList()
+    public function lock($path, $expiration = null, $readlock = null)
     {
-        list($response) = $this->getLanguageListWithHttpInfo();
+        list($response) = $this->lockWithHttpInfo($path, $expiration, $readlock);
         return $response;
     }
 
     /**
-     * Operation getLanguageListWithHttpInfo
+     * Operation lockWithHttpInfo
      *
      * 
      *
+     * @param string $path Specify the path you want to lock (required)
+     * @param string $expiration (Optional) Set an expiration date for locked file/folder (optional)
+     * @param string $readlock (Optional) Set if you want to restrict download of the locked file/folder. (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLanguageListWithHttpInfo()
+    public function lockWithHttpInfo($path, $expiration = null, $readlock = null)
     {
+        // verify the required parameter 'path' is set
+        if ($path === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $path when calling lock');
+        }
         // parse inputs
-        $resourcePath = "/core/getlanguagelist";
+        $resourcePath = "/core/lock";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -297,11 +307,23 @@ class SystemApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
 
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
+        // form params
+        if ($path !== null) {
+            $formParams['path'] = $this->apiClient->getSerializer()->toFormValue($path);
+        }
+        // form params
+        if ($expiration !== null) {
+            $formParams['expiration'] = $this->apiClient->getSerializer()->toFormValue($expiration);
+        }
+        // form params
+        if ($readlock !== null) {
+            $formParams['readlock'] = $this->apiClient->getSerializer()->toFormValue($readlock);
+        }
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -313,12 +335,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getlanguagelist'
+                '/core/lock'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
@@ -335,31 +357,37 @@ class SystemApi
     }
 
     /**
-     * Operation getSystemStatus
+     * Operation unlock
      *
      * 
      *
+     * @param string $path Specify the path you want to unlock (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getSystemStatus()
+    public function unlock($path)
     {
-        list($response) = $this->getSystemStatusWithHttpInfo();
+        list($response) = $this->unlockWithHttpInfo($path);
         return $response;
     }
 
     /**
-     * Operation getSystemStatusWithHttpInfo
+     * Operation unlockWithHttpInfo
      *
      * 
      *
+     * @param string $path Specify the path you want to unlock (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSystemStatusWithHttpInfo()
+    public function unlockWithHttpInfo($path)
     {
+        // verify the required parameter 'path' is set
+        if ($path === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $path when calling unlock');
+        }
         // parse inputs
-        $resourcePath = "/core/getsystemstatus";
+        $resourcePath = "/core/unlock";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -368,11 +396,15 @@ class SystemApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
 
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
+        // form params
+        if ($path !== null) {
+            $formParams['path'] = $this->apiClient->getSerializer()->toFormValue($path);
+        }
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -384,12 +416,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getsystemstatus'
+                '/core/unlock'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];

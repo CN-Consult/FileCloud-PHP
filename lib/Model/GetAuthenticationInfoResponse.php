@@ -76,7 +76,7 @@ class GetAuthenticationInfoResponse implements ArrayAccess
         'guesthashurl' => 'string',
         'isremote' => 'float',
         'reasoncode' => 'float',
-        'os' => 'string',
+        'oS' => 'string',
         'authtype' => 'string',
         'enablesaml' => 'string',
         'userlevel' => 'string',
@@ -103,7 +103,7 @@ class GetAuthenticationInfoResponse implements ArrayAccess
         'guesthashurl' => 'guesthashurl',
         'isremote' => 'isremote',
         'reasoncode' => 'reasoncode',
-        'os' => 'OS',
+        'oS' => 'OS',
         'authtype' => 'authtype',
         'enablesaml' => 'enablesaml',
         'userlevel' => 'userlevel',
@@ -126,7 +126,7 @@ class GetAuthenticationInfoResponse implements ArrayAccess
         'guesthashurl' => 'setGuesthashurl',
         'isremote' => 'setIsremote',
         'reasoncode' => 'setReasoncode',
-        'os' => 'setOs',
+        'oS' => 'setOS',
         'authtype' => 'setAuthtype',
         'enablesaml' => 'setEnablesaml',
         'userlevel' => 'setUserlevel',
@@ -149,7 +149,7 @@ class GetAuthenticationInfoResponse implements ArrayAccess
         'guesthashurl' => 'getGuesthashurl',
         'isremote' => 'getIsremote',
         'reasoncode' => 'getReasoncode',
-        'os' => 'getOs',
+        'oS' => 'getOS',
         'authtype' => 'getAuthtype',
         'enablesaml' => 'getEnablesaml',
         'userlevel' => 'getUserlevel',
@@ -197,7 +197,7 @@ class GetAuthenticationInfoResponse implements ArrayAccess
         $this->container['guesthashurl'] = isset($data['guesthashurl']) ? $data['guesthashurl'] : null;
         $this->container['isremote'] = isset($data['isremote']) ? $data['isremote'] : null;
         $this->container['reasoncode'] = isset($data['reasoncode']) ? $data['reasoncode'] : null;
-        $this->container['os'] = isset($data['os']) ? $data['os'] : null;
+        $this->container['oS'] = isset($data['oS']) ? $data['oS'] : null;
         $this->container['authtype'] = isset($data['authtype']) ? $data['authtype'] : null;
         $this->container['enablesaml'] = isset($data['enablesaml']) ? $data['enablesaml'] : null;
         $this->container['userlevel'] = isset($data['userlevel']) ? $data['userlevel'] : null;
@@ -242,8 +242,8 @@ class GetAuthenticationInfoResponse implements ArrayAccess
         if ($this->container['reasoncode'] === null) {
             $invalid_properties[] = "'reasoncode' can't be null";
         }
-        if ($this->container['os'] === null) {
-            $invalid_properties[] = "'os' can't be null";
+        if ($this->container['oS'] === null) {
+            $invalid_properties[] = "'oS' can't be null";
         }
         if ($this->container['authtype'] === null) {
             $invalid_properties[] = "'authtype' can't be null";
@@ -298,7 +298,7 @@ class GetAuthenticationInfoResponse implements ArrayAccess
         if ($this->container['reasoncode'] === null) {
             return false;
         }
-        if ($this->container['os'] === null) {
+        if ($this->container['oS'] === null) {
             return false;
         }
         if ($this->container['authtype'] === null) {
@@ -528,22 +528,22 @@ class GetAuthenticationInfoResponse implements ArrayAccess
     }
 
     /**
-     * Gets os
+     * Gets oS
      * @return string
      */
-    public function getOs()
+    public function getOS()
     {
-        return $this->container['os'];
+        return $this->container['oS'];
     }
 
     /**
-     * Sets os
-     * @param string $os always set tonido_cloud
+     * Sets oS
+     * @param string $oS always set tonido_cloud
      * @return $this
      */
-    public function setOs($os)
+    public function setOS($oS)
     {
-        $this->container['os'] = $os;
+        $this->container['oS'] = $oS;
 
         return $this;
     }

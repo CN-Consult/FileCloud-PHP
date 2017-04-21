@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **apilevel** | **float** | api level no. | 
 **peerid** | **string** | user name | 
 **displayname** | **string** | display name of user | 
-**os** | **string** | os is always tonido_cloud | 
+**oS** | **string** | os is always tonido_cloud | 
 **oem** | **string** |  | 
 **needsupdate** | **float** | whether update needed or no | 
 **iscritical** | **float** | whether is critical or not | 

@@ -1,6 +1,6 @@
 <?php
 /**
- * SystemApi
+ * ActivityApi
  * PHP version 5
  *
  * @category Class
@@ -46,7 +46,7 @@ use \Swagger\Client\Configuration;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * SystemApi Class Doc Comment
+ * ActivityApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
@@ -54,7 +54,7 @@ use \Swagger\Client\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SystemApi
+class ActivityApi
 {
     /**
      * API Client
@@ -93,7 +93,7 @@ class SystemApi
      *
      * @param \Swagger\Client\ApiClient $apiClient set the API client
      *
-     * @return SystemApi
+     * @return ActivityApi
      */
     public function setApiClient(\Swagger\Client\ApiClient $apiClient)
     {
@@ -102,114 +102,37 @@ class SystemApi
     }
 
     /**
-     * Operation getAuthenticationInfo
+     * Operation getActivityStream
      *
      * 
      *
+     * @param string $parent Specify the path for which you want to get the activity list (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getAuthenticationInfo()
+    public function getActivityStream($parent)
     {
-        list($response) = $this->getAuthenticationInfoWithHttpInfo();
+        list($response) = $this->getActivityStreamWithHttpInfo($parent);
         return $response;
     }
 
     /**
-     * Operation getAuthenticationInfoWithHttpInfo
+     * Operation getActivityStreamWithHttpInfo
      *
      * 
      *
+     * @param string $parent Specify the path for which you want to get the activity list (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuthenticationInfoWithHttpInfo()
+    public function getActivityStreamWithHttpInfo($parent)
     {
-        // parse inputs
-        $resourcePath = "/core/getauthenticationinfo";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept([]);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                'string',
-                '/core/getauthenticationinfo'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getDiskUsageDetails
-     *
-     * 
-     *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return string
-     */
-    public function getDiskUsageDetails($username, $level)
-    {
-        list($response) = $this->getDiskUsageDetailsWithHttpInfo($username, $level);
-        return $response;
-    }
-
-    /**
-     * Operation getDiskUsageDetailsWithHttpInfo
-     *
-     * 
-     *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getDiskUsageDetailsWithHttpInfo($username, $level)
-    {
-        // verify the required parameter 'username' is set
-        if ($username === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $username when calling getDiskUsageDetails');
-        }
-        // verify the required parameter 'level' is set
-        if ($level === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $level when calling getDiskUsageDetails');
+        // verify the required parameter 'parent' is set
+        if ($parent === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $parent when calling getActivityStream');
         }
         // parse inputs
-        $resourcePath = "/core/getdiskusagedetails";
+        $resourcePath = "/core/getactivitystream";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -221,12 +144,8 @@ class SystemApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // query params
-        if ($username !== null) {
-            $queryParams['username'] = $this->apiClient->getSerializer()->toQueryValue($username);
-        }
-        // query params
-        if ($level !== null) {
-            $queryParams['level'] = $this->apiClient->getSerializer()->toQueryValue($level);
+        if ($parent !== null) {
+            $queryParams['parent'] = $this->apiClient->getSerializer()->toQueryValue($parent);
         }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -247,7 +166,7 @@ class SystemApi
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getdiskusagedetails'
+                '/core/getactivitystream'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
@@ -264,31 +183,37 @@ class SystemApi
     }
 
     /**
-     * Operation getLanguageList
+     * Operation showHideActivity
      *
      * 
      *
+     * @param string $collapse Set as 1 to hide activity panel (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getLanguageList()
+    public function showHideActivity($collapse)
     {
-        list($response) = $this->getLanguageListWithHttpInfo();
+        list($response) = $this->showHideActivityWithHttpInfo($collapse);
         return $response;
     }
 
     /**
-     * Operation getLanguageListWithHttpInfo
+     * Operation showHideActivityWithHttpInfo
      *
      * 
      *
+     * @param string $collapse Set as 1 to hide activity panel (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLanguageListWithHttpInfo()
+    public function showHideActivityWithHttpInfo($collapse)
     {
+        // verify the required parameter 'collapse' is set
+        if ($collapse === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $collapse when calling showHideActivity');
+        }
         // parse inputs
-        $resourcePath = "/core/getlanguagelist";
+        $resourcePath = "/core/showhideactivity";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -297,11 +222,15 @@ class SystemApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
 
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
+        // form params
+        if ($collapse !== null) {
+            $formParams['collapse'] = $this->apiClient->getSerializer()->toFormValue($collapse);
+        }
         
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -313,83 +242,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getlanguagelist'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getSystemStatus
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return string
-     */
-    public function getSystemStatus()
-    {
-        list($response) = $this->getSystemStatusWithHttpInfo();
-        return $response;
-    }
-
-    /**
-     * Operation getSystemStatusWithHttpInfo
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getSystemStatusWithHttpInfo()
-    {
-        // parse inputs
-        $resourcePath = "/core/getsystemstatus";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept([]);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                'string',
-                '/core/getsystemstatus'
+                '/core/showhideactivity'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];

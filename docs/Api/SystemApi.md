@@ -1,18 +1,17 @@
 # Swagger\Client\SystemApi
 
-All URIs are relative to *https://filecloud.cn-consult.eu*
+All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**coreGetauthenticationinfoGet**](SystemApi.md#coreGetauthenticationinfoGet) | **GET** /core/getauthenticationinfo | 
-[**coreGetcustomheaderGet**](SystemApi.md#coreGetcustomheaderGet) | **GET** /core/getcustomheader | 
-[**coreGetdiskusagedetailsGet**](SystemApi.md#coreGetdiskusagedetailsGet) | **GET** /core/getdiskusagedetails | 
-[**coreGetprofilesettingsGet**](SystemApi.md#coreGetprofilesettingsGet) | **GET** /core/getprofilesettings | 
-[**coreGetsystemstatusGet**](SystemApi.md#coreGetsystemstatusGet) | **GET** /core/getsystemstatus | 
+[**getAuthenticationInfo**](SystemApi.md#getAuthenticationInfo) | **GET** /core/getauthenticationinfo | 
+[**getDiskUsageDetails**](SystemApi.md#getDiskUsageDetails) | **GET** /core/getdiskusagedetails | 
+[**getLanguageList**](SystemApi.md#getLanguageList) | **GET** /core/getlanguagelist | 
+[**getSystemStatus**](SystemApi.md#getSystemStatus) | **GET** /core/getsystemstatus | 
 
 
-# **coreGetauthenticationinfoGet**
-> \Swagger\Client\Model\GetAuthenticationInfoResponse[] coreGetauthenticationinfoGet()
+# **getAuthenticationInfo**
+> string getAuthenticationInfo()
 
 
 
@@ -26,10 +25,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new Swagger\Client\Api\SystemApi();
 
 try {
-    $result = $api_instance->coreGetauthenticationinfoGet();
+    $result = $api_instance->getAuthenticationInfo();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SystemApi->coreGetauthenticationinfoGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SystemApi->getAuthenticationInfo: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -39,7 +38,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\GetAuthenticationInfoResponse[]**](../Model/GetAuthenticationInfoResponse.md)
+**string**
 
 ### Authorization
 
@@ -52,49 +51,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **coreGetcustomheaderGet**
-> \Swagger\Client\Model\GetCustomHeaderResponse[] coreGetcustomheaderGet()
-
-
-
-Returns custom header information
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$api_instance = new Swagger\Client\Api\SystemApi();
-
-try {
-    $result = $api_instance->coreGetcustomheaderGet();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling SystemApi->coreGetcustomheaderGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**\Swagger\Client\Model\GetCustomHeaderResponse[]**](../Model/GetCustomHeaderResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **coreGetdiskusagedetailsGet**
-> \Swagger\Client\Model\GetDiskUsageDetailsResponse[] coreGetdiskusagedetailsGet($username, $level)
+# **getDiskUsageDetails**
+> string getDiskUsageDetails($username, $level)
 
 
 
@@ -110,10 +68,10 @@ $username = "username_example"; // string | Profile Name
 $level = "level_example"; // string | 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details
 
 try {
-    $result = $api_instance->coreGetdiskusagedetailsGet($username, $level);
+    $result = $api_instance->getDiskUsageDetails($username, $level);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SystemApi->coreGetdiskusagedetailsGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SystemApi->getDiskUsageDetails: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -127,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\GetDiskUsageDetailsResponse[]**](../Model/GetDiskUsageDetailsResponse.md)
+**string**
 
 ### Authorization
 
@@ -140,12 +98,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **coreGetprofilesettingsGet**
-> \Swagger\Client\Model\GetProfileSettingsResponse[] coreGetprofilesettingsGet()
+# **getLanguageList**
+> string getLanguageList()
 
 
 
-Returns profile information
+Get the list of Languages
 
 ### Example
 ```php
@@ -155,10 +113,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new Swagger\Client\Api\SystemApi();
 
 try {
-    $result = $api_instance->coreGetprofilesettingsGet();
+    $result = $api_instance->getLanguageList();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SystemApi->coreGetprofilesettingsGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SystemApi->getLanguageList: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -168,7 +126,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\GetProfileSettingsResponse[]**](../Model/GetProfileSettingsResponse.md)
+**string**
 
 ### Authorization
 
@@ -181,8 +139,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **coreGetsystemstatusGet**
-> \Swagger\Client\Model\GetSystemStatusResponse[] coreGetsystemstatusGet()
+# **getSystemStatus**
+> string getSystemStatus()
 
 
 
@@ -196,10 +154,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new Swagger\Client\Api\SystemApi();
 
 try {
-    $result = $api_instance->coreGetsystemstatusGet();
+    $result = $api_instance->getSystemStatus();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SystemApi->coreGetsystemstatusGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SystemApi->getSystemStatus: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -209,7 +167,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\GetSystemStatusResponse[]**](../Model/GetSystemStatusResponse.md)
+**string**
 
 ### Authorization
 

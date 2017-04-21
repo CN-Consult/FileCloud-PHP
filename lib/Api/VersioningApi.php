@@ -1,6 +1,6 @@
 <?php
 /**
- * SystemApi
+ * VersioningApi
  * PHP version 5
  *
  * @category Class
@@ -46,7 +46,7 @@ use \Swagger\Client\Configuration;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * SystemApi Class Doc Comment
+ * VersioningApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
@@ -54,7 +54,7 @@ use \Swagger\Client\ObjectSerializer;
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SystemApi
+class VersioningApi
 {
     /**
      * API Client
@@ -93,7 +93,7 @@ class SystemApi
      *
      * @param \Swagger\Client\ApiClient $apiClient set the API client
      *
-     * @return SystemApi
+     * @return VersioningApi
      */
     public function setApiClient(\Swagger\Client\ApiClient $apiClient)
     {
@@ -102,31 +102,31 @@ class SystemApi
     }
 
     /**
-     * Operation getAuthenticationInfo
+     * Operation deleteAllVersions
      *
      * 
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getAuthenticationInfo()
+    public function deleteAllVersions()
     {
-        list($response) = $this->getAuthenticationInfoWithHttpInfo();
+        list($response) = $this->deleteAllVersionsWithHttpInfo();
         return $response;
     }
 
     /**
-     * Operation getAuthenticationInfoWithHttpInfo
+     * Operation deleteAllVersionsWithHttpInfo
      *
      * 
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuthenticationInfoWithHttpInfo()
+    public function deleteAllVersionsWithHttpInfo()
     {
         // parse inputs
-        $resourcePath = "/core/getauthenticationinfo";
+        $resourcePath = "/core/deleteallversions";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -151,12 +151,12 @@ class SystemApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
-                'GET',
+                'POST',
                 $queryParams,
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getauthenticationinfo'
+                '/core/deleteallversions'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
@@ -173,43 +173,241 @@ class SystemApi
     }
 
     /**
-     * Operation getDiskUsageDetails
+     * Operation deleteVersion
      *
      * 
      *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
+     * @param string $filepath Specify the path where the file resides (required)
+     * @param string $filename File name (required)
+     * @param string $fileid File Id number (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return string
      */
-    public function getDiskUsageDetails($username, $level)
+    public function deleteVersion($filepath, $filename, $fileid)
     {
-        list($response) = $this->getDiskUsageDetailsWithHttpInfo($username, $level);
+        list($response) = $this->deleteVersionWithHttpInfo($filepath, $filename, $fileid);
         return $response;
     }
 
     /**
-     * Operation getDiskUsageDetailsWithHttpInfo
+     * Operation deleteVersionWithHttpInfo
      *
      * 
      *
-     * @param string $username Profile Name (required)
-     * @param string $level 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details (required)
+     * @param string $filepath Specify the path where the file resides (required)
+     * @param string $filename File name (required)
+     * @param string $fileid File Id number (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDiskUsageDetailsWithHttpInfo($username, $level)
+    public function deleteVersionWithHttpInfo($filepath, $filename, $fileid)
     {
-        // verify the required parameter 'username' is set
-        if ($username === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $username when calling getDiskUsageDetails');
+        // verify the required parameter 'filepath' is set
+        if ($filepath === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $filepath when calling deleteVersion');
         }
-        // verify the required parameter 'level' is set
-        if ($level === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $level when calling getDiskUsageDetails');
+        // verify the required parameter 'filename' is set
+        if ($filename === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $filename when calling deleteVersion');
+        }
+        // verify the required parameter 'fileid' is set
+        if ($fileid === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $fileid when calling deleteVersion');
         }
         // parse inputs
-        $resourcePath = "/core/getdiskusagedetails";
+        $resourcePath = "/core/deleteversion";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept([]);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
+
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        // form params
+        if ($filepath !== null) {
+            $formParams['filepath'] = $this->apiClient->getSerializer()->toFormValue($filepath);
+        }
+        // form params
+        if ($filename !== null) {
+            $formParams['filename'] = $this->apiClient->getSerializer()->toFormValue($filename);
+        }
+        // form params
+        if ($fileid !== null) {
+            $formParams['fileid'] = $this->apiClient->getSerializer()->toFormValue($fileid);
+        }
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'POST',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                'string',
+                '/core/deleteversion'
+            );
+
+            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation downloadVersionedFile
+     *
+     * 
+     *
+     * @param string $filepath Path of the file where it resides and with the name of the file to be downloaded. (required)
+     * @param string $filename Name of the file to be downloaded (required)
+     * @param string $fileid Id no of file (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return void
+     */
+    public function downloadVersionedFile($filepath, $filename, $fileid)
+    {
+        list($response) = $this->downloadVersionedFileWithHttpInfo($filepath, $filename, $fileid);
+        return $response;
+    }
+
+    /**
+     * Operation downloadVersionedFileWithHttpInfo
+     *
+     * 
+     *
+     * @param string $filepath Path of the file where it resides and with the name of the file to be downloaded. (required)
+     * @param string $filename Name of the file to be downloaded (required)
+     * @param string $fileid Id no of file (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function downloadVersionedFileWithHttpInfo($filepath, $filename, $fileid)
+    {
+        // verify the required parameter 'filepath' is set
+        if ($filepath === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $filepath when calling downloadVersionedFile');
+        }
+        // verify the required parameter 'filename' is set
+        if ($filename === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $filename when calling downloadVersionedFile');
+        }
+        // verify the required parameter 'fileid' is set
+        if ($fileid === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $fileid when calling downloadVersionedFile');
+        }
+        // parse inputs
+        $resourcePath = "/core/downloadversionedfile";
+        $httpBody = '';
+        $queryParams = [];
+        $headerParams = [];
+        $formParams = [];
+        $_header_accept = $this->apiClient->selectHeaderAccept([]);
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/x-www-form-urlencoded']);
+
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        // form params
+        if ($filepath !== null) {
+            $formParams['filepath'] = $this->apiClient->getSerializer()->toFormValue($filepath);
+        }
+        // form params
+        if ($filename !== null) {
+            $formParams['filename'] = $this->apiClient->getSerializer()->toFormValue($filename);
+        }
+        // form params
+        if ($fileid !== null) {
+            $formParams['fileid'] = $this->apiClient->getSerializer()->toFormValue($fileid);
+        }
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'POST',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                null,
+                '/core/downloadversionedfile'
+            );
+
+            return [null, $statusCode, $httpHeader];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getVersions
+     *
+     * 
+     *
+     * @param string $filepath Specify the path where the file resides (required)
+     * @param string $filename File name (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return string
+     */
+    public function getVersions($filepath, $filename)
+    {
+        list($response) = $this->getVersionsWithHttpInfo($filepath, $filename);
+        return $response;
+    }
+
+    /**
+     * Operation getVersionsWithHttpInfo
+     *
+     * 
+     *
+     * @param string $filepath Specify the path where the file resides (required)
+     * @param string $filename File name (required)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getVersionsWithHttpInfo($filepath, $filename)
+    {
+        // verify the required parameter 'filepath' is set
+        if ($filepath === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $filepath when calling getVersions');
+        }
+        // verify the required parameter 'filename' is set
+        if ($filename === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $filename when calling getVersions');
+        }
+        // parse inputs
+        $resourcePath = "/core/getversions";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -221,12 +419,12 @@ class SystemApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // query params
-        if ($username !== null) {
-            $queryParams['username'] = $this->apiClient->getSerializer()->toQueryValue($username);
+        if ($filepath !== null) {
+            $queryParams['filepath'] = $this->apiClient->getSerializer()->toQueryValue($filepath);
         }
         // query params
-        if ($level !== null) {
-            $queryParams['level'] = $this->apiClient->getSerializer()->toQueryValue($level);
+        if ($filename !== null) {
+            $queryParams['filename'] = $this->apiClient->getSerializer()->toQueryValue($filename);
         }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);
@@ -247,149 +445,7 @@ class SystemApi
                 $httpBody,
                 $headerParams,
                 'string',
-                '/core/getdiskusagedetails'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getLanguageList
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return string
-     */
-    public function getLanguageList()
-    {
-        list($response) = $this->getLanguageListWithHttpInfo();
-        return $response;
-    }
-
-    /**
-     * Operation getLanguageListWithHttpInfo
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getLanguageListWithHttpInfo()
-    {
-        // parse inputs
-        $resourcePath = "/core/getlanguagelist";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept([]);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                'string',
-                '/core/getlanguagelist'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'string', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getSystemStatus
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return string
-     */
-    public function getSystemStatus()
-    {
-        list($response) = $this->getSystemStatusWithHttpInfo();
-        return $response;
-    }
-
-    /**
-     * Operation getSystemStatusWithHttpInfo
-     *
-     * 
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getSystemStatusWithHttpInfo()
-    {
-        // parse inputs
-        $resourcePath = "/core/getsystemstatus";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept([]);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
-
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                'string',
-                '/core/getsystemstatus'
+                '/core/getversions'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, 'string', $httpHeader), $statusCode, $httpHeader];

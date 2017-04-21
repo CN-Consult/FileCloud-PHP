@@ -22,6 +22,7 @@
 class apidoc2swagger
 {
     private $swaggerArray;
+    private $operationMapping;
 
     /**
      * This is the main function of the class, it reads the apidoc file and creates a swagger compatible json file.
@@ -55,7 +56,8 @@ class apidoc2swagger
                 $pathArray = (object)array(
                     $requestType => (object)array(
                         "description" => strip_tags($apiCall["description"]),
-                        "tags" => array($apiCall["group"]),
+                        "operationId" => $this->getOperationId($apiCall["url"]),
+                        "tags" => array(str_replace("RelatedAPI", "", str_replace("_", "", $apiCall["group"]))),
                         "responses" => array(
                             200 => $response,
                         )
@@ -68,16 +70,39 @@ class apidoc2swagger
                     foreach ($apiCall["parameter"]["fields"]["Parameter"] as $parameter)
                     {
                         $type = trim(strtolower(strip_tags($parameter["type"])));
-                        if ($type == "date") $type = "string";
+                        if ($type == "date") $type = "string"; // swagger doesn't support date as a type so we handle it like a string
                         $required = true;
                         if (strpos(strtolower($parameter["description"]), "(optional)") !== false) $required = false;
 
+                        $in = "";
+                        if (strtolower($apiCall["type"]) == "get") $in = "query";
+                        else if (strtolower($apiCall["type"]) == "post" && $apiCall["url"] != "/core/upload")
+                        {// post requests need the value formData for "in" but /core/upload is a special case which is handled in the next case
+                            $in = "formData";
+                            $pathArray->$requestType->consumes = array("application/x-www-form-urlencoded");
+                        }
+                        else if (strtolower($apiCall["type"]) == "post" && $apiCall["url"] == "/core/upload")
+                        {// /core/upload is a special case where the most parameters are "in" query and the consumes property needs to be "multipart/form-data"
+                            $in = "query";
+                            $pathArray->$requestType->consumes = array("multipart/form-data");
+                        }
+
                         array_push($pathArray->$requestType->parameters, (object)array(
                             "name" => $parameter["field"],
-                            "in" => "query",
+                            "in" => $in,
                             "type" => $type,
                             "description" => trim(strip_tags($parameter["description"])),
                             "required" => $required
+                        ));
+                    }
+                    if ($apiCall["url"] == "/core/upload")
+                    {// /core/upload is a special case where only the parameter "file_contents" is "in" formData so we add this parameter here
+                        array_push($pathArray->$requestType->parameters, (object)array(
+                            "name" => "file_contents",
+                            "in" => "formData",
+                            "type" => "file",
+                            "description" => "The path to the file you want to upload.",
+                            "required" => true
                         ));
                     }
                 }
@@ -109,7 +134,7 @@ class apidoc2swagger
                 "description" => "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request, the response will contain an entity describing or containing the result of the action.",
                 "schema" => array(
                     "title" => $name."s",
-                    "type" => "array"
+                    "type" => "string"
                 )
             );
 
@@ -161,6 +186,21 @@ class apidoc2swagger
 
         $this->swaggerArray["definitions"][$name]["properties"] = $definitions;
         $this->swaggerArray["definitions"][$name]["required"] = $required;
+    }
+
+    /**
+     * Searches the operationidmapping.txt file for a "camelCased" operationId.
+     * This file contains mapping for the operation urls like so: /core/renameormove=renameOrMove.
+     *
+     * @param String $_url The ulr of an operation. E.g. /core/renameormove
+     * @return mixed The "camelCased" operationId for the given url. E.g. renameOrMove
+     * @throws Exception when $_url is missing in operationidmapping.txt
+     */
+    private function getOperationId($_url)
+    {
+        if (!$this->operationMapping) $this->operationMapping=parse_ini_file(__DIR__."/operationidmapping.txt");
+        if (isset($this->operationMapping[$_url])) return $this->operationMapping[$_url];
+        else throw new Exception('The URL $_url is missing in operationidmapping.txt!');
     }
 }
 

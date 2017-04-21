@@ -27,4 +27,12 @@ https://www.getfilecloud.com/apidocs/fcuser/userapi/doc/index.html
 }
 ```
 
+### Update operationidmapping.txt
+- If a new filecloud api version comes with new operations you need to add them into the mapping file.
+- You need to create a camelCase operationId from the operation url.
+- The format is url=operationId
+```
+/core/operationname=operationName
+```
+
 ### Run apidoc2swagger.php to create the swagger file
