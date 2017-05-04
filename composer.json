@@ -1,15 +1,20 @@
 {
-    "name": "/",
-    "description": "",
+    "name": "cn-consult/filecloud-php",
+    "description": "The FileCloud API in an easy to use, swagger based PHP API.",
     "keywords": [
         "swagger",
         "php",
         "sdk",
-        "api"
+        "api",
+        "filecloud"
     ],
-    "homepage": "http://swagger.io",
+    "homepage": "http://www.cn-consult.eu",
     "license": "Apache-2.0",
     "authors": [
+        {
+            "name": "Pascal Stiemer",
+            "homepage": "https://github.com/PStiemer"
+        },
         {
             "name": "Swagger and contributors",
             "homepage": "https://github.com/swagger-api/swagger-codegen"
