@@ -22,10 +22,14 @@ Returns whether the system has been authenticated or not
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SystemApi();
+$apiInstance = new Swagger\Client\Api\SystemApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->getAuthenticationInfo();
+    $result = $apiInstance->getAuthenticationInfo();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SystemApi->getAuthenticationInfo: ', $e->getMessage(), PHP_EOL;
@@ -63,12 +67,16 @@ Returns storage usage details
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SystemApi();
+$apiInstance = new Swagger\Client\Api\SystemApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $username = "username_example"; // string | Profile Name
 $level = "level_example"; // string | 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details
 
 try {
-    $result = $api_instance->getDiskUsageDetails($username, $level);
+    $result = $apiInstance->getDiskUsageDetails($username, $level);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SystemApi->getDiskUsageDetails: ', $e->getMessage(), PHP_EOL;
@@ -110,10 +118,14 @@ Get the list of Languages
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SystemApi();
+$apiInstance = new Swagger\Client\Api\SystemApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->getLanguageList();
+    $result = $apiInstance->getLanguageList();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SystemApi->getLanguageList: ', $e->getMessage(), PHP_EOL;
@@ -151,10 +163,14 @@ Will return full detail about the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SystemApi();
+$apiInstance = new Swagger\Client\Api\SystemApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->getSystemStatus();
+    $result = $apiInstance->getSystemStatus();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SystemApi->getSystemStatus: ', $e->getMessage(), PHP_EOL;

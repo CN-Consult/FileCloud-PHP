@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **ackrmcCommands**
-> string ackrmcCommands($commandRids)
+> string ackrmcCommands($command_rids)
 
 
 
@@ -25,11 +25,15 @@ Acknowledge RMC Commands
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RMCApi();
-$commandRids = "commandRids_example"; // string | Command Id number
+$apiInstance = new Swagger\Client\Api\RMCApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$command_rids = "command_rids_example"; // string | Command Id number
 
 try {
-    $result = $api_instance->ackrmcCommands($commandRids);
+    $result = $apiInstance->ackrmcCommands($command_rids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RMCApi->ackrmcCommands: ', $e->getMessage(), PHP_EOL;
@@ -41,7 +45,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **commandRids** | **string**| Command Id number |
+ **command_rids** | **string**| Command Id number |
 
 ### Return type
 
@@ -59,7 +63,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **approveDeviceAccess**
-> string approveDeviceAccess($op, $remoteClientId)
+> string approveDeviceAccess($op, $remote_client_id)
 
 
 
@@ -70,12 +74,16 @@ Approve RMC Client
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RMCApi();
+$apiInstance = new Swagger\Client\Api\RMCApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $op = "op_example"; // string | Operation name
-$remoteClientId = "remoteClientId_example"; // string | Remote Client ID
+$remote_client_id = "remote_client_id_example"; // string | Remote Client ID
 
 try {
-    $result = $api_instance->approveDeviceAccess($op, $remoteClientId);
+    $result = $apiInstance->approveDeviceAccess($op, $remote_client_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RMCApi->approveDeviceAccess: ', $e->getMessage(), PHP_EOL;
@@ -88,7 +96,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **op** | **string**| Operation name |
- **remoteClientId** | **string**| Remote Client ID |
+ **remote_client_id** | **string**| Remote Client ID |
 
 ### Return type
 
@@ -106,7 +114,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteDevice**
-> string deleteDevice($op, $remoteClientId)
+> string deleteDevice($op, $remote_client_id)
 
 
 
@@ -117,12 +125,16 @@ Delete RMC Device
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RMCApi();
+$apiInstance = new Swagger\Client\Api\RMCApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $op = "op_example"; // string | Operation name
-$remoteClientId = "remoteClientId_example"; // string | Remote Client ID
+$remote_client_id = "remote_client_id_example"; // string | Remote Client ID
 
 try {
-    $result = $api_instance->deleteDevice($op, $remoteClientId);
+    $result = $apiInstance->deleteDevice($op, $remote_client_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RMCApi->deleteDevice: ', $e->getMessage(), PHP_EOL;
@@ -135,7 +147,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **op** | **string**| Operation name |
- **remoteClientId** | **string**| Remote Client ID |
+ **remote_client_id** | **string**| Remote Client ID |
 
 ### Return type
 
@@ -164,14 +176,18 @@ Get details of all the RMC clients logged in
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RMCApi();
+$apiInstance = new Swagger\Client\Api\RMCApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $op = "op_example"; // string | Operation name
 $userid = "userid_example"; // string | Username
 $start = "start_example"; // string | Start index of records to retrieve, Note: Index starts from 0. Default 0
 $end = "end_example"; // string | Set to any number of record you want to view at once. Default 10
 
 try {
-    $result = $api_instance->getRmcClients($op, $userid, $start, $end);
+    $result = $apiInstance->getRmcClients($op, $userid, $start, $end);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RMCApi->getRmcClients: ', $e->getMessage(), PHP_EOL;
@@ -204,7 +220,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRmcCommands**
-> string getRmcCommands($userid, $remoteClientId)
+> string getRmcCommands($userid, $remote_client_id)
 
 
 
@@ -215,12 +231,16 @@ Get RMC Commands
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RMCApi();
+$apiInstance = new Swagger\Client\Api\RMCApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | User email id
-$remoteClientId = "remoteClientId_example"; // string | Remote Client Id
+$remote_client_id = "remote_client_id_example"; // string | Remote Client Id
 
 try {
-    $result = $api_instance->getRmcCommands($userid, $remoteClientId);
+    $result = $apiInstance->getRmcCommands($userid, $remote_client_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RMCApi->getRmcCommands: ', $e->getMessage(), PHP_EOL;
@@ -233,7 +253,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userid** | **string**| User email id |
- **remoteClientId** | **string**| Remote Client Id |
+ **remote_client_id** | **string**| Remote Client Id |
 
 ### Return type
 
@@ -251,7 +271,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **loginGuest**
-> string loginGuest($userid, $password, $remoteClientId, $remoteClientDispName, $remoteClientApiLevel, $remoteClientOsType, $remoteClientAppVersion, $remoteClientOsVersion)
+> string loginGuest($userid, $password, $remote_client_id, $remote_client_disp_name, $remote_client_api_level, $remote_client_os_type, $remote_client_app_version, $remote_client_os_version)
 
 
 
@@ -262,18 +282,22 @@ Client login API
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RMCApi();
+$apiInstance = new Swagger\Client\Api\RMCApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Specify the username
 $password = "password_example"; // string | Specify the password
-$remoteClientId = "remoteClientId_example"; // string | Specify the unique identifier from the client (It can be the device MAC ID or the phone device ID. It just needs to be an unique number that identifies the device).
-$remoteClientDispName = "remoteClientDispName_example"; // string | Specify the client device name
-$remoteClientApiLevel = "remoteClientApiLevel_example"; // string | Set the api-level to 4 (latest required client api-level is 4)
-$remoteClientOsType = "remoteClientOsType_example"; // string | Specify the client OS type
-$remoteClientAppVersion = "remoteClientAppVersion_example"; // string | Specify the client app version
-$remoteClientOsVersion = "remoteClientOsVersion_example"; // string | Specify the client OS version
+$remote_client_id = "remote_client_id_example"; // string | Specify the unique identifier from the client (It can be the device MAC ID or the phone device ID. It just needs to be an unique number that identifies the device).
+$remote_client_disp_name = "remote_client_disp_name_example"; // string | Specify the client device name
+$remote_client_api_level = "remote_client_api_level_example"; // string | Set the api-level to 4 (latest required client api-level is 4)
+$remote_client_os_type = "remote_client_os_type_example"; // string | Specify the client OS type
+$remote_client_app_version = "remote_client_app_version_example"; // string | Specify the client app version
+$remote_client_os_version = "remote_client_os_version_example"; // string | Specify the client OS version
 
 try {
-    $result = $api_instance->loginGuest($userid, $password, $remoteClientId, $remoteClientDispName, $remoteClientApiLevel, $remoteClientOsType, $remoteClientAppVersion, $remoteClientOsVersion);
+    $result = $apiInstance->loginGuest($userid, $password, $remote_client_id, $remote_client_disp_name, $remote_client_api_level, $remote_client_os_type, $remote_client_app_version, $remote_client_os_version);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RMCApi->loginGuest: ', $e->getMessage(), PHP_EOL;
@@ -287,12 +311,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userid** | **string**| Specify the username |
  **password** | **string**| Specify the password |
- **remoteClientId** | **string**| Specify the unique identifier from the client (It can be the device MAC ID or the phone device ID. It just needs to be an unique number that identifies the device). |
- **remoteClientDispName** | **string**| Specify the client device name |
- **remoteClientApiLevel** | **string**| Set the api-level to 4 (latest required client api-level is 4) |
- **remoteClientOsType** | **string**| Specify the client OS type |
- **remoteClientAppVersion** | **string**| Specify the client app version |
- **remoteClientOsVersion** | **string**| Specify the client OS version |
+ **remote_client_id** | **string**| Specify the unique identifier from the client (It can be the device MAC ID or the phone device ID. It just needs to be an unique number that identifies the device). |
+ **remote_client_disp_name** | **string**| Specify the client device name |
+ **remote_client_api_level** | **string**| Set the api-level to 4 (latest required client api-level is 4) |
+ **remote_client_os_type** | **string**| Specify the client OS type |
+ **remote_client_app_version** | **string**| Specify the client app version |
+ **remote_client_os_version** | **string**| Specify the client OS version |
 
 ### Return type
 
@@ -310,7 +334,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **requestDeviceAccess**
-> string requestDeviceAccess($userid)
+> string requestDeviceAccess($userid, $remote_client_id, $remote_client_disp_name)
 
 
 
@@ -321,11 +345,17 @@ Requesr RMC device access permission
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RMCApi();
+$apiInstance = new Swagger\Client\Api\RMCApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Username
+$remote_client_id = "remote_client_id_example"; // string | Specify the client id
+$remote_client_disp_name = "remote_client_disp_name_example"; // string | Specify the clients display name
 
 try {
-    $result = $api_instance->requestDeviceAccess($userid);
+    $result = $apiInstance->requestDeviceAccess($userid, $remote_client_id, $remote_client_disp_name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RMCApi->requestDeviceAccess: ', $e->getMessage(), PHP_EOL;
@@ -338,6 +368,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userid** | **string**| Username |
+ **remote_client_id** | **string**| Specify the client id |
+ **remote_client_disp_name** | **string**| Specify the clients display name |
 
 ### Return type
 

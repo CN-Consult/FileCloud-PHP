@@ -25,13 +25,17 @@ User has to enter a code that has been sent to the email id configured with the 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LoginApi();
+$apiInstance = new Swagger\Client\Api\LoginApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Users login name
 $code = "code_example"; // string | Enter the code you have recieved in your email
 $token = "token_example"; // string | Enter the token you had recieved in message field while performing loginguest api call
 
 try {
-    $result = $api_instance->2FaLogin($userid, $code, $token);
+    $result = $apiInstance->2FaLogin($userid, $code, $token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->2FaLogin: ', $e->getMessage(), PHP_EOL;
@@ -74,12 +78,16 @@ Get 2FA secret code to login using Google Authenticator
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LoginApi();
+$apiInstance = new Swagger\Client\Api\LoginApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Specify the user name
 $token = "token_example"; // string | Enter the token you had recieved in message field while performing loginguest api call
 
 try {
-    $result = $api_instance->get2FaGaSecret($userid, $token);
+    $result = $apiInstance->get2FaGaSecret($userid, $token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->get2FaGaSecret: ', $e->getMessage(), PHP_EOL;
@@ -121,12 +129,16 @@ Get 2FA secret QR code to login using Google Authenticator
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LoginApi();
+$apiInstance = new Swagger\Client\Api\LoginApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Specify the user name
 $token = "token_example"; // string | Enter the token you had recieved in message field while performing loginguest api call
 
 try {
-    $api_instance->get2FaGaSecretQrCode($userid, $token);
+    $apiInstance->get2FaGaSecretQrCode($userid, $token);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->get2FaGaSecretQrCode: ', $e->getMessage(), PHP_EOL;
 }
@@ -167,10 +179,14 @@ User Logout api call to logout of filecloud system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LoginApi();
+$apiInstance = new Swagger\Client\Api\LoginApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->lockSession();
+    $result = $apiInstance->lockSession();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->lockSession: ', $e->getMessage(), PHP_EOL;
@@ -208,12 +224,16 @@ Resend 2facode to get a new code to login via 2falogin
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LoginApi();
+$apiInstance = new Swagger\Client\Api\LoginApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Users login name
 $token = "token_example"; // string | Enter the token you had recieved in message field while performing loginguest api call
 
 try {
-    $result = $api_instance->resend2FaCode($userid, $token);
+    $result = $apiInstance->resend2FaCode($userid, $token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->resend2FaCode: ', $e->getMessage(), PHP_EOL;
@@ -255,11 +275,15 @@ User can reset password of thier account, when they have forgotten the password.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LoginApi();
+$apiInstance = new Swagger\Client\Api\LoginApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $profile = "profile_example"; // string | Profile name
 
 try {
-    $result = $api_instance->resetPassword($profile);
+    $result = $apiInstance->resetPassword($profile);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->resetPassword: ', $e->getMessage(), PHP_EOL;
@@ -300,12 +324,16 @@ Verify user email id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LoginApi();
+$apiInstance = new Swagger\Client\Api\LoginApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $u = "u_example"; // string | User email id
 $tag = "tag_example"; // string | Specify Verifytag
 
 try {
-    $result = $api_instance->verifyEmail($u, $tag);
+    $result = $apiInstance->verifyEmail($u, $tag);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LoginApi->verifyEmail: ', $e->getMessage(), PHP_EOL;

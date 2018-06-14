@@ -29,11 +29,15 @@ User can add new favorite list in the system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $name = "name_example"; // string | Name of the file to be added to favorites.
 
 try {
-    $result = $api_instance->addFavoriteList($name);
+    $result = $apiInstance->addFavoriteList($name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->addFavoriteList: ', $e->getMessage(), PHP_EOL;
@@ -74,11 +78,15 @@ User can clear favorites from the named list
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $name = "name_example"; // string | Name of the Favorite List
 
 try {
-    $result = $api_instance->clearFavoritesInNamedList($name);
+    $result = $apiInstance->clearFavoritesInNamedList($name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->clearFavoritesInNamedList: ', $e->getMessage(), PHP_EOL;
@@ -119,11 +127,15 @@ User can get all the favorites list of the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $type = "type_example"; // string | Type here is favorites
 
 try {
-    $result = $api_instance->getAllFavoriteLists($type);
+    $result = $apiInstance->getAllFavoriteLists($type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->getAllFavoriteLists: ', $e->getMessage(), PHP_EOL;
@@ -164,11 +176,15 @@ User can get favorite list available for the item
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path of file
 
 try {
-    $result = $api_instance->getFavoriteListForItem($path);
+    $result = $apiInstance->getFavoriteListForItem($path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->getFavoriteListForItem: ', $e->getMessage(), PHP_EOL;
@@ -209,11 +225,15 @@ User can get all the favorites from list
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | Id of the Favorite List
 
 try {
-    $result = $api_instance->getFavoritesInList($id);
+    $result = $apiInstance->getFavoritesInList($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->getFavoritesInList: ', $e->getMessage(), PHP_EOL;
@@ -254,11 +274,15 @@ User can get all the favorites from named list
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $name = "name_example"; // string | Name of the Favorite List
 
 try {
-    $result = $api_instance->getFavoritesInNamedList($name);
+    $result = $apiInstance->getFavoritesInNamedList($name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->getFavoritesInNamedList: ', $e->getMessage(), PHP_EOL;
@@ -299,11 +323,15 @@ User can remove favorite list from the system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | Id no. of the favorite list to be deleted
 
 try {
-    $result = $api_instance->removeFavoriteList($id);
+    $result = $apiInstance->removeFavoriteList($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->removeFavoriteList: ', $e->getMessage(), PHP_EOL;
@@ -344,12 +372,16 @@ User replace favorite list
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | Id number of the Favorite list
 $count = "count_example"; // string | Number of files
 
 try {
-    $result = $api_instance->replaceFavoriteList($id, $count);
+    $result = $apiInstance->replaceFavoriteList($id, $count);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->replaceFavoriteList: ', $e->getMessage(), PHP_EOL;
@@ -391,12 +423,16 @@ User can add file to their Favorite list in the system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $name = "name_example"; // string | Name of the file to be added to favorites.
 $id = "id_example"; // string | Id number of the Favorite list
 
 try {
-    $result = $api_instance->setFavorite($name, $id);
+    $result = $apiInstance->setFavorite($name, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->setFavorite: ', $e->getMessage(), PHP_EOL;
@@ -438,12 +474,16 @@ User can remove file from their Favorite list in the system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | Id number of the Favorite list
 $name = "name_example"; // string | Name of the file to be added to favorites.
 
 try {
-    $result = $api_instance->unsetFavorite($id, $name);
+    $result = $apiInstance->unsetFavorite($id, $name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->unsetFavorite: ', $e->getMessage(), PHP_EOL;
@@ -485,12 +525,16 @@ User can update favorite list
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\FavoriteApi();
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | Id number of the Favorite list
 $name = "name_example"; // string | Name of the file to be added to favorites.
 
 try {
-    $result = $api_instance->updateFavoriteList($id, $name);
+    $result = $apiInstance->updateFavoriteList($id, $name);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FavoriteApi->updateFavoriteList: ', $e->getMessage(), PHP_EOL;

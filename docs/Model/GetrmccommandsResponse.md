@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **string** | total number of rmc commands | 
 **rid** | **string** | rmc id number | 
-**remoteCommandId** | **string** | remote command id number | 
-**remoteClientId** | **string** | remote client id number | 
+**remote_command_id** | **string** | remote command id number | 
+**remote_client_id** | **string** | remote client id number | 
 **message** | **string** | message information for that device | 
 **userid** | **string** | user information | 
 

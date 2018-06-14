@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**changeLanguage**](ProfileApi.md#changeLanguage) | **GET** /core/changelanguage | 
 [**checkId**](ProfileApi.md#checkId) | **GET** /core/checkid | 
 [**createProfile**](ProfileApi.md#createProfile) | **GET** /core/createprofile | 
+[**getProfileImage**](ProfileApi.md#getProfileImage) | **GET** /core/getprofileimage | 
 [**getProfileSettings**](ProfileApi.md#getProfileSettings) | **GET** /core/getprofilesettings | 
 [**setDisplayName**](ProfileApi.md#setDisplayName) | **GET** /core/setdisplayname | 
 [**subscribe**](ProfileApi.md#subscribe) | **POST** /core/subscribe | 
@@ -27,10 +28,14 @@ Profile creation
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->beginProfileCreation();
+    $result = $apiInstance->beginProfileCreation();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->beginProfileCreation: ', $e->getMessage(), PHP_EOL;
@@ -68,11 +73,15 @@ User can change the language of the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $lang = "lang_example"; // string | Specify the language you want to set
 
 try {
-    $result = $api_instance->changeLanguage($lang);
+    $result = $apiInstance->changeLanguage($lang);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->changeLanguage: ', $e->getMessage(), PHP_EOL;
@@ -113,11 +122,15 @@ User can check if the name available to create account
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $id = "id_example"; // string | Specify the name you want to check availablity
 
 try {
-    $result = $api_instance->checkId($id);
+    $result = $apiInstance->checkId($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->checkId: ', $e->getMessage(), PHP_EOL;
@@ -158,13 +171,17 @@ New User can create an account if allowed by the administrator
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $profile = "profile_example"; // string | Name of the new user
 $email = "email_example"; // string | Email id of the new user
 $password = "password_example"; // string | Password for the new user
 
 try {
-    $result = $api_instance->createProfile($profile, $email, $password);
+    $result = $apiInstance->createProfile($profile, $email, $password);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->createProfile: ', $e->getMessage(), PHP_EOL;
@@ -195,6 +212,58 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getProfileImage**
+> getProfileImage($username, $height, $width)
+
+
+
+Get the user's image
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$username = "username_example"; // string | Specify the username
+$height = "height_example"; // string | (optional) Specify the height
+$width = "width_example"; // string | (optional) Specify the width
+
+try {
+    $apiInstance->getProfileImage($username, $height, $width);
+} catch (Exception $e) {
+    echo 'Exception when calling ProfileApi->getProfileImage: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **username** | **string**| Specify the username |
+ **height** | **string**| (optional) Specify the height | [optional]
+ **width** | **string**| (optional) Specify the width | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getProfileSettings**
 > string getProfileSettings()
 
@@ -207,10 +276,14 @@ Profile settings details
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->getProfileSettings();
+    $result = $apiInstance->getProfileSettings();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->getProfileSettings: ', $e->getMessage(), PHP_EOL;
@@ -248,11 +321,15 @@ User can change the display name in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $dispname = "dispname_example"; // string | Specify the display name you want to set
 
 try {
-    $result = $api_instance->setDisplayName($dispname);
+    $result = $apiInstance->setDisplayName($dispname);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->setDisplayName: ', $e->getMessage(), PHP_EOL;
@@ -293,11 +370,15 @@ Subscribe you emailid to recieve email from the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $emailid = "emailid_example"; // string | Email Id of user
 
 try {
-    $api_instance->subscribe($emailid);
+    $apiInstance->subscribe($emailid);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->subscribe: ', $e->getMessage(), PHP_EOL;
 }
@@ -337,11 +418,15 @@ Unsubscribe you emailid to not recieve email from the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $emailid = "emailid_example"; // string | Email Id of user
 
 try {
-    $api_instance->unsubscribe($emailid);
+    $apiInstance->unsubscribe($emailid);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->unsubscribe: ', $e->getMessage(), PHP_EOL;
 }
@@ -381,12 +466,16 @@ User can change/update password of the system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ProfileApi();
+$apiInstance = new Swagger\Client\Api\ProfileApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $oldpassword = "oldpassword_example"; // string | Old password of the user.
 $newpassword = "newpassword_example"; // string | New password the user wants to change too.
 
 try {
-    $result = $api_instance->updatePassword($oldpassword, $newpassword);
+    $result = $apiInstance->updatePassword($oldpassword, $newpassword);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfileApi->updatePassword: ', $e->getMessage(), PHP_EOL;
