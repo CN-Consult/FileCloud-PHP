@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **fullfilename** | **string** | full file/folder name | 
 **size** | **string** | size of the folder | 
 **modifiedpoch** | **string** | set when modified | 
+**modifiediso** | **string** | specifies modified date and time | 
 **isroot** | **float** | whether it can be the root directory or not | 
 **isshareable** | **float** | whether it can be shareable or not | 
 **issyncable** | **float** | whether it can be syncable or not | 
@@ -28,6 +29,8 @@ Name | Type | Description | Notes
 **showquickedit** | **float** | quick edit option enabled | 
 **showlockunlock** | **float** | locking / unclock enabled | 
 **showshareoption** | **float** | sharing options enabled | 
+**cansetacls** | **float** | specifies if security folder permission can be set or no | 
+**disallowpreviewdownload** | **float** | preview download enabled or disabled | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

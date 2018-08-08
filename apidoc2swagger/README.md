@@ -29,10 +29,19 @@ https://www.getfilecloud.com/apidocs/fcuser/userapi/doc/index.html
 
 ### Update operationidmapping.txt
 - If a new filecloud api version comes with new operations you need to add them into the mapping file.
-- You need to create a camelCase operationId from the operation url.
+- you can use updateoperationIdMappingFile.php to add the missing operations.
+- You still need to create a camelCase operationId from the operation url manually though.
+- Be careful to name the operationIds php-valid. For example 2FaLogin should be _2FaLogin since functions mustn't start with a number.
 - The format is url=operationId
 ```
 /core/operationname=operationName
 ```
 
 ### Run apidoc2swagger.php to create the swagger file
+- Afterwards copy the contents of the new FileCloud-swagger.json File and paste them at swaggerhub.io to generate the classes.
+- Download the generated classes (Client version) and unzip to your local FileCloud-PHP repository.
+- replace everything but the apidoc2swagger and deprecated folders
+
+### Future changes that can be made
+- Create a script that deletes operationIds from operationidmapping.txt that were removed from the api.
+  (eg. operationidmapping cleanup command)

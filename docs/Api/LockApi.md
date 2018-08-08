@@ -22,11 +22,15 @@ User can get all the locked file/folder.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LockApi();
+$apiInstance = new Swagger\Client\Api\LockApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Specify the user-name.
 
 try {
-    $result = $api_instance->getAllLocks($userid);
+    $result = $apiInstance->getAllLocks($userid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LockApi->getAllLocks: ', $e->getMessage(), PHP_EOL;
@@ -67,11 +71,15 @@ Get lock details
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LockApi();
+$apiInstance = new Swagger\Client\Api\LockApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path you want to unlock
 
 try {
-    $result = $api_instance->getFileLockInfo($path);
+    $result = $apiInstance->getFileLockInfo($path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LockApi->getFileLockInfo: ', $e->getMessage(), PHP_EOL;
@@ -112,13 +120,17 @@ User can lock a file/folder.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LockApi();
+$apiInstance = new Swagger\Client\Api\LockApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path you want to lock
 $expiration = "expiration_example"; // string | (Optional) Set an expiration date for locked file/folder
 $readlock = "readlock_example"; // string | (Optional) Set if you want to restrict download of the locked file/folder.
 
 try {
-    $result = $api_instance->lock($path, $expiration, $readlock);
+    $result = $apiInstance->lock($path, $expiration, $readlock);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LockApi->lock: ', $e->getMessage(), PHP_EOL;
@@ -161,11 +173,15 @@ User can unlock a file/folder.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\LockApi();
+$apiInstance = new Swagger\Client\Api\LockApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path you want to unlock
 
 try {
-    $result = $api_instance->unlock($path);
+    $result = $apiInstance->unlock($path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LockApi->unlock: ', $e->getMessage(), PHP_EOL;

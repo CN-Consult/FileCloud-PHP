@@ -22,10 +22,14 @@ User can delete all the previous versions of all files in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\VersioningApi();
+$apiInstance = new Swagger\Client\Api\VersioningApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->deleteAllVersions();
+    $result = $apiInstance->deleteAllVersions();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VersioningApi->deleteAllVersions: ', $e->getMessage(), PHP_EOL;
@@ -63,13 +67,17 @@ User can delete the previous version of a file in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\VersioningApi();
+$apiInstance = new Swagger\Client\Api\VersioningApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $filepath = "filepath_example"; // string | Specify the path where the file resides
 $filename = "filename_example"; // string | File name
 $fileid = "fileid_example"; // string | File Id number
 
 try {
-    $result = $api_instance->deleteVersion($filepath, $filename, $fileid);
+    $result = $apiInstance->deleteVersion($filepath, $filename, $fileid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VersioningApi->deleteVersion: ', $e->getMessage(), PHP_EOL;
@@ -112,13 +120,17 @@ Download previous versioned file in FileCould System (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\VersioningApi();
+$apiInstance = new Swagger\Client\Api\VersioningApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $filepath = "filepath_example"; // string | Path of the file where it resides and with the name of the file to be downloaded.
 $filename = "filename_example"; // string | Name of the file to be downloaded
 $fileid = "fileid_example"; // string | Id no of file
 
 try {
-    $api_instance->downloadVersionedFile($filepath, $filename, $fileid);
+    $apiInstance->downloadVersionedFile($filepath, $filename, $fileid);
 } catch (Exception $e) {
     echo 'Exception when calling VersioningApi->downloadVersionedFile: ', $e->getMessage(), PHP_EOL;
 }
@@ -160,12 +172,16 @@ User can get previous versions of a file in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\VersioningApi();
+$apiInstance = new Swagger\Client\Api\VersioningApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $filepath = "filepath_example"; // string | Specify the path where the file resides
 $filename = "filename_example"; // string | File name
 
 try {
-    $result = $api_instance->getVersions($filepath, $filename);
+    $result = $apiInstance->getVersions($filepath, $filename);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VersioningApi->getVersions: ', $e->getMessage(), PHP_EOL;

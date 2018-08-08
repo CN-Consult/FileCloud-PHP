@@ -20,13 +20,17 @@ User can view image in the system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ImageApi();
+$apiInstance = new Swagger\Client\Api\ImageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $name = "name_example"; // string | Name of the image file, eg: /Path/Image file name.
-$width = 3.4; // float | Width of the image to open
-$height = 3.4; // float | Height of the image to open
+$width = 8.14; // float | Width of the image to open
+$height = 8.14; // float | Height of the image to open
 
 try {
-    $api_instance->getFsSlideImage($name, $width, $height);
+    $apiInstance->getFsSlideImage($name, $width, $height);
 } catch (Exception $e) {
     echo 'Exception when calling ImageApi->getFsSlideImage: ', $e->getMessage(), PHP_EOL;
 }
@@ -68,12 +72,16 @@ User can rotate image in the system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ImageApi();
+$apiInstance = new Swagger\Client\Api\ImageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $name = "name_example"; // string | Name of the image file, eg: /Path/Image file name.
-$angle = 3.4; // float | Angle od rotation is either 90 or -90
+$angle = 8.14; // float | Angle od rotation is either 90 or -90
 
 try {
-    $result = $api_instance->rotateFsImage($name, $angle);
+    $result = $apiInstance->rotateFsImage($name, $angle);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ImageApi->rotateFsImage: ', $e->getMessage(), PHP_EOL;

@@ -13,9 +13,12 @@ Method | HTTP request | Description
 [**getEmailSubject**](ShareApi.md#getEmailSubject) | **GET** /core/getemailsubject | 
 [**getEmailTemplate**](ShareApi.md#getEmailTemplate) | **GET** /core/getemailtemplate | 
 [**getGroupAccessForShare**](ShareApi.md#getGroupAccessForShare) | **GET** /core/getgroupaccessforshare | 
+[**getMostActiveShares**](ShareApi.md#getMostActiveShares) | **GET** /core/getmostactiveshares | 
 [**getPrivateUrlForEmail**](ShareApi.md#getPrivateUrlForEmail) | **GET** /core/getprivateurlforemail | 
 [**getPublicShareAuthInfo**](ShareApi.md#getPublicShareAuthInfo) | **GET** /core/getpublicshareauthinfo | 
 [**getRandomPassword**](ShareApi.md#getRandomPassword) | **GET** /core/getrandompassword | 
+[**getRecentShareActivityForUser**](ShareApi.md#getRecentShareActivityForUser) | **GET** /core/getrecentshareactivityforuser | 
+[**getShareActivityForShare**](ShareApi.md#getShareActivityForShare) | **POST** /core/getshareactivityforshare | 
 [**getShareForId**](ShareApi.md#getShareForId) | **GET** /core/getshareforid | 
 [**getShareForPath**](ShareApi.md#getShareForPath) | **GET** /core/getshareforpath | 
 [**getSharePassword**](ShareApi.md#getSharePassword) | **GET** /core/getsharepassword | 
@@ -36,7 +39,6 @@ Method | HTTP request | Description
 [**setGroupAccessForShare**](ShareApi.md#setGroupAccessForShare) | **GET** /core/setgroupaccessforshare | 
 [**setUserAccessForShare**](ShareApi.md#setUserAccessForShare) | **GET** /core/setuseraccessforshare | 
 [**share**](ShareApi.md#share) | **POST** /core/share | 
-[**shorten**](ShareApi.md#shorten) | **GET** /core/shorten | 
 [**updateShare**](ShareApi.md#updateShare) | **POST** /core/updateshare | 
 [**updateShareLink**](ShareApi.md#updateShareLink) | **GET** /core/updatesharelink | 
 
@@ -53,12 +55,16 @@ User can add a group to access privately  shared files in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $groupid = "groupid_example"; // string | Group Id number
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->addGroupToShare($groupid, $shareid);
+    $result = $apiInstance->addGroupToShare($groupid, $shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->addGroupToShare: ', $e->getMessage(), PHP_EOL;
@@ -100,12 +106,16 @@ User can add selective user's to access private shared files in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Specify the user's email id
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->addUserToShare($userid, $shareid);
+    $result = $apiInstance->addUserToShare($userid, $shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->addUserToShare: ', $e->getMessage(), PHP_EOL;
@@ -147,11 +157,15 @@ Create a user profile on share invite
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $emailid = "emailid_example"; // string | Specify the emailid of the user to invite
 
 try {
-    $result = $api_instance->createProfileOnInvite($emailid);
+    $result = $apiInstance->createProfileOnInvite($emailid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->createProfileOnInvite: ', $e->getMessage(), PHP_EOL;
@@ -192,12 +206,16 @@ User can remove the group from access to privately  shared files in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $groupid = "groupid_example"; // string | Group Id number
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->deleteGroupFromShare($groupid, $shareid);
+    $result = $apiInstance->deleteGroupFromShare($groupid, $shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->deleteGroupFromShare: ', $e->getMessage(), PHP_EOL;
@@ -239,11 +257,15 @@ User can delete share
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->deleteShare($shareid);
+    $result = $apiInstance->deleteShare($shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->deleteShare: ', $e->getMessage(), PHP_EOL;
@@ -284,12 +306,16 @@ User can remove a user from access to private shared files in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $userid = "userid_example"; // string | Specify the user's email id
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->deleteUserFromShare($userid, $shareid);
+    $result = $apiInstance->deleteUserFromShare($userid, $shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->deleteUserFromShare: ', $e->getMessage(), PHP_EOL;
@@ -331,12 +357,16 @@ Get email subject
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $op = "op_example"; // string | Operation
 $param = "param_example"; // string | Template name
 
 try {
-    $result = $api_instance->getEmailSubject($op, $param);
+    $result = $apiInstance->getEmailSubject($op, $param);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getEmailSubject: ', $e->getMessage(), PHP_EOL;
@@ -378,7 +408,11 @@ Get email template to send it to the user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $op = "op_example"; // string | Operation name
 $templatename = "templatename_example"; // string | Template Name
 $sharename = "sharename_example"; // string | Share Name
@@ -386,7 +420,7 @@ $shareurl = "shareurl_example"; // string | Share URL
 $toemailid = "toemailid_example"; // string | To email id
 
 try {
-    $api_instance->getEmailTemplate($op, $templatename, $sharename, $shareurl, $toemailid);
+    $apiInstance->getEmailTemplate($op, $templatename, $sharename, $shareurl, $toemailid);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getEmailTemplate: ', $e->getMessage(), PHP_EOL;
 }
@@ -430,11 +464,15 @@ User can get group access details for share
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->getGroupAccessForShare($shareid);
+    $result = $apiInstance->getGroupAccessForShare($shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getGroupAccessForShare: ', $e->getMessage(), PHP_EOL;
@@ -463,6 +501,51 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getMostActiveShares**
+> string getMostActiveShares()
+
+
+
+API that gets the most active shares for the user logged in. Most active share is defined by the number of times the share is accessed for any reason.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->getMostActiveShares();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShareApi->getMostActiveShares: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getPrivateUrlForEmail**
 > getPrivateUrlForEmail($shareid)
 
@@ -475,11 +558,15 @@ Get Private Url for the shared file/folder
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $api_instance->getPrivateUrlForEmail($shareid);
+    $apiInstance->getPrivateUrlForEmail($shareid);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getPrivateUrlForEmail: ', $e->getMessage(), PHP_EOL;
 }
@@ -519,11 +606,15 @@ Get public share authentication info
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the share path
 
 try {
-    $result = $api_instance->getPublicShareAuthInfo($path);
+    $result = $apiInstance->getPublicShareAuthInfo($path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getPublicShareAuthInfo: ', $e->getMessage(), PHP_EOL;
@@ -564,13 +655,107 @@ Get random password for protected share
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->getRandomPassword();
+    $result = $apiInstance->getRandomPassword();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getRandomPassword: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getRecentShareActivityForUser**
+> string getRecentShareActivityForUser()
+
+
+
+API to get the recent share activity from all shares for the user logged in.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->getRecentShareActivityForUser();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShareApi->getRecentShareActivityForUser: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getShareActivityForShare**
+> string getShareActivityForShare()
+
+
+
+Get the list of share activity
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+
+try {
+    $result = $apiInstance->getShareActivityForShare();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShareApi->getShareActivityForShare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -605,11 +790,15 @@ User can get share details by using shareid
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->getShareForId($shareid);
+    $result = $apiInstance->getShareForId($shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getShareForId: ', $e->getMessage(), PHP_EOL;
@@ -650,11 +839,15 @@ User can get share details by using path
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Path of shared file/folder
 
 try {
-    $result = $api_instance->getShareForPath($path);
+    $result = $apiInstance->getShareForPath($path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getShareForPath: ', $e->getMessage(), PHP_EOL;
@@ -695,11 +888,15 @@ Get protected share password
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Specify the share Id
 
 try {
-    $result = $api_instance->getSharePassword($shareid);
+    $result = $apiInstance->getSharePassword($shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getSharePassword: ', $e->getMessage(), PHP_EOL;
@@ -740,10 +937,14 @@ User can get all the shares in system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->getShares();
+    $result = $apiInstance->getShares();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getShares: ', $e->getMessage(), PHP_EOL;
@@ -781,11 +982,15 @@ User can get the share information of shared file/folder in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $location = "location_example"; // string | Specify the location with the filename to be shared
 
 try {
-    $result = $api_instance->getSharesFilter($location);
+    $result = $apiInstance->getSharesFilter($location);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getSharesFilter: ', $e->getMessage(), PHP_EOL;
@@ -826,11 +1031,15 @@ User get the upload form for publicly shared folder with upload permissions
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $api_instance->getUploadForm($shareid);
+    $apiInstance->getUploadForm($shareid);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getUploadForm: ', $e->getMessage(), PHP_EOL;
 }
@@ -870,12 +1079,16 @@ Get Url for the shared file/folder
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 $sharename = "sharename_example"; // string | Share name
 
 try {
-    $api_instance->getUrlForEmail($shareid, $sharename);
+    $apiInstance->getUrlForEmail($shareid, $sharename);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getUrlForEmail: ', $e->getMessage(), PHP_EOL;
 }
@@ -916,11 +1129,15 @@ User can get user access details for share
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->getUserAccessForShare($shareid);
+    $result = $apiInstance->getUserAccessForShare($shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getUserAccessForShare: ', $e->getMessage(), PHP_EOL;
@@ -961,11 +1178,15 @@ User can get a list of users added to that share.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $api_instance->getUsersForShare($shareid);
+    $result = $apiInstance->getUsersForShare($shareid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->getUsersForShare: ', $e->getMessage(), PHP_EOL;
@@ -1006,11 +1227,15 @@ User can leave a shared file/folder
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Path of the shared file/folder
 
 try {
-    $result = $api_instance->leaveShare($path);
+    $result = $apiInstance->leaveShare($path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->leaveShare: ', $e->getMessage(), PHP_EOL;
@@ -1051,13 +1276,17 @@ Login to protected share
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $fullquerystring = "fullquerystring_example"; // string | Specify the full query string
 $password = "password_example"; // string | Password for protected share
 $path = "path_example"; // string | Specify the shared path
 
 try {
-    $result = $api_instance->loginProtectedShare($fullquerystring, $password, $path);
+    $result = $apiInstance->loginProtectedShare($fullquerystring, $password, $path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->loginProtectedShare: ', $e->getMessage(), PHP_EOL;
@@ -1100,11 +1329,15 @@ User can share file's to other by generating a link in the system (HTTP POST)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $sharelocation = "sharelocation_example"; // string | Specify the location with the filename to be shared
 
 try {
-    $result = $api_instance->quickShare($sharelocation);
+    $result = $apiInstance->quickShare($sharelocation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->quickShare: ', $e->getMessage(), PHP_EOL;
@@ -1145,10 +1378,14 @@ Search for groups in system to share a file/folder
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 
 try {
-    $result = $api_instance->searchGroups();
+    $result = $apiInstance->searchGroups();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->searchGroups: ', $e->getMessage(), PHP_EOL;
@@ -1186,11 +1423,15 @@ Search for profile in system to share a file/folder
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $filter = "filter_example"; // string | Partial name/email for search
 
 try {
-    $result = $api_instance->searchProfile($filter);
+    $result = $apiInstance->searchProfile($filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->searchProfile: ', $e->getMessage(), PHP_EOL;
@@ -1231,7 +1472,11 @@ Send email to the user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $from = "from_example"; // string | From user name
 $toemailid = "toemailid_example"; // string | To email id
 $message = "message_example"; // string | Email template
@@ -1241,7 +1486,7 @@ $publicshare = "publicshare_example"; // string | share Id
 $replyto = "replyto_example"; // string | Reply to email id
 
 try {
-    $result = $api_instance->sendEmail($from, $toemailid, $message, $subject, $userid, $publicshare, $replyto);
+    $result = $apiInstance->sendEmail($from, $toemailid, $message, $subject, $userid, $publicshare, $replyto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->sendEmail: ', $e->getMessage(), PHP_EOL;
@@ -1288,7 +1533,11 @@ Send shared file/folder to email
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $from = "from_example"; // string | from name
 $toemailid = "toemailid_example"; // string | to email id
 $sharename = "sharename_example"; // string | share name of file/folder
@@ -1299,7 +1548,7 @@ $publicshare = "publicshare_example"; // string | public share id
 $replyto = "replyto_example"; // string | reply to email
 
 try {
-    $api_instance->sendShareToEmail($from, $toemailid, $sharename, $sharelocation, $url, $message, $publicshare, $replyto);
+    $apiInstance->sendShareToEmail($from, $toemailid, $sharename, $sharelocation, $url, $message, $publicshare, $replyto);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->sendShareToEmail: ', $e->getMessage(), PHP_EOL;
 }
@@ -1346,14 +1595,18 @@ User can set a shared file to public or private access in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
-$allowpublicaccess = 3.4; // float | If set to 1 - allow public access , 0 - private access only
-$allowpublicupload = 3.4; // float | If set to 1 - allow public upload , 0 - private upload only
-$allowpublicviewonly = 3.4; // float | If set to 1 - allow public view , 0 - private view only
+$allowpublicaccess = 8.14; // float | If set to 1 - allow public access , 0 - private access only
+$allowpublicupload = 8.14; // float | If set to 1 - allow public upload , 0 - private upload only
+$allowpublicviewonly = 8.14; // float | If set to 1 - allow public view , 0 - private view only
 
 try {
-    $result = $api_instance->setAllowPublicAccess($shareid, $allowpublicaccess, $allowpublicupload, $allowpublicviewonly);
+    $result = $apiInstance->setAllowPublicAccess($shareid, $allowpublicaccess, $allowpublicupload, $allowpublicviewonly);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->setAllowPublicAccess: ', $e->getMessage(), PHP_EOL;
@@ -1397,13 +1650,17 @@ User can set download/write/share/sync permission for the shared file/folder in 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id
 $groupid = "groupid_example"; // string | Group Id
 $downloadwritesharesync = "downloadwritesharesync_example"; // string | Set to true or false
 
 try {
-    $result = $api_instance->setGroupAccessForShare($shareid, $groupid, $downloadwritesharesync);
+    $result = $apiInstance->setGroupAccessForShare($shareid, $groupid, $downloadwritesharesync);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->setGroupAccessForShare: ', $e->getMessage(), PHP_EOL;
@@ -1446,13 +1703,17 @@ User can set download/write/share/sync permission for the shared file/folder in 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 $userid = "userid_example"; // string | User email id
 $downloadwritesharesync = "downloadwritesharesync_example"; // string | Set to true or false
 
 try {
-    $result = $api_instance->setUserAccessForShare($shareid, $userid, $downloadwritesharesync);
+    $result = $apiInstance->setUserAccessForShare($shareid, $userid, $downloadwritesharesync);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->setUserAccessForShare: ', $e->getMessage(), PHP_EOL;
@@ -1495,12 +1756,16 @@ Downloads publicly shared file
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $mode = "mode_example"; // string | single file download
 $path = "path_example"; // string | Shared file path
 
 try {
-    $api_instance->share($mode, $path);
+    $apiInstance->share($mode, $path);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->share: ', $e->getMessage(), PHP_EOL;
 }
@@ -1529,50 +1794,6 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **shorten**
-> shorten($longurl)
-
-
-
-Shorten the long url
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$api_instance = new Swagger\Client\Api\ShareApi();
-$longurl = "longurl_example"; // string | URL
-
-try {
-    $api_instance->shorten($longurl);
-} catch (Exception $e) {
-    echo 'Exception when calling ShareApi->shorten: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **longurl** | **string**| URL |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 # **updateShare**
 > string updateShare($shareid, $sharename, $sharelocation, $viewmode, $validityperiod, $sharesizelimit, $maxdownloads, $hidenotification, $sharepassword)
 
@@ -1585,19 +1806,23 @@ User can update the share information in the system
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 $sharename = "sharename_example"; // string | Share name
 $sharelocation = "sharelocation_example"; // string | Specify the location with the filename to be shared
 $viewmode = "viewmode_example"; // string | DEFAULT
-$validityperiod = 3.4; // float | Set the expiry date of share here
-$sharesizelimit = 3.4; // float | Set the limit
-$maxdownloads = 3.4; // float | Set the maximum times download limit
-$hidenotification = 3.4; // float | Set 1 to disable email notification
-$sharepassword = 3.4; // float | Set the password for protected share
+$validityperiod = 8.14; // float | Set the expiry date of share here
+$sharesizelimit = 8.14; // float | Set the limit
+$maxdownloads = 8.14; // float | Set the maximum times download limit
+$hidenotification = 8.14; // float | Set 1 to disable email notification
+$sharepassword = 8.14; // float | Set the password for protected share
 
 try {
-    $result = $api_instance->updateShare($shareid, $sharename, $sharelocation, $viewmode, $validityperiod, $sharesizelimit, $maxdownloads, $hidenotification, $sharepassword);
+    $result = $apiInstance->updateShare($shareid, $sharename, $sharelocation, $viewmode, $validityperiod, $sharesizelimit, $maxdownloads, $hidenotification, $sharepassword);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->updateShare: ', $e->getMessage(), PHP_EOL;
@@ -1646,13 +1871,17 @@ User can set download/write/share/sync permission for the shared file/folder in 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ShareApi();
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $shareid = "shareid_example"; // string | Share Id number
 $oldsharelink = "oldsharelink_example"; // string | Old share link
 $newsharelink = "newsharelink_example"; // string | New share link
 
 try {
-    $result = $api_instance->updateShareLink($shareid, $oldsharelink, $newsharelink);
+    $result = $apiInstance->updateShareLink($shareid, $oldsharelink, $newsharelink);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->updateShareLink: ', $e->getMessage(), PHP_EOL;

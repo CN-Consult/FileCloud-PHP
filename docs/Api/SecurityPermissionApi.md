@@ -24,7 +24,11 @@ Add security permissions
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SecurityPermissionApi();
+$apiInstance = new Swagger\Client\Api\SecurityPermissionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path
 $type = "type_example"; // string | Set as 'user' | 'group' to assign permissions to a user or a group
 $value = "value_example"; // string | If type is 'user' then specify the user email id, for 'group' specify groud id
@@ -32,7 +36,7 @@ $perm = "perm_example"; // string | R - Read, W - Write, D - Delete, S - Share
 $flag = "flag_example"; // string | Set as 'allow' / 'deny'
 
 try {
-    $result = $api_instance->addAclEntry($path, $type, $value, $perm, $flag);
+    $result = $apiInstance->addAclEntry($path, $type, $value, $perm, $flag);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityPermissionApi->addAclEntry: ', $e->getMessage(), PHP_EOL;
@@ -77,11 +81,15 @@ Delete security permissions on the specified path
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SecurityPermissionApi();
+$apiInstance = new Swagger\Client\Api\SecurityPermissionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path
 
 try {
-    $result = $api_instance->deleteAcl($path);
+    $result = $apiInstance->deleteAcl($path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityPermissionApi->deleteAcl: ', $e->getMessage(), PHP_EOL;
@@ -122,13 +130,17 @@ Delete security permissions on the path for a specific user or group
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SecurityPermissionApi();
+$apiInstance = new Swagger\Client\Api\SecurityPermissionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path
 $type = "type_example"; // string | Set as 'user' | 'group' to assign permissions to a user or a group
 $value = "value_example"; // string | If type is 'user' then specify the user email id, for 'group' specify groud id
 
 try {
-    $result = $api_instance->deleteAclEntry($path, $type, $value);
+    $result = $apiInstance->deleteAclEntry($path, $type, $value);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityPermissionApi->deleteAclEntry: ', $e->getMessage(), PHP_EOL;
@@ -171,11 +183,15 @@ Get security permission details for specified path
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SecurityPermissionApi();
+$apiInstance = new Swagger\Client\Api\SecurityPermissionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path
 
 try {
-    $result = $api_instance->getAcl($path);
+    $result = $apiInstance->getAcl($path);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityPermissionApi->getAcl: ', $e->getMessage(), PHP_EOL;
@@ -216,12 +232,16 @@ Set security permissions on the specified path to inherit
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SecurityPermissionApi();
+$apiInstance = new Swagger\Client\Api\SecurityPermissionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path
 $emailid = "emailid_example"; // string | Emaild of the user
 
 try {
-    $result = $api_instance->getEffectiveAcl($path, $emailid);
+    $result = $apiInstance->getEffectiveAcl($path, $emailid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityPermissionApi->getEffectiveAcl: ', $e->getMessage(), PHP_EOL;
@@ -263,12 +283,16 @@ Set security permissions on the specified path to inherit
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SecurityPermissionApi();
+$apiInstance = new Swagger\Client\Api\SecurityPermissionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $path = "path_example"; // string | Specify the path
 $inherit = "inherit_example"; // string | 1|0 Set 1 to enable inheritance and 0 to disable it
 
 try {
-    $result = $api_instance->setAclInheritance($path, $inherit);
+    $result = $apiInstance->setAclInheritance($path, $inherit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityPermissionApi->setAclInheritance: ', $e->getMessage(), PHP_EOL;
