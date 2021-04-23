@@ -1,0 +1,6142 @@
+---
+swagger: "2.0"
+info:
+  description: FileCloud HTTP API
+  version: 1.0.0
+  title: FileCloud_User_API
+  termsOfService: https://www.getfilecloud.com/tos/
+host: swaggerfc.getfilecloud.com
+tags:
+- name: login
+  description: Login Related API(s) is used when a user wants to login to the FileCloud User Portal to access or make changes to the files in the system.
+- name: file
+  description: File Related API is used to make changes to the files such as download, delete, upload files, search for files, etc.
+- name: activity
+  description: Activity Related API is used to show the changes and actions happening to a file and folder in the system, which is useful when multiple people are working on same set of files
+- name: rmc
+  description: RMC Related API is used to manage devices from the User Portal after remote management is enabled
+- name: security
+  description: Security Permission Related API is used to provide a way to allow some actions (permissions) on a parent, or top-level folder while restricting those actions on a specific sub-folder
+- name: system
+  description: System Related API is used to know information about the system such as authentication, language list, disk usage and status of system
+- name: versioning
+  description: Versioning Related API is used to manage versions of a newly uploaded changes to a file and exiting ones
+- name: share
+  description: Share Related API is used to manage sharing and it's permissions of a file/ folder by either public or private sharing modes
+- name: favorite
+  description: Favorite Related API is used to manage by adding the user's favorite files/folders to a favorite list where the user can access it
+- name: image
+  description: Image Related API is used to manage how the images are accessed
+- name: lock
+  description: Lock Related API is used to prevent opening or accessing files between different user accounts
+- name: comment
+  description: Comment Related API is used where users can add details about the status of a file or the purpose for a folder.
+- name: notification
+  description: Notification Related API is used to manage notifications when any changes are made to the file by a user
+- name: privacy
+  description: Privacy Related API  is used to track personally identifiable information (PII) explicity
+- name: profile
+  description: Profile Related API is used to create a user profile and manage the user's profile settings
+- name: shortcuts
+  description: Shortcuts Related API is used to create upto 10 shortcuts which allows the user to create a link to any path that the user can access.
+- name: webedit
+  description: WebEdit Related API is used for FileCloud users to select any supported document and edit the document from within the system
+- name: metadata
+  description: Metadata Related API is used to manage data that provides additional information about files and folders available in the system
+- name: casb
+  description: basic file operations using casb(please note that the endpoints in this section needs an additional header which contains the authorization key for casb. Example- --header 'Authorization= 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'  
+schemes:
+- https
+- http
+paths:
+  /core/loginguest:
+    post:
+      tags:
+      - login
+      summary: Login_Related_API - loginguest Lets user login to the FileCloud User Portal to access files
+      description: This API allows user to login into filecloud system and access their respective data (HTTP POST)
+      operationId: loginguest
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: This paramenter allows to enter the user's login name.
+        required: true
+        type: string
+      - name: password
+        in: query
+        description: This parameter allows to enter the user's Password.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/2falogin:
+    post:
+      tags:
+      - login
+      summary: Two-step-verification process for login of a user
+      description: User has to enter a code that has been sent to the email id configured with the account, to successfully login (HTTP POST)
+      operationId: 2falogin
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: User's login name.
+        required: true
+        type: string
+      - name: code
+        in: query
+        description: Enter the code you have recieved in your email
+        required: true
+        type: string
+      - name: token
+        in: query
+        description: Enter the token you had recieved in message field while performing loginguest api call
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/get2fagasecret:
+    get:
+      tags:
+      - login
+      summary: Login_Related_API - get2fagasecret lets a user login to the user portal using google authenticator verification process.
+      description: Gets 2FA secret code to login using Google Authenticator (HTTP POST)
+      operationId: get2fagasecret
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: Specify the user name
+        required: true
+        type: string
+      - name: token
+        in: query
+        description: Enter the token you had recieved in message field while performing loginguest api call
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/resend2facode:
+    post:
+      tags:
+      - login
+      summary: Login_Related_API - resend2facode lets user to resend 2fa code to the user's email.
+      description: Resend 2facode to get a new code to login via 2falogin (HTTP POST)
+      operationId: resend2facode
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: Users login name
+        required: true
+        type: string
+      - name: token
+        in: query
+        description: Enter the token you had recieved in message field while performing loginguest api call (HTTP POST)
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/resetpassword:
+    post:
+      tags:
+      - login
+      summary: Login_Related_API - resetpassword lets user to reset password
+      description: User can reset password of their account, when they have forgotten the password (HTTP POST)
+      operationId: resetpassword
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: profile
+        in: query
+        description: Profile name of the user
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/locksession:
+    post:
+      tags:
+      - login
+      summary: Login_Related_API - locksession is a user logout call
+      description: User Logout api call to logout of the filecloud system (HTTP POST)
+      operationId: locksession
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/verifyemail:
+    post:
+      tags:
+      - login
+      summary: Login_Related_API - verifyemail lets a new user to verify his/her email id
+      description: New users can verify their respective email ids by clicking on the verification link sent to their email (HTTP POST)
+      operationId: verifyemail
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: u
+        in: query
+        description: Email id of the user
+        required: true
+        type: string
+      - name: tag
+        in: query
+        description: Specify Verify tag
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getactivitystream:
+    post:
+      tags:
+      - activity
+      summary: Activity_Related_API - getactivitystream gets all the activities of the file/folder
+      description: Users can track the actions which are performed on a file or folder, which are displayed in the User Portal.
+      operationId: getactivitystream
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: parent
+        in: query
+        description: Specify the path for which you want to get the activity list
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/activities'
+  /core/getauditgeoipdata:
+    post:
+      tags:
+      - activity
+      summary: Activity_Related_API - getauditgeoipdata displays the geo-location of a request made
+      description: USer will be able to see the geo-location and ip information about the activities.
+      operationId: getauditgeoipdata
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: op
+        in: query
+        description: Specify the operation name
+        required: true
+        type: string
+      - name: ipaddress
+        in: query
+        description: Specify the ipaddress of the request made
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/results'
+  /core/showhideactivity:
+    get:
+      tags:
+      - activity
+      summary: Activity_Related_API - showhideactivity is used to hide the activity panel from user portal
+      description: Users will not be able to see the Activity panel if the activity column is disabled or hidden.
+      operationId: showhideactivity
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: collapse
+        in: query
+        description: Set as 1 to hide activity panel
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/addsettofileobject:
+    post:
+      tags:
+      - metadata
+      summary: Metadata_Related_API - addsettofileobject lets a user to add set to the list of available metadata sets
+      description: User can add a set to list of available metadata sets which are associated with a selected file or folder.
+      operationId: addsettofileobject
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullpath
+        in: query
+        description: Full path of metadata set
+        required: true
+        type: string
+      - name: setid
+        in: query
+        description: Metadataset id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getavailablemetadatasets:
+    post:
+      tags:
+      - metadata
+      summary: Metadata_Related_API - getavailablemetadatasets is used to retrieve the list of all available metadata sets
+      description: User can see the list of all available metadata sets of a file or folder for a particular path
+      operationId: getavailablemetadatasets
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullpath
+        in: query
+        description: Lists the full path of a metadata set
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/metadatasets'
+  /core/getmetadatasetsforsearch:
+    post:
+      tags:
+      - metadata
+      summary: Metadata_Related_API - getmetadatasetsforsearch is used to perform an exact match search
+      description: User should specify the whole value inorder for a metadata search and every metadata search condition is used to narrow down the search.
+      operationId: getmetadatasetsforsearch
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullpath
+        in: query
+        description: Full path of metadata set
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/metadatasets'
+  /core/removesetfromfileobject:
+    post:
+      tags:
+      - metadata
+      summary: Metadata_Related_API - removesetfromfileobject lets a user to remove set from the list of available metadata sets
+      description: User can remove a set from list of available metadata sets which are associated with a selected file or folder.
+      operationId: removesetfromfileobject
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullpath
+        in: query
+        description: Full path of metadata set
+        required: true
+        type: string
+      - name: setid
+        in: query
+        description: Metadata SetID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/saveattributevalues:
+    post:
+      tags:
+      - metadata
+      summary: Metadata_Related_API - saveattributevalues allows user to save the metadata after providing additional information
+      description: This API allows user to save the attribute values of a metadata i.e., after providing additional information about files and folders
+      operationId: saveattributevalues
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullpath
+        in: query
+        description: Full path of metadata set
+        required: true
+        type: string
+      - name: setid
+        in: query
+        description: Metadata SetID
+        required: true
+        type: string
+      - name: attribute
+        in: query
+        description: n_attributeid Attribute n set from 0 to any number (eg. attribute0_attributeid, attribute1_attributeid, etc)
+        required: true
+        type: string
+      - name: attributes_total
+        in: query
+        description: Total number of attributes
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/addcommentforitem:
+    post:
+      tags:
+      - comment
+      summary: Comment_Related_API - addcommentforitem lets user add comments for a file or folder
+      description: User can add details about the status of a file or the purpose for a folder in the Comments section
+      operationId: addcommentforitem
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullpath
+        in: query
+        description: Specify the full path where you want to add comment
+        required: true
+        type: string
+      - name: parent
+        in: query
+        description: Specify the parent name
+        required: true
+        type: string
+      - name: isfile
+        in: query
+        description: Specify 0 if the path is a folder , 1 if the path is a file
+        required: true
+        type: string
+      - name: text
+        in: query
+        description: Add the comment you want to add for a file/folder
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/comments'
+  /core/getcommentsforitem:
+    post:
+      tags:
+      - comment
+      summary: Comment_Related_API - getcommentsforitem lets user read comments for a file or folder
+      description: User can read all comments about the status of a file or the purpose for a folder in the Comments section
+      operationId: getcommentsforitem
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: fullpath
+        in: query
+        description: Specify the full path where you want to add
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/comments'
+  /core/removecommentforitem:
+    post:
+      tags:
+      - comment
+      summary: Comment_Related_API - removecommentforitem lets user delete comments for a file or folder
+      description: User can delete a single or all comments associated with the file or folder in the Comments section
+      operationId: removecommentforitem
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullpath
+        in: query
+        description: Specify the full path where you want to remove the comment
+        required: true
+        type: string
+      - name: id
+        in: query
+        description: Id number of the comment
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /app/explorer/createfolder:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - createfolder lets user to create a folder in a particular path
+      description: User can create folder in FC system (HTTP POST)
+      operationId: createfolder
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: name
+        in: query
+        description: Name of the folder to be created
+        required: true
+        type: string
+      - name: path
+        in: query
+        description: Path where you want to create the folder
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/cancelsearch:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - cancelsearch lets user to cancel search while the search is in progress
+      description: User can cancel the search while an ongoing search is in progress for the entered search term
+      operationId: cancelsearch
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: searchid
+        in: query
+        description: Specify the search ID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/clearsavedsearchterms:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - clearsavedsearchterms is used to clear the previously saved search term
+      description: Users will be able to clear the saved search terms which was entered previously while performing the search action
+      operationId: clearsavedsearchterms
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/copyfile:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - copyfile is used to copy files from one path to another path
+      description: User can copy files from one location to another in the FC system (HTTP POST)
+      operationId: copyfile
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: copyto
+        in: query
+        description: Path where the files has to be copied
+        required: true
+        type: string
+      - name: path
+        in: query
+        description: Path where the files reside
+        required: true
+        type: string
+      - name: name
+        in: query
+        description: Name of the image file, eg- /Path/Image file name.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deletefile:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - deletefile is used to delete a file/folder from particular location
+      description: User can delete file/folder in the system (HTTP POST)
+      operationId: deletefile
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path of the file where it resides.
+        required: true
+        type: string
+      - name: name
+        in: query
+        description: Name of the file to be deleted.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deletepartialuploads:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - deletepartialuploads is used to delete files which were uploaded partially
+      description: Users can delete files that have only been partially uploaded by them
+      operationId: deletepartialuploads
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: ignorets
+        in: query
+        description: Set value to 1 to delete partial uploads using API call
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/docconvert:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - docconvert is used to preview files
+      description: Users can preview files of different formats supported by FC system
+      operationId: docconvert
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: name
+        in: query
+        description: Specify the file location
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+  /core/docedit:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - docedit is used to edit documents
+      description: User can edit documents
+      operationId: docedit
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path of the file where it resides
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+  /core/emptyrecyclebin:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - emptyrecyclebin is used to empty the user's recycly bin
+      description: Users can delete either few selected files or clearing all the files by going to the recycle bin
+      operationId: emptyrecyclebin
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/fileexists:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - fileexists is used to check if a file exists or not
+      description: User can check if the file exists in the system
+      operationId: fileexists
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: file
+        in: query
+        description: Path of the file where it resides
+        required: true
+        type: string
+      - name: caseinsensitive
+        in: query
+        description: when this param is set to 1, fileexist call will disable the upper/lower case check in filenames.(can be 0 or 1)
+        required: false
+        type: boolean        
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/renamefile:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - renamefile is used to rename a file in any particular location
+      description: User can rename file in the system (HTTP POST)
+      operationId: renamefile
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path of the file where it resides.
+        required: true
+        type: string
+      - name: name
+        in: query
+        description: Name of the file to be renamed.
+        required: true
+        type: string
+      - name: newname
+        in: query
+        description: Name of the file with the path where the file has to be moved.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/renameormove:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - renameormove is used to move files within the FC system
+      description: User can move files from one location to another in the system (HTTP POST)
+      operationId: renameormove
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fromname
+        in: query
+        description: Name of the file with the path where the file resides.
+        required: true
+        type: string
+      - name: toname
+        in: query
+        description: Name of the file with the path where the file has to be moved.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/dosearch:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - dosearch is used to search for a file or folder
+      description: Users can perform search operation for a file/folder
+      operationId: dosearch
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: searchstring
+        in: query
+        description: Keyword to search
+        required: true
+        type: string
+      - name: searchloc
+        in: query
+        description: Specify the directory path in which you want to perform search.
+        required: true
+        type: string
+      - name: minsize
+        in: query
+        description: (optional)Specify the size in kb, the search will show files that is greater than and equal to the size mentioned.
+        required: true
+        type: string
+      - name: maxsize
+        in: query
+        description: (optional)Specify the size in kb, the search will show files that is lesser than and equal to the size mentioned.
+        required: true
+        type: string
+      - name: modifiedstart
+        in: query
+        description: (optional)Specify the value in date format, the search will show files that was created on and after the date mentioned
+        required: false
+        type: string
+        format: date
+      - name: modifiedend
+        in: query
+        description: (optional)Specify the value in date format, the search will show files that was created before the date mentioned
+        required: false
+        type: string
+        format: date
+      - name: searchscope
+        in: query
+        description: Specify the search scope
+        required: true
+        type: number
+      - name: start
+        in: query
+        description: Set to 0
+        required: true
+        type: number
+      - name: size
+        in: query
+        description: Specify the search record limit value
+        required: true
+        type: number
+      - name: maxsearchentries
+        in: query
+        description: Maximum number of search entries
+        required: true
+        type: number
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/entries'
+  /core/downloadfile:
+    get:
+      tags:
+      - file
+      summary: File_Related_API - downloadfile is used to download files from a location
+      description: Download file in FileCould System (HTTP GET)
+      operationId: downloadfile
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: filepath
+        in: query
+        description: Path of the file where it resides and with the name of the file to be downloaded.
+        required: true
+        type: string
+      - name: filename
+        in: query
+        description: Name of the file to be downloaded
+        required: true
+        type: string
+      - name: redirect
+        in: query
+        description: (Optional)Set it to 1 to directly download from Amazon S3
+        required: false
+        type: string
+      responses:
+        "200":
+          description: Downloads a file
+          schema:
+            type: string
+            format: binary
+  /core/downloadfilemulti:
+    get:
+      tags:
+      - file
+      summary: File_Related_API - downloadfilemulti is used to download multiple files
+      description: User can download multiple files from FileCould System (HTTP GET)
+      operationId: downloadfilemulti
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: count
+        in: query
+        description: Number of files to be downloaded
+        required: true
+        type: number
+      - name: filepath
+        in: query
+        description: Path of the file where it resides.
+        required: true
+        type: string
+      - name: fn1
+        in: query
+        description: First file name selected for download
+        required: true
+        type: string
+      - name: fn2
+        in: query
+        description: Second file name selected for download {To downlaod more keep adding param's like fn3, fn4..}
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Selected file's are zipped and downloaded.
+          schema:
+            type: string
+            format: binary
+  /core/fileinfo:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - fileinfo is used to view information about file
+      description: User can fetch information about a file
+      operationId: fileinfo
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: file
+        in: query
+        description: Path of file to be specified
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/fileinfo'
+  /core/addfavoritelist:
+    post:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - addfavoritelist is used to add files to a favorite list in the system
+      description: User can add files to either an existing or new favorite list in the system
+      operationId: addfavoritelist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: name
+        in: query
+        description: Name of the file to be added to favorites.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/clearfavoritesinnamedlist:
+    post:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - clearfavoritesinnamedlist is used to remove files from the favorite list
+      description: User can remove files from the existing favorite lists.
+      operationId: clearfavoritesinnamedlist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: name
+        in: query
+        description: Name of the Favorite List
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getallfavoritelists:
+    get:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - getallfavoritelists is used to retrieve all the favorite lists in system
+      description: User can view all the existing favorites lists which are present in the system
+      operationId: getallfavoritelists
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: type
+        in: query
+        description: Type here is favorites
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/favoritelists'
+  /core/getfavoritelistforitem:
+    get:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - getfavoritelistforitem is used to get all the available favorite lists for a selected item
+      description: User can get all the available favorite lists for the item
+      operationId: getfavoritelistforitem
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path of file
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/favoritelists'
+  /core/getfavoritesinlist:
+    get:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - getfavoritesinlist is used to get all the items in a favorite list
+      description: User can get all the items which are associated to a selected favorite list
+      operationId: getfavoritesinlist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: id
+        in: query
+        description: Id of the Favorite List
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/entries'
+  /core/getfavoritesinnamedlist:
+    get:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - getfavoritesinnamedlist is used to get all the items from the name of favorite list specified
+      description: User can get all the items which are present by specifying the name of a favorite list
+      operationId: getfavoritesinnamedlist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: name
+        in: query
+        description: Name of the Favorite List
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/entries'
+  /core/removefavoritelist:
+    post:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - removefavoritelist is used to remove the favorite list from system
+      description: User can remove the existing favorite list from the system
+      operationId: removefavoritelist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: id
+        in: query
+        description: Id number of the favorite list to be deleted
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/replacefavoritelist:
+    post:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - replacefavoritelist is used to replace a favorite list
+      description: User can replace a favorite list in system
+      operationId: replacefavoritelist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: id
+        in: query
+        description: Id number of the favorite list
+        required: true
+        type: string
+      - name: count
+        in: query
+        description: Number of files
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/setfavorite:
+    post:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - setfavorite is used to add a file to a favorite list
+      description: User can add file to their Favorite list in the system
+      operationId: setfavorite
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: id
+        in: query
+        description: Id number of the favorite list
+        required: true
+        type: string
+      - name: name
+        in: query
+        description: Name of the file to be added to favorites.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/unsetfavorite:
+    post:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - unsetfavorite is used to remove a file from the favorite list
+      description: User can remove a file from their Favorite list in the system
+      operationId: unsetfavorite
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: id
+        in: query
+        description: Id number of the favorite list
+        required: true
+        type: string
+      - name: name
+        in: query
+        description: Name of the file to be added to favorites.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/updatefavoritelist:
+    post:
+      tags:
+      - favorite
+      summary: Favorite_Related_API - updatefavoritelist is used to update an existing favorite list
+      description: User can update an existing favorite list
+      operationId: updatefavoritelist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: id
+        in: query
+        description: Id number of the favorite list
+        required: true
+        type: string
+      - name: name
+        in: query
+        description: Name of the file to be added to favorites.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/addshortcut:
+    post:
+      tags:
+      - shortcuts
+      summary: Shortcut_Related_API - addshortcut is used to create a shortcut to access a path easily.
+      description: User can add a Shortcut which creates a link for the user to access any path
+      operationId: addshortcut
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: scname
+        in: query
+        description: Specify the folder name you want to add in the shortcuts
+        required: true
+        type: string
+      - name: scvalue
+        in: query
+        description: Specify the path of the folder
+        required: true
+        type: string
+      - name: sctype
+        in: query
+        description: Specify the type of shortcuts
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deleteshortcut:
+    post:
+      tags:
+      - shortcuts
+      summary: Shortcut_Related_API - deleteshortcut is used to delete the existing shortcut in the system
+      description: USer can delete the shortcut which was created for easy access to any path
+      operationId: deleteshortcut
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: rid
+        in: query
+        description: Specify the id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getshortcuts:
+    post:
+      tags:
+      - shortcuts
+      summary: Shortcut_Related_API - getshortcuts is used to get the list of all shortcuts
+      description: USer can get the list of all available shortcuts in the system
+      operationId: getshortcuts
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: start
+        in: query
+        description: Specify as 0
+        required: true
+        type: string
+      - name: limit
+        in: query
+        description: Specify as 10
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shortcuts'
+  /core/beginprofilecreation:
+    post:
+      tags:
+      - profile
+      summary: Profile_Related_API - beginprofilecreation is used to create a profile for user
+      description: This API is used to create a profile for the user
+      operationId: beginprofilecreation
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/profilecreation_profilecreationrecord'
+  /core/changelanguage:
+    get:
+      tags:
+      - profile
+      summary: Profile_Related_API - changelanguage is used to change the language of FC system from the specified languages
+      description: User can change the language of the system
+      operationId: changelanguage
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: lang
+        in: query
+        description: Specify the language you want to set
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/checkid:
+    get:
+      tags:
+      - profile
+      summary: Profile_Related_API - checkid is used to check if the mentioned username by the user is available or not in the FC system.
+      description: User can check if the specified name by the user is available to create account in the FC system
+      operationId: checkid
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: id
+        in: query
+        description: Specify the name you want to check for availablity
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/createprofile:
+    post:
+      tags:
+      - profile
+      summary: Profile_Related_API - createprofile is used to create an account for a new user
+      description: New User can create an account if allowed by the administrator
+      operationId: createprofile
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: profile
+        in: query
+        description: Name of the new user
+        required: true
+        type: string
+      - name: email
+        in: query
+        description: Email id of the new user
+        required: true
+        type: string
+      - name: password
+        in: query
+        description: Password for the new user
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getprofileimage:
+    get:
+      tags:
+      - profile
+      summary: Profile_Related_API - getprofileimage is used to see the profile image of the user in FC system.
+      description: Used to get the profile image of user
+      operationId: getprofileimage
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: username
+        in: query
+        description: Specify the username you want to get profile image of
+        required: true
+        type: string
+      - name: height
+        in: query
+        description: (optional) Specify the height
+        required: true
+        type: string
+      - name: width
+        in: query
+        description: (optional) Specify the width
+        required: true
+        type: string
+      responses:
+        "200":
+          description: The user's profile image is recieved.
+          schema:
+            type: string
+            format: binary
+  /core/getprofilesettings:
+    post:
+      tags:
+      - profile
+      summary: Profile_Related_API - getprofilesettings is used to get the saved settings of a profile
+      description: Used to get the profile settings of a user
+      operationId: getprofilesettings
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/settings'
+  /core/setdisplayname:
+    get:
+      tags:
+      - profile
+      summary: Profile_Related_API - setdisplayname is used to change display name of the user in settings
+      description: User can change the display name in the system
+      operationId: setdisplayname
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: dispname
+        in: query
+        description: Specify the display name you want to set
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/subscribe:
+    post:
+      tags:
+      - profile
+      summary: Profile_Related_API - subscribe is used to receive email about any notifications from the system
+      description: User can Subscribe the emailid to recieve emails from the system
+      operationId: subscribe
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: emailid
+        in: query
+        description: Email Id of user
+        required: true
+        type: string
+      responses:
+        "200":
+          description: A webpage with success message
+          schema:
+            type: string
+            format: binary
+  /core/unsubscribe:
+    post:
+      tags:
+      - profile
+      summary: Profile_Related_API - unsubscribe is used to not get any email notification from the system
+      description: User can unsubscribe the email id to not recieve any email from the system
+      operationId: unsubscribe
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: emailid
+        in: query
+        description: Email Id of user
+        required: true
+        type: string
+      responses:
+        "200":
+          description: A webpage with success message
+          schema:
+            type: string
+            format: binary
+  /core/updatepassword:
+    post:
+      tags:
+      - profile
+      summary: Profile_Related_API - updatepassword is used to change the password of the user from their profile
+      description: User can change or update password of the system
+      operationId: updatepassword
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: oldpassword
+        in: query
+        description: Old password of the user.
+        required: true
+        type: string
+      - name: newpassword
+        in: query
+        description: New password the user wants to change to
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getaccessdetailsforpath:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - getaccessdetailsforpath is used to get permission a file/folder has in the system
+      description: User can check the permission details of file or folder in the system (Read, write, download, etc.) (HTTP POST)
+      operationId: getaccessdetailsforpath
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullpath
+        in: query
+        description: Path of the file/folder
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/permissions'
+  /core/getfilelist:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - getfilelist is used to navigate through files
+      description: Users can get list of files and navigate through the files in system (HTTP POST)
+      operationId: getfilelist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path Name to be specified, If the user wants to access MyFiles then use the username as path.
+        required: true
+        type: string
+      - name: sortdir
+        in: query
+        description: Set it to 1 for ascending sort , -1 for descending sort
+        required: true
+        type: string
+      - name: sortby
+        in: query
+        description: You can sort by name, date or size.
+        required: true
+        type: string
+      - name: start
+        in: query
+        description: Start index of records to retrieve, Note- Index starts from 0. Default 0
+        required: true
+        type: string
+      - name: limit
+        in: query
+        description: Set to any number of record you want to view at once. Default 10
+        required: true
+        type: string
+      - name: sendcommentinfo
+        in: query
+        description: whether to send comment info...value is either 1 or 0
+        required: true
+        type: string
+      - name: sendmetadatasetinfo
+        in: query
+        description: whether to send metadata set info...value is either 1 or 0
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/entries'
+  /core/getfolderproperties:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - getfolderproperties is used to see the contents of the folder
+      description: User can view the total number of files and versioned files of a folder
+      operationId: getfolderproperties
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path of the folder
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/folderproperties'
+  /core/getwopiediturl:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - getwopiediturl is used for online editing for supported documents
+      description: Users can edit Office online web document files and the changes made will be saved automatically.
+      operationId: getwopiediturl
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: path
+        in: query
+        description: Specify the location of file
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Opens a file to edit
+          schema:
+            type: string
+            format: binary
+  /core/searchtermsearch:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - searchtermsearch api is used to specify the search term
+      description: Specify the search term
+      operationId: searchtermsearch
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: searchterm
+        in: query
+        description: Specify the search term
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/searchterms'
+  /core/upload:
+    post:
+      tags:
+      - file
+      summary: File_Related_API - uploadfile is used to upload files to the system
+      operationId: upload
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/xml
+      parameters:
+      - name: file
+        in: formData
+        required: false
+        type: file
+      - name: appname
+        in: formData
+        description: Agent use to upload files to system
+        required: true
+        type: string
+      - name: path
+        in: formData
+        description: Specify the path where you want to upload the file
+        required: true
+        type: string
+      - name: offset
+        in: formData
+        description: Offset set to 0
+        required: true
+        type: number
+      - name: complete
+        in: formData
+        description: Complete set to 1
+        required: true
+        type: number
+      - name: filename
+        in: formData
+        description: File name to be uploaded inside the folder
+        required: true
+        type: string
+      - name: date
+        in: formData
+        description: (Optional)Specify UTC date format
+        required: false
+        type: string
+        format: date
+      responses:
+        "200":
+          description: Upload OK
+          schema:
+            type: string
+  /core/getfsslideimage:
+    post:
+      tags:
+      - image
+      summary: Image_Related_API - getfsslideimage is used to view the images in the form of slide show.
+      description: User can view a single image or multiple images in the form of slideshow in the system (HTTP POST)
+      operationId: getfsslideimage
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: name
+        in: query
+        description: Name of the image file, eg /Path/Image file name.
+        required: false
+        type: string
+      - name: width
+        in: query
+        description: Width of the image to open
+        required: true
+        type: number
+      - name: height
+        in: query
+        description: Height of the image to open
+        required: true
+        type: number
+      responses:
+        "200":
+          description: Image file you wanted is opened.
+          schema:
+            type: string
+            format: binary
+  /core/getfsthumbimage:
+    get:
+      tags:
+      - image
+      summary: Image_Related_API - getfsthumbimage
+      description: User can view image in the system (HTTP POST)
+      operationId: getfsthumbimage
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/octet-stream
+      parameters:
+      - name: name
+        in: query
+        description: FileCloud specific location of the file
+        required: false
+        type: string
+      - name: width
+        in: query
+        description: Width of the image to open
+        required: true
+        type: number
+      - name: height
+        in: query
+        description: Height of the image to open
+        required: true
+        type: number
+      - name: id
+        in: query
+        description: id of the file
+        required: false
+        type: string
+      responses:
+        "200":
+          description: A thumb image file you wanted is opened.
+          schema:
+            type: string
+            format: binary
+  /core/rotatefsimage:
+    get:
+      tags:
+      - image
+      summary: Image_Related_API - rotatefsimage is used to rotate the image in FC system
+      description: User can rotate the image either clock-wise or anti clock-wise  in the system (HTTP POST)
+      operationId: rotatefsimage
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: name
+        in: query
+        description: Name of the image file to be rotated, eg /Path/Image file name.
+        required: true
+        type: string
+      - name: angle
+        in: query
+        description: Angle od rotation is either 90 or -90
+        required: true
+        type: number
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getalllocks:
+    post:
+      tags:
+      - lock
+      summary: Lock_Related_API - getalllocks is used to get all the files and folders which are locked in the system
+      description: User can get all the locked file/folders in the system
+      operationId: getalllocks
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: none
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/locks'
+  /core/getfilelockinfo:
+    get:
+      tags:
+      - lock
+      summary: Lock_Related_API - getfilelockinfo is used to get the information about locked files
+      description: Gets the details about locked files if user specifies the path
+      operationId: getfilelockinfo
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path you want to get information about locks
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/filelockinfos'
+  /core/lock:
+    post:
+      tags:
+      - lock
+      summary: Lock_Related_API - lock is used to lock a file or folder
+      description: User can lock a file/folder.
+      operationId: lock
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path you want to lock
+        required: true
+        type: string
+      - name: expiration
+        in: query
+        description: (Optional) Set an expiration date for locked file/folder
+        required: true
+        type: string
+      - name: readlock
+        in: query
+        description: (Optional) Set if you want to restrict download of the locked file/folder.
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/unlock:
+    post:
+      tags:
+      - lock
+      summary: Lock_Related_API - unlock is used to unlock the already locked file/folder
+      description: User can unlock a file/folder.
+      operationId: unlock
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path you want to unlock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/addgrouptoshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - addgrouptoshare is used to add an existing group to a privately shared file/folder
+      description: User can add a group to access privately shared files in the system
+      operationId: addgrouptoshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: groupid
+        in: query
+        description: Group ID number of the group to be added to private share
+        required: true
+        type: string
+      - name: shareid
+        in: query
+        description: Share ID number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/addusertoshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - addusertoshare is used to add an existing user to access the privately shared file/folder
+      description: User can add selective user's to access private shared files in the system
+      operationId: addusertoshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: Specify the user's email id you want to share the file to
+        required: true
+        type: string
+      - name: shareid
+        in: query
+        description: Share ID number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands' 
+  /core/adduserstoshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - This endpoint allows adding multiple users to a single share in one go
+      description: Used to add a comma separated list of users to a file/folder share.
+      operationId: createprofileoninvite
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Id of the share users are being added to.
+        required: true
+        type: string
+      - name: users
+        in: query
+        description: Comma separated list of user emails.
+        required: true
+        type: string
+      - name: sendemail
+        in: query
+        description: Specifies whether the email should be sent to all invited users (this also relies on the System configuration)
+        required: false
+        type: string
+      - name: custom_subject
+        in: query
+        description: A common, custom subject that will be used for all emails sent to users added to share
+        required: false
+        type: string	
+      - name: custom_message
+        in: query
+        description: A custom message that will be added to saved email templates, replacing the ^MESSAGE^ placeholder. If that placeholder doesn't exist a separate email containing that message will be sent.
+        required: false
+        type: string
+      - name: adduserstoshare_subject
+        in: query
+        description: A custom subject for emails sent to existing, non-external (limited) users
+        required: false
+        type: string
+      - name: adduserstoshare_body
+        in: query
+        description: A custom email body that will be sent to existing, non-external (limited) users
+        required: false
+        type: string
+      - name: addusertoshare_emails
+        in: query
+        description: A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won't be added to the share.
+        required: false
+        type: string
+      - name: addnewuserstoshare_subject
+        in: query
+        description: A custom subject for emails sent to invited users that will be added to the system as a non-external (limited) user.
+        required: false
+        type: string	
+      - name: addnewuserstoshare_body
+        in: query
+        description: A custom email body that will be sent to invited users that will be added to the system as a non-external (limited) user.
+        required: false
+        type: string
+      - name: addnewusertoshare_emails
+        in: query
+        description: A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won't be added to the share!
+        required: false
+        type: string	
+      - name: adduserstoshare_limited_subject
+        in: query
+        description: A custom subject for existing, external (limited) users
+        required: false
+        type: string
+      - name: adduserstoshare_limited_body
+        in: query
+        description: A custom email body that will be sent to existing, external (limited) users
+        required: false
+        type: string
+      - name: addusertoshare_limited_emails
+        in: query
+        description: A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won't be added to the share!
+        required: false
+        type: string	
+      - name: addnewuserstoshare_limited_subject
+        in: query
+        description: A custom subject for emails sent to non-existing, external (limited) users
+        required: false
+        type: string
+      - name: addnewuserstoshare_limited_body
+        in: query
+        description: A custom email body that will be sent to non-existing, external (limited) users
+        required: false
+        type: string    
+      - name: addnewusertoshare_limited_emails
+        in: query
+        description: A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won't be added to the share!
+        required: false
+        type: string        
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'            
+  /core/createprofileoninvite:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - createprofileoninvite is used to create a new user account for the user who doesn't exist on FC system
+      description: Used to Create a user profile for a non existing user to access the shared file/folder. Profile invite is sent via email.
+      operationId: createprofileoninvite
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: email
+        in: query
+        description: Specify the emailid of the user to invite
+        required: true
+        type: string
+      - name: shareid
+        in: query
+        description: Specify the share ID of the user to invite
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deletegroupfromshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - deletegroupfromshare is used to delete a group from the exisiting privately shared file/folder which was already shared to the group previously
+      description: User can remove the group from access to privately shared files in the system
+      operationId: deletegroupfromshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: groupid
+        in: query
+        description: Group Id number
+        required: true
+        type: string
+      - name: shareid
+        in: query
+        description: Share Id number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deleteshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - deleteshare is used to remove the already shared file/folder which was shared to a user previously
+      description: User can delete share and remove the access of share which was done to a shared user previously.
+      operationId: deleteshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id number of file/folder for which the share has to be removed
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deleteuserfromshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - deleteuserfromshare is used to remove a user from a privately shared file/folder
+      description: User can delete the shared users from a particular private share of file/folder
+      operationId: deleteuserfromshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: Specify the email id of user to be removed from share
+        required: true
+        type: string
+      - name: shareid
+        in: query
+        description: Share Id number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getemailsubject:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - getemailsubject is used to get email subject to send it to the user
+      description: Get email subject is used to get email sujbect to be sent to user.
+      operationId: getemailsubject
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: op
+        in: query
+        description: Operation... Ie, 'getemailsubject'
+        required: true
+        type: string
+      - name: param
+        in: query
+        description: Template name
+        required: true
+        type: string
+      - name: CUSTOMIZATION_EMAIL_SUBJECT_addusertoshare
+        required: false
+        type: string
+      - name: toemailid
+        in: query
+        description: To email id
+        required: false
+        type: string
+      - name: keepuserplaceholders
+        in: query
+        description: When it's set to 1 the user-related placeholders(^TOEMAILID^ , ^TO^) are not being replaced when fetching the template. Only common, 'global' values, are replaced with the values.
+        required: false
+        type: string 
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/config'
+  /core/getemailtemplate:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - getemailtemplate is used to get email template to send it to the user
+      description: Get email template to send it to the user
+      operationId: getemailtemplate
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/html
+      parameters:
+      - name: templatename
+        in: query
+        description: Template name
+        required: true
+        type: string
+      - name: sharename
+        in: query
+        description: Share name
+        required: true
+        type: string
+      - name: shareurl
+        in: query
+        description: Share URL
+        required: true
+        type: string
+      - name: toemailid
+        in: query
+        description: To Email ID
+        required: true
+        type: string
+      - name: keepuserplaceholders
+        in: query
+        description: When it's set to 1 the user-related placeholders(^TOEMAILID^ , ^TO^) are not being replaced when fetching the template. Only common, 'global' values, are replaced with the values.
+        required: false
+        type: string        
+      responses:
+        "200":
+          description: A HTML page is displayed
+          schema:
+            type: string
+            format: binary
+            example: A HTML page is displayed
+  /core/getgroupaccessforshare:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getgroupaccessforshare is used to get permission details of a group for shared file/folder
+      description: User can get group access details for a shared file or folder
+      operationId: getgroupaccessforshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/groups'
+  /core/getmanageablesharesall:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getmanageablesharesall is used to get details of all the managed shares.
+      description: Get all the manageable shares
+      operationId: getmanageablesharesall
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: op
+        in: query
+        description: Operation API to be performed
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/getmanageablesharesforpath:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getmanageablesharesforpath is used to get information about manageable shares for a particular path.Also shows the shared child paths
+      description: User can get details of managable share for a specific path
+      operationId: getmanageablesharesforpath
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path of the shared folder
+        required: true
+        type: string
+      - name: showchildpaths
+        in: query
+        description: Path of the child folders
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/getmostactiveshares:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - getmostactiveshares is used to get information about the shared item which was accessed more number of times.
+      description: API that gets the most active shares for the user logged in. Most active share is defined by the number of times the share is accessed for any reason.
+      operationId: getmostactiveshares
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/activeshares'
+  /core/getprivateurlforemail:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getprivateurlforemail is used to get a unique and short private url link to access the shared file/folder
+      description: A unique private url is generated which can be accessed by the user to view/edit/share/download the privately shared file/folder
+      operationId: getprivateurlforemail
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - string
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id Number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: XML PropertyList Response Success
+          schema:
+            type: string
+            format: binary
+            example: http://127.0.0.1/urleq34wuslejgk
+  /core/getpublicshareauthinfo:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - getpublicshareauthinfo
+      description: Get public share authentication info
+      operationId: getpublicshareauthinfo
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the share path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getrandompassword:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getrandompassword is used to get a random password generated by the FC system in order to access the share
+      description: User gets a random password while sharing using protected share option
+      operationId: getrandompassword
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getrecentshareactivityforuser:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getrecentshareactivityforuser
+      description: API to get the top share activity from all shares for the user logged in.
+      operationId: getrecentshareactivityforuser
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shareactivities'
+  /core/getshareactivityforshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - getshareactivityforshare is used to get the list of share activities
+      description: USed to get the list of share activities
+      operationId: getshareactivityforshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share ID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shareactivities'
+  /core/getshareforid:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - getshareforid
+      description: Get the list of share activityUser can get share details by using shareid
+      operationId: getshareforid
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id Number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/getshareforpath:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - getshareforpath is used to get all details of the share by specifying the shared file/folder path
+      description: User can get share details or information about a particular share by specifying the path of the shared file or folder
+      operationId: getshareforpath
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path of shared file/folder to get details
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/getsharepassword:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getsharepassword
+      description: Get protected share password
+      operationId: getsharepassword
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Specify the share Id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/getshares:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getshares is used to get information about all the shares done in a system
+      description: User can get information about all the shares done for a file/folder in system
+      operationId: getshares
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/getsharesfilter:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getsharesfilter is used to get information about the shares done in a system by specifying the path
+      description: User can get the share information of shared file/folder in the system by specifying a particular path
+      operationId: getsharesfilter
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: location
+        in: query
+        description: Specify the location with the filename to be shared
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/getuploadform:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getuploadform is used to get a upload form for a publicly shared folder with upload permission
+      description: User can get the upload form with all the upload permissions specified while sharing a folder publicly to a user
+      operationId: getuploadform
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - string
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id Number of the publicly shared folder
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            format: binary
+            example: Upload form
+  /core/geturlforemail:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - geturlforemail is used to get a share url link while sharing the file/folder through email
+      description: A share url link is generated by the system when user shares a file or folder through an email.
+      operationId: geturlforemail
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - string
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id Number
+        required: true
+        type: string
+      - name: sharename
+        in: query
+        description: Share Name
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            format: binary
+            example: http://127.0.0.1/urleq34wuslejgk
+  /core/getuseraccessforshare:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - getuseraccessforshare is used to get permission details of a user for a shared file/folder
+      description: User can get details of the user's access (such as read,download,upload, etc.) for a shared file or folder
+      operationId: getuseraccessforshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id Number of the shared file/folder
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/users'
+  /core/leaveshare:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - leaveshare is used to leave from an already shared file/folder by a user
+      description: User can leave from an existing shared file/folder
+      operationId: leaveshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path of the shared file/folder
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/loginprotectedshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - loginprotectedshare is used to login to access the protected share
+      description: USer has to login to the FC system and enter the share password in order to access the protected share
+      operationId: loginprotectedshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: fullquerystring
+        in: query
+        description: Specify the full query string
+        required: true
+        type: string
+      - name: password
+        in: query
+        description: Password for protected share
+        required: true
+        type: string
+      - name: path
+        in: query
+        description: Specify the shared path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/quickshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - quickshare is used to share files to a user by generating link in system
+      description: User can share files to others by generating a link in the system (HTTP POST)
+      operationId: quickshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: sharelocation
+        in: query
+        description: Specify the location with the filename to be shared
+        required: true
+        type: string
+      - name: showadvancedsharedialog
+        in: query
+        description: whether advanced share dialog should be displayed or no. Vales can be 0 or 1(0 - when a new public share is created, 1 - otherwise (a new private share is created or an existing share is being accessed))
+        required: false
+        type: string        
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/searchgroups:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - searchgroups is used to search for existing groups in the system in order to add to a shared file or folder
+      description: USer can search for groups in the system to add a group to a shared folder or file.
+      operationId: searchgroups
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/searchgroups'
+  /core/searchprofiles:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - searchprofiles is used to search for a user to share a file/folder
+      description: USer can search for profile in system either by using a username or email to share a file/folder to the user.
+      operationId: searchprofiles
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: filter
+        in: query
+        description: Partial name/email for search
+        required: true
+        type: string
+      - name: context
+        in: query
+        description: when context=share additional, share-related information is being sent in the response
+        required: false
+        type: string
+      - name: shareid
+        in: query
+        description: used only when context=share
+        required: false
+        type: string        
+      responses:
+        "200":
+          description: Success 200
+          examples:
+            application/xml: |-
+              case 1 - profiles matching filter string exist(without context and shareid)
+              <profiles>
+                  <profile>
+                          <userid>sam</userid>
+                          <username>sam</username>
+                          <emailid>sam@codelathe.com</emailid>
+                          <displayname>sam</displayname>
+                          <sizelimit>2147483648</sizelimit>
+                          <hasprofileimage></hasprofileimage>
+                  </profile>
+              </profiles>
+              Case 2 - profiles matching filter string exist(with context and shareid)
+              <profiles>
+                  <meta>
+                      <showemailpreview>1</showemailpreview>
+                      <sendemail>1</sendemail>
+                  </meta>
+                  <profile>
+                      <userid>tester</userid>
+                      <username>tester</username>
+                      <emailid>tester@codelathe.com</emailid>
+                      <status>1</status>
+                      <displayname>Tester</displayname>
+                      <sizelimit>53687091200</sizelimit>
+                      <hasprofileimage></hasprofileimage>
+                      <inviteallowed>1</inviteallowed>
+                      <invitenotallowederror></invitenotallowederror>
+                      <emailtemplate>addusertoshare</emailtemplate>
+                  </profile>
+              </profiles>
+              Case 3 - there are no profiles matching filter criteria(with context and shareid)
+              <profiles>
+                  <meta>
+                      <showemailpreview>1</showemailpreview>
+                      <sendemail>1</sendemail>
+                      <inviteallowed>0</inviteallowed>
+                      <invitenotallowederror>domain.com domain not allowed</invitenotallowederror>
+                      <newuseremailtemplate>addnewusertoshare</newuseremailtemplate>
+                      <phonenumberrequired>0</phonenumberrequired>
+                      <displaynamerequired>0</displaynamerequired>
+                  </meta>
+              </profiles>
+              Notes
+              -----
+              Response fields - when share=context and shareid are provided
+                                meta - section containing global settings and settings related to the new user being invited to share.
+                                   �Global settings
+                                           �showemailpreview [0|1] - A global setting that specifies whether email preview dialog should be shown in the UI
+                                           �sendemail [0|1] - A global setting that specifies whether emails will be sent to the invited users.
+                                   �Non-existing, invited user data 
+                                           �inviteallowed [0|1] - specifies whether user can be added to the share or not.
+                                           �invitenotallowederror [string] - provides the reason why invitation is not allowed
+                                           �newuseremailtemplate [string] - the name of the email template that should be used for the new user's email account.
+                                           �phonenumberrequired [0|1] - specifies whether phone number is required for the new user.
+                                           �displaynamerequired [0|1] - specifies whether display name is required for the new user.                                          
+            summary: profiles matching filter string exist
+          schema:
+            $ref: '#/definitions/profiles'
+  /core/sendemail:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - sendemail is used to send email to the user
+      description: User can Send an email to another user by filling out the required fields in the email template
+      operationId: sendemail
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: from
+        in: query
+        description: From User Name
+        required: true
+        type: string
+      - name: toemailid
+        in: query
+        description: To Email ID
+        required: true
+        type: string
+      - name: message
+        in: query
+        description: Email Template
+        required: true
+        type: string
+      - name: subject
+        in: query
+        description: Subject of the email
+        required: true
+        type: string
+      - name: userid
+        in: query
+        description: User ID
+        required: true
+        type: string
+      - name: publicshare
+        in: query
+        description: Share ID
+        required: true
+        type: string
+      - name: replyto
+        in: query
+        description: Reply To Email ID
+        required: true
+        type: string
+      - name: shouldsendemail
+        in: query
+        description: Email to be sent or not
+        required: true
+        type: string
+      - name: bccemailid
+        in: query
+        description: Email id in bcc field
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/emailstatus'
+  /core/sendsharetoemail:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - sendsharetoemail is used to send the shared file or folder through email
+      description: User can send a shared file/folder to email of the recipient
+      operationId: sendsharetoemail
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: from
+        in: query
+        description: From User Name
+        required: true
+        type: string
+      - name: toemailid
+        in: query
+        description: To Email ID
+        required: true
+        type: string
+      - name: sharename
+        in: query
+        description: Share name of the file/folder
+        required: true
+        type: string
+      - name: sharelocation
+        in: query
+        description: Share location of the file/folder
+        required: true
+        type: string
+      - name: url
+        in: query
+        description: Share url of the file/folder
+        required: true
+        type: string
+      - name: message
+        in: query
+        description: Email Template
+        required: true
+        type: string
+      - name: subject
+        in: query
+        description: Subject of the email
+        required: true
+        type: string
+      - name: userid
+        in: query
+        description: User ID
+        required: true
+        type: string
+      - name: publicshare
+        in: query
+        description: Share ID
+        required: true
+        type: string
+      - name: replyto
+        in: query
+        description: Reply To Email ID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/emailstatus'
+  /core/setallowpublicaccess:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - setallowpublicaccess is used to set either a private or public access to a shared file
+      description: User can use custom permissions when creating a share. User can set a shared file to public or private access in the system
+      operationId: setallowpublicaccess
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id number
+        required: true
+        type: string
+      - name: allowpublicaccess
+        in: query
+        description: If set to 1 - allow public access , 0 - private access only
+        required: true
+        type: string
+      - name: allowpublicupload
+        in: query
+        description: If set to 1 - allow public access , 0 - private access only
+        required: true
+        type: string
+      - name: allowpublicviewonly
+        in: query
+        description: If set to 1 - allow public access , 0 - private access only
+        required: true
+        type: string
+      - name: allowpublicuploadonly
+        in: query
+        description: If set to 1 - allow public access , 0 - private access only
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/setgroupaccessforshare:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - setgroupaccessforshare is used to set permission details of a group for shared file/folder
+      description: User can set download/write/share/sync permission for a group for the shared file/folder in the system
+      operationId: setgroupaccessforshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id
+        required: true
+        type: string
+      - name: groupid
+        in: query
+        description: Group Id
+        required: true
+        type: string
+      - name: download/write/share/sync
+        in: query
+        description: Set to True or False
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/setuseraccessforshare:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - setuseraccessforshare is used to set permission details of a user for shared file/folder
+      description: User can set download/write/share/sync permission for a user for the shared file/folder in the system
+      operationId: setuseraccessforshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id
+        required: true
+        type: string
+      - name: userid
+        in: query
+        description: User Id
+        required: true
+        type: string
+      - name: download/write/share/sync
+        in: query
+        description: Set to True or False
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/share:
+    get:
+      tags:
+      - share
+      summary: Share_Related_API - share is used to download a publicly shared file
+      description: User can download a publicly shared file
+      operationId: share
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: mode
+        in: query
+        description: single file download
+        required: true
+        type: string
+      - name: path
+        in: query
+        description: Shared file path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            format: binary
+            example: Downloads File.
+  /core/updateshare:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - updateshare is used to update a share information
+      description: User can update the share information in the system
+      operationId: updateshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id
+        required: true
+        type: string
+      - name: sharename
+        in: query
+        description: Share Name
+        required: false
+        type: string
+      - name: sharelocation
+        in: query
+        description: Specify the location with the filename/folder to be shared
+        required: false
+        type: string
+      - name: viewmode
+        in: query
+        description: DEFAULT
+        required: false
+        type: string
+      - name: validityperiod
+        in: query
+        description: Set the expiry date of share here
+        required: false
+        type: string
+      - name: sharesizelimit
+        in: query
+        description: Set the size limit for the share
+        required: false
+        type: interger
+      - name: maxdownloads
+        in: query
+        description: Set the maximum times download limit
+        required: false
+        type: interger
+      - name: hidenotification
+        in: query
+        description: Set 1 to disable email notification
+        required: false
+        type: string
+      - name: sharepassword
+        in: query
+        description: Set the password for protected share
+        required: false
+        type: string
+      - name: allowpublicaccess
+        in: query
+        description: set as public share or not
+        required: false
+        type: interger
+      - name: allowpublicupload
+        in: query
+        description: set public upload permission
+        required: false
+        type: interger
+      - name: allowpublicviewonly
+        in: query
+        description: set public view permission
+        required: false
+        type: interger
+      - name: allowpublicuploadonly
+        in: query
+        description: set public upload only for the share
+        required: false
+        type: interger	
+      - name: newshareowner
+        in: query
+        description: set a new share owner for the share
+        required: false
+        type: string (valid username)
+      - name: defaultfile
+        in: query
+        description: set a file in the public share as the default preview for that share
+        required: false
+        type: string        
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/shares'
+  /core/updatesharelink:
+    post:
+      tags:
+      - share
+      summary: Share_Related_API - updatesharelink is used to update the url link of a shared file/folder
+      description: User can update the share url link of a shared file or folder in the system
+      operationId: updatesharelink
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: shareid
+        in: query
+        description: Share Id
+        required: true
+        type: string
+      - name: oldsharelink
+        in: query
+        description: Old share link
+        required: true
+        type: string
+      - name: newsharelink
+        in: query
+        description: New share link
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/ackrmccommands:
+    post:
+      tags:
+      - rmc
+      summary: RMC_Related_API - ackrmccommands is used to acknowledge the received rmc command
+      description: Acknowledge RMC Commands
+      operationId: ackrmccommands
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: command_rids
+        in: query
+        description: Command Id number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/approvedeviceaccess:
+    post:
+      tags:
+      - rmc
+      summary: RMC_Related_API - approvedeviceaccess is used to approve the status of a device from pending so that user can access FC system
+      description: User can approve the RMC Client so the FC system can be used in a client application.
+      operationId: approvedeviceaccess
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: remote_client_id
+        in: query
+        description: Command Id number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deletedevice:
+    post:
+      tags:
+      - rmc
+      summary: RMC_Related_API - deletedevice is used to delete the device which is connected to the user's profile
+      description: User can delete the RMC Device connected to profile from settings of the user portal from FC system
+      operationId: deletedevice
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: remote_client_id
+        in: query
+        description: Remote Client ID
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getrmcclients:
+    post:
+      tags:
+      - rmc
+      summary: RMC_Related_API - getrmcclients is used to get all details about the rmc clients connected to system
+      description: User can see information such as the device's operating system, display name, os version, etc.
+      operationId: getrmcclients
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: Username
+        required: true
+        type: string
+      - name: start
+        in: query
+        description: Start index of records to retrieve, Note- Index starts from 0. Default 0
+        required: true
+        type: string
+      - name: end
+        in: query
+        description: Set to any number of record you want to view at once. Default 10
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/rmc_clients'
+  /core/getrmccommands:
+    post:
+      tags:
+      - rmc
+      summary: RMC_Related_API - getrmccommands is used to get the generated rmc commands
+      description: Used to get RMC Commands for a selected client
+      operationId: getrmccommands
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: User email id
+        required: true
+        type: string
+      - name: remote_client_id
+        in: query
+        description: Remote Client Id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/rmc_commands'
+  /core/rmcloginguest:
+    post:
+      tags:
+      - rmc
+      summary: RMC_Related_API - rmcloginguest is a remote client login api
+      description: Client login API
+      operationId: rmcloginguest
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: Specify the username
+        required: true
+        type: string
+      - name: password
+        in: query
+        description: Specify the password
+        required: true
+        type: string
+      - name: remote_client_id
+        in: query
+        description: Specify the unique identifier from the client (It can be the device MAC ID or the phone device ID. It just needs to be an unique number that identifies the device).
+        required: true
+        type: string
+      - name: remote_client_disp_name
+        in: query
+        description: Specify the client device name
+        required: true
+        type: string
+      - name: remote_client_api_level
+        in: query
+        description: Set the api-level to 4 (latest required client api-level is 4)
+        required: true
+        type: string
+      - name: remote_client_os_type
+        in: query
+        description: Specify the client OS type
+        required: true
+        type: string
+      - name: remote_client_app_version
+        in: query
+        description: Specify the client app version
+        required: true
+        type: string
+      - name: remote_client_os_version
+        in: query
+        description: Specify the client OS version
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/registerclientforrmc:
+    post:
+      tags:
+      - rmc
+      summary: RMC_Related_API - registerclientforrmc is used to register a rmc device while logging in using SSO login
+      description: Register the client application when you want to login using SSO
+      operationId: registerclientforrmc
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: Specify the username
+        required: true
+        type: string
+      - name: remote_client_id
+        in: query
+        description: Specify the unique identifier from the client (It can be the device MAC ID or the phone device ID. It just needs to be an unique number that identifies the device).
+        required: true
+        type: string
+      - name: remote_client_disp_name
+        in: query
+        description: Specify the client device name
+        required: true
+        type: string
+      - name: remote_client_api_level
+        in: query
+        description: Set the api-level to 4 (latest required client api-level is 4)
+        required: true
+        type: string
+      - name: remote_client_os_type
+        in: query
+        description: Specify the client OS type
+        required: true
+        type: string
+      - name: remote_client_app_version
+        in: query
+        description: Specify the client app version
+        required: true
+        type: string
+      - name: remote_client_os_version
+        in: query
+        description: Specify the client OS version
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/requestdeviceaccess:
+    post:
+      tags:
+      - rmc
+      summary: RMC_Related_API - requestdeviceaccess is used to request device access permission before logging in to a client application
+      description: Used to request a RMC device access permission before logging into the client application
+      operationId: requestdeviceaccess
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: userid
+        in: query
+        description: Username
+        required: true
+        type: string
+      - name: remote_client_id
+        in: query
+        description: Specify the client id
+        required: true
+        type: string
+      - name: remote_client_disp_name
+        in: query
+        description: Specify the clients display name
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/addaclentry:
+    post:
+      tags:
+      - security
+      summary: Security_Permission_Related_API - addaclentry is used to add folder level permissions to a selected folder for a user or group in a particular path
+      description: User can add folder level security permission settings which are applicable only when sharing with particular user or group
+      operationId: addaclentry
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path
+        required: true
+        type: string
+      - name: type
+        in: query
+        description: Set as 'user' | 'group' to assign permissions to a user or a group
+        required: true
+        type: string
+      - name: value
+        in: query
+        description: If type is 'user' then specify the user email id, for 'group' specify groud id
+        required: true
+        type: string
+      - name: perm
+        in: query
+        description: R - Read, W - Write, D - Delete, S - Share
+        required: true
+        type: string
+      - name: flag
+        in: query
+        description: Set as 'allow' / 'deny'
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deleteacl:
+    post:
+      tags:
+      - security
+      summary: Security_Permission_Related_API - deleteacl is used to delete folder level security permissions for a particular path
+      description: Used to delete security permissions on the specified path
+      operationId: deleteacl
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deleteaclentry:
+    post:
+      tags:
+      - security
+      summary: Security_Permission_Related_API - deleteaclentry is used to delete folder level permissions to a selected folder for a user or group in a particular path
+      description: User can delete folder level security permission settings which are applicable only when sharing with particular user or group
+      operationId: deleteaclentry
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path
+        required: true
+        type: string
+      - name: type
+        in: query
+        description: Set as 'user' | 'group' to assign permissions to a user or a group
+        required: true
+        type: string
+      - name: value
+        in: query
+        description: If type is 'user' then specify the user email id, for 'group' specify groud id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getacl:
+    post:
+      tags:
+      - security
+      summary: Security_Permission_Related_API - getacl is used to view the security permission details for a specific path
+      description: USed to get security permission details for specified path
+      operationId: getacl
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: User email id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/acls'
+  /core/geteffectiveacl:
+    post:
+      tags:
+      - security
+      summary: Security_Permission_Related_API - geteffectiveacl is used to check effective permissions for any user when a particular path is shared with them
+      description: Used to check for effective permissions for a user for a particular shared path such as read, write, delete, share or manage permissions.
+      operationId: geteffectiveacl
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path
+        required: true
+        type: string
+      - name: emailid
+        in: query
+        description: Emaild of the user
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/permissions'
+  /core/setaclinheritance:
+    post:
+      tags:
+      - security
+      summary: Security_Permission_Related_API - setaclinheritance is used to set permissions for a folder which are exactly the same as the top level folder's permissions
+      description: User can set same security permissions on the specified path to inherit as it's parent folder
+      operationId: setaclinheritance
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Specify the path to set acl permissions as it's parent folder
+        required: true
+        type: string
+      - name: inherit
+        in: query
+        description: 1|0 Set 1 to enable inheritance and 0 to disable it
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getauthenticationinfo:
+    get:
+      tags:
+      - system
+      summary: System_Related_API - getauthenticationinfo is used get authentication details of the FileCloud server
+      description: It will return whether the system has been authenticated or not
+      operationId: getauthenticationinfo
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/authenticationinfo'
+  /core/getdiskusagedetails:
+    get:
+      tags:
+      - system
+      summary: System_Related_API - getdiskusagedetails is used to get information about the storage space for a user
+      description: Returns storage usage details such as used and allocated space for a particular user
+      operationId: getdiskusagedetails
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: username
+        in: query
+        description: Profile Name
+        required: true
+        type: string
+      - name: level
+        in: query
+        description: 0 - gives only details,1 - gives only space usage summary,2 - gives space usage summary + details
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/usage'
+  /core/getlanguagelist:
+    get:
+      tags:
+      - system
+      summary: System_Related_API - getlanguagelist is used to get the list of languages present in FC server.
+      description: Returns details about all the languages present in system
+      operationId: getlanguagelist
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/languages'
+  /core/getsystemstatus:
+    get:
+      tags:
+      - system
+      summary: System_Related_API - getsystemstatus is used to get full details and status of the system
+      description: Will return full detail about the system
+      operationId: getsystemstatus
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/systemstatus'
+  /core/deleteallversions:
+    post:
+      tags:
+      - versioning
+      summary: Versioning_Related_API - deleteallversions is used to delete all the older versions of a file which are present on the site
+      description: User can delete all the previous versions of all files in the system
+      operationId: deleteallversions
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deleteversion:
+    post:
+      tags:
+      - versioning
+      summary: Versioning_Related_API - deleteversion
+      description: User can delete the previous version of a file in the system
+      operationId: deleteversion
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: filepath
+        in: query
+        description: Specify the path where the file resides
+        required: true
+        type: string
+      - name: filename
+        in: query
+        description: File name
+        required: true
+        type: string
+      - name: fileid
+        in: query
+        description: File Id number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/downloadversionedfile:
+    post:
+      tags:
+      - versioning
+      summary: Versioning_Related_API - downloadversionedfile is used to download a file which was uploaded previously with changes to the system
+      description: USer can download the previous versioned file in FileCould System from a specific path (HTTP POST)
+      operationId: downloadversionedfile
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: filepath
+        in: query
+        description: Specify the path where the file resides
+        required: true
+        type: string
+      - name: filename
+        in: query
+        description: File name
+        required: true
+        type: string
+      - name: fileid
+        in: query
+        description: File Id number
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Selected file is downloaded.
+          schema:
+            type: string
+            format: binary
+  /core/getversions:
+    post:
+      tags:
+      - versioning
+      summary: Versioning_Related_API - getversions is used to get all the previous versio of files which are stored in the system
+      description: User can get all the available previous versions of a file which are present in the system
+      operationId: getversions
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: filepath
+        in: query
+        description: Specify the path where the file resides
+        required: true
+        type: string
+      - name: filename
+        in: query
+        description: File name
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/versions'
+  /core/getoourl:
+    get:
+      tags:
+      - webedit
+      summary: WebEdit_Related_API - getoourl is used to get the Microsoft Office Online URL which allows the users to edit documents in a browser
+      description: USed to Get Office Online URL which is used to edit documents in the browser
+      operationId: getoourl
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/verifyoourl:
+    get:
+      tags:
+      - webedit
+      summary: WebEdit_Related_API - verifyoourl is used to verify the Microsoft Office Online URL which allows the users to edit documents in a browser
+      description: USed to Verify Office Online URL which is used for editing documents in the browser
+      operationId: verifyoourl
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/acktoasts:
+    get:
+      tags:
+      - notification
+      summary: Notification_Related_API - acktoasts is used to acknowledge the user alert notification
+      description: USed to acknowledge the user alert notifications such as when user makes changes to a file.
+      operationId: acktoasts
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: acktoastids
+        in: query
+        description: Specify the toast id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/addnotificationfilter:
+    post:
+      tags:
+      - notification
+      summary: Notification_Related_API - addnotificationfilter is used to add a notification filter to selected path by the user
+      description: USer can add a notification filter to a shared file/folder
+      operationId: addnotificationfilter
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path name which needs notification filter to be added
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/deletetoasts:
+    get:
+      tags:
+      - notification
+      summary: Notification_Related_API - deletetoasts is used to delete a notification regarding changed made to a file in a particular path
+      description: User can delete a notification alert received regarding a change made to a file by a user.
+      operationId: deletetoasts
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: toastrid
+        in: query
+        description: Specify the toast id to be deleted
+        required: true
+        type: string
+      - name: clearallforuser
+        in: query
+        description: (optional) Specify the username (Incase you want to clear all the user alerts for a single user)
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getnotificationstream:
+    post:
+      tags:
+      - notification
+      summary: Notification_Related_API - getnotificationstream is used to get the list of notifications regarding changes made to a file by a user
+      description: USer can get the list of notifications in the system to see the changes made to a file.
+      operationId: getnotificationstream
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/notificationstreams'
+  /core/gettoasts:
+    get:
+      tags:
+      - notification
+      summary: Notification_Related_API - gettoasts is used to get the list of toast notifications
+      description: USed to get the list of toast Notifications
+      operationId: gettoasts
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/toasts'
+  /core/isnotificationfilterset:
+    post:
+      tags:
+      - notification
+      summary: Notification_Related_API - isnotificationfilterset is used to check if notification filter is set for a particular path
+      description: USer can check if notification filter is set or not for a shared file/folder
+      operationId: isnotificationfilterset
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path name which needs notification filter to be set
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/removenotificationfilter:
+    post:
+      tags:
+      - notification
+      summary: Notification_Related_API - removenotificationfilter is used to remove notification filter which is set for a particular path
+      description: USer can remove the notification filter which is set for a shared file/folder
+      operationId: removenotificationfilter
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters:
+      - name: path
+        in: query
+        description: Path name which requires notification filter to be removed
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /core/getanonymoususerconsent:
+    get:
+      tags:
+      - privacy
+      summary: Privacy_Related_API - getanonymoususerconsent is used such that that all anonymous users provide explicit consent to track personally identifiable information (PII).
+      description: API that displays the privacy information for the anonymous user (when accessing public share) in the user UI in order to get acknowledgement.
+      operationId: getanonymoususerconsent
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/getuserconsent'
+  /core/getuserconsent:
+    get:
+      tags:
+      - privacy
+      summary: Privacy_Related_API - getuserconsent is used such that that all users provide explicit consent to track personally identifiable information (PII).
+      description: API that displays the privacy information for the user in the user UI in order to get acknowledgement. This API will ask for consent from users while accessing, viewing or downloading files from FileCloud.
+      operationId: getuserconsent
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/getuserconsent'
+  /core/privacyconsentaccept:
+    get:
+      tags:
+      - privacy
+      summary: Privacy_Related_API - privacyconsentaccept is used to accept the privacy notice when user logs into the system if the setting is set
+      description: API that updates the privacy consent for the user when user accepts the privay notice when he logs into user portal if the setting is set
+      operationId: privacyconsentaccept
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/xml
+      parameters: []
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            $ref: '#/definitions/commands'
+  /app/casb/register:
+    post:
+      tags:
+      - casb
+      summary: Register_Related_API - This api call is used to regsiter with casb
+      description: This API allows user to register an external webhook url to wich casb will post CASB relevant event information.(HTTP POST)
+      operationId: register
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: url
+        in: query
+        description: This paramenter allows to provide the server URL
+        required: true
+        type: string
+        schema:
+          example: "Example curl --location --request POST 'http://dev.fc.l/app/casb/register?url=http://example.com/casbwebhook' \
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'"
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: {ok: True}
+  /app/casb/deregister:
+    post:
+      tags:
+      - casb
+      summary: Register_Related_API - This api call is used to cancel/deregister with casb
+      description: This API allows user to remove the registered webhook (HTTP POST)
+      operationId: deregister
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters: none
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: {ok: True}
+  /app/casb/getwebhook:
+    post:
+      tags:
+      - casb
+      summary: Webhook_Related_API - This api call is used to check your connection status to webhook
+      description: This API allows user to retrieve the webhook url registered to casb URL (HTTP POST)
+      operationId: register
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters: none
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: {ok: True, data: {webhook: http://registeredwebhookurl.com}}
+  /app/casb/downloadfile:
+    post:
+      tags:
+      - casb
+      summary: Download_Related_API - This api call is used to download a file from a given path
+      description: This API allows users to download files using casb (HTTP POST)
+      operationId: register
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: filepath
+        in: query
+        description: the full path to the file
+        required: true
+        type: string
+        schema:
+          example: "Example curl --location --request POST 'http://dev.fc.l/app/casb/downloadfile?filepath=/usr/folder/file.txt' \
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'"        
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: File Data
+  /app/casb/upload:
+    post:
+      tags:
+      - casb
+      summary: Upload_Related_API - This api call is used to upload file to a target path
+      description: This API allows users to upload a file using casb (HTTP POST). For this api you need to pass the file to be uploaded as form(please see the example)
+      operationId: upload
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: path
+        in: query
+        description: the full path to the file
+        required: true
+        type: string
+        schema:
+          example: "Example curl --location --request POST 'http://dev.fc.l/app/casb/upload?path=/usr/folder' \
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC' \
+--form 'name=@/C:\folder\file.txt'"
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: Upload OK
+  /app/casb/deletefile:
+    post:
+      tags:
+      - casb
+      summary: Delete_Related_API - This api call is used to delete a file 
+      description: This API allows users to delete a file using casb (HTTP POST)
+      operationId: delete
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: filepath
+        in: query
+        description: the full path to the file to be deleted
+        required: true
+        type: string
+        schema:
+          example: "Example curl --location --request POST 'http://dev.fc.l/app/casb/deletefile?filepath=/usr/folder/file.txt' \
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'"
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: {ok: True}
+  /app/casb/getshareinformation:
+    post:
+      tags:
+      - casb
+      summary: Share_Related_API - This api call is used to get share information about a file
+      description: This API allows to get share information about a file (HTTP POST)
+      operationId: shareinformation
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: file_id
+        in: query
+        description: the full path to the file to be deleted
+        required: true
+        type: string
+        schema:
+          example: "Example  https://<FileCloud URL> /app/casb/getshareinformation
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'"        
+      responses:
+        200:
+          description: Success 200
+          schema:
+            type: string
+            example: {
+                     ok: true,
+                     data: {
+                     shares_information: [
+                     {
+                     shareid: 5f4e9781aec70859b00088de,
+                     share_type: private,
+                     access_info: {
+                     users: [
+                     {
+                     user_id: user1,
+                     read: true,
+                     write: false,
+                     download: true
+                     }
+                     ],
+                     groups: [
+                     {
+                     group_id: 5e9f296caec708083000711c,
+                     read: true,
+                     write: false,
+                     download: true,
+                     users_ids: [
+                     newaccount,
+                     user1
+                     ]
+                     }
+                     ]
+                     }
+                     }
+                     ]
+                     }
+                     } 
+  /app/casb/removeuserfromshare:
+    post:
+      tags:
+      - casb
+      summary: Share_Related_API - This api call is used to remove a user from share
+      description: This API allows you to remove a user from share (HTTP POST)
+      operationId: removeuserfromshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: shareid
+        in: query
+        description: id of the share from which the user needs to be removed
+        required: true
+        type: string
+      - name: user_id
+        in: query
+        description: id of the user who is to be removed
+        required: true
+        type: string
+        schema:
+          example: "Example curl --location --request POST 'http://dev.fc.l/app/casb/removeuserfromshare?shareid=5df3e749aec70822b8001791&user_id=user1' \
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'"        
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: {ok: True} 
+  /app/casb/removegroupfromshare:
+    post:
+      tags:
+      - casb
+      summary: Share_Related_API - This api call is used to remove a group from share
+      description: This API allows you to remove a group from a share (HTTP POST)
+      operationId: removegroupfromshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: shareid
+        in: query
+        description: id of the share from which the group needs to be removed
+        required: true
+        type: string
+      - name: group_id
+        in: query
+        description: id of the group to be removed
+        required: true
+        type: string
+        schema:
+          example: "Example curl --location --request POST 'http://dev.fc.l/app/casb/removegroupfromshare?shareid=5df3e749aec70822b8001791&group_id=5e9f296caec708083000711c' \
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'"        
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: {ok: True} 
+  /app/casb/deleteshare:
+    post:
+      tags:
+      - casb
+      summary: Share_Related_API - This api call is used to delete an exsisting share
+      description: This API allows you to delete an exsisting share (HTTP POST)
+      operationId: deleteshare
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: shareid
+        in: query
+        description: id of the share from which needs to be deleted
+        required: true
+        type: string
+        schema:
+          example: "Example curl --location --request POST 'http://dev.fc.l/app/casb/deleteshare?shareid=5df3e749aec70822b8001791' \
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'"        
+      responses:
+        "200":
+          description: Success 200
+          schema:
+            type: string
+            example: {ok: True}
+  /app/casb/getuserinformation:
+    post:
+      tags:
+      - casb
+      summary: Share_Related_API - This api call is used get information about a user
+      description: This API allows you to get information about a user (HTTP POST)
+      operationId: getuserinformation
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/JSON
+      parameters:
+      - name: user_id
+        in: query
+        description: id of the user who's infomation needs to be retrived
+        required: true
+        type: string
+        schema:
+          example: "Example curl --location --request POST 'http://dev.fc.l/app/casb/getuserinformation?user_id=usr' \
+--header 'Authorization: 7cCtfh8IsnOyJQpWJG6XYjiMZhCEdrnC'"        
+      responses:
+        200:
+          description: Success 200
+          schema:
+            type: string
+            example: {
+                     ok: true,
+                     data: {
+                     user_information: {
+                     user_id: usr,
+                     email: usrtest@test.com,
+                     name: Usr Display Name
+                     }
+                     }
+                    }          
+definitions:
+  commands:
+    type: object
+    properties:
+      command:
+        $ref: '#/definitions/commands_command'
+  entries:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/entries_meta'
+      entry:
+        $ref: '#/definitions/entries_entry'
+  fileinfo:
+    type: object
+    properties:
+      entry:
+        $ref: '#/definitions/fileinfo_entry'
+  permissions:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/permissions_meta'
+      permission:
+        $ref: '#/definitions/permissions_permission'
+  folderproperties:
+    type: object
+    properties:
+      usage:
+        $ref: '#/definitions/folderproperties_usage'
+  searchterms:
+    type: object
+    properties:
+      searchterm:
+        $ref: '#/definitions/searchterms_searchterm'
+  config:
+    type: object
+    properties:
+      setting:
+        $ref: '#/definitions/config_setting'
+  groups:
+    type: object
+    properties:
+      group:
+        $ref: '#/definitions/groups_group'
+  shares:
+    type: object
+    properties:
+      share:
+        $ref: '#/definitions/shares_share'
+  activeshares:
+    type: object
+    properties:
+      activeshare:
+        $ref: '#/definitions/activeshares_activeshare'
+  shareactivities:
+    type: object
+    properties:
+      shareactivity:
+        $ref: '#/definitions/shareactivities_shareactivity'
+  users:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/users_meta'
+      user:
+        $ref: '#/definitions/users_user'
+  searchgroups:
+    type: object
+    properties:
+      groups:
+        $ref: '#/definitions/searchgroups_groups'
+  profiles:
+    type: object
+    properties:
+      profile:
+        $ref: '#/definitions/profiles_profile'
+  comments:
+    type: object
+    properties:
+      comment:
+        $ref: '#/definitions/comments_comment'
+  results:
+    type: object
+    properties:
+      comment:
+        $ref: '#/definitions/results_result'
+  versions:
+    type: object
+    properties:
+      version:
+        $ref: '#/definitions/versions_version'
+  systemstatus:
+    type: object
+    properties:
+      status:
+        $ref: '#/definitions/systemstatus_status'
+  authenticationinfo:
+    type: object
+    properties:
+      info:
+        $ref: '#/definitions/authenticationinfo_info'
+  acls:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/acls_meta'
+  rmc_commands:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/rmc_commands_meta'
+      rmc_command:
+        $ref: '#/definitions/rmc_commands_rmc_command'
+  rmc_clients:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/rmc_clients_meta'
+      rmc_client:
+        $ref: '#/definitions/rmc_clients_rmc_client'
+  emailstatus:
+    type: object
+    properties:
+      status:
+        $ref: '#/definitions/emailstatus_status'
+  languages:
+    type: object
+    properties:
+      language:
+        $ref: '#/definitions/languages_language'
+  favoritelists:
+    type: object
+    properties:
+      favoritelist:
+        $ref: '#/definitions/favoritelists_favoritelist'
+  notificationstreams:
+    type: object
+    properties:
+      notificationstream:
+        $ref: '#/definitions/notificationstreams_notificationstream'
+  toasts:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/toasts_meta'
+      toast:
+        $ref: '#/definitions/toasts_toast'
+  searchgroups_groups:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/searchgroups_groups_meta'
+      group:
+        $ref: '#/definitions/searchgroups_groups_group'
+  shortcuts:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/shortcuts_meta'
+      shortcut:
+        $ref: '#/definitions/shortcuts_shortcut'
+  settings:
+    type: object
+    properties:
+      profilesettings:
+        $ref: '#/definitions/settings_profilesettings'
+  locks:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/locks_meta'
+      shortcut:
+        $ref: '#/definitions/locks_lock'
+  filelockinfos:
+    type: object
+    properties:
+      filelockinfo:
+        $ref: '#/definitions/filelockinfos_filelockinfo'
+  metadatasets:
+    type: object
+    properties:
+      meta:
+        $ref: '#/definitions/metadatasets_meta'
+      metadataset:
+        $ref: '#/definitions/metadatasets_metadataset'
+  activities:
+    type: object
+    properties:
+      activitystreamrecord:
+        $ref: '#/definitions/activities_activitystreamrecord'
+  commands_command:
+    type: object
+    properties:
+      type:
+        type: string
+        example: opname
+        description: apiname
+      result:
+        type: integer
+        example: '{0|1}'
+        description: whether success or failure
+      message:
+        type: string
+        example: ''
+        description: OPTIONAL ERROR STRING or SUCCESS MESSAGE
+  entries_meta:
+    type: object
+    properties:
+      id:
+        type: string
+        example: 597e55127bd96f6bf868086c
+        description: Search ID value
+      status:
+        type: string
+        example: COMPLETE
+        description: Status of search process
+      statusmessage:
+        type: string
+        example: No error message
+        description: Status message
+      totalmatch:
+        type: string
+        example: "69"
+        description: Total match
+      total:
+        type: string
+        example: "69"
+        description: Total number of records
+      completedtime:
+        type: string
+        example: "1501451539"
+        description: Time taken to complete the search
+      location:
+        type: string
+        example: ""
+        description: Search location
+      searchstring:
+        type: string
+        example: doc
+        description: Search string
+      minsize:
+        type: string
+        example: "0"
+        description: Max size value
+      maxsize:
+        type: string
+        example: "0"
+        description: Min size value
+      modifiedstart:
+        type: string
+        example: ""
+        description: The value in date format, the search will show files that was created on and after the date mentioned
+      modifiedend:
+        type: string
+        example: ""
+        description: The value in date format, the search will show files that was created before the date mentioned
+  entries_entry:
+    type: object
+    properties:
+      path:
+        type: string
+        example: /apptester/Docs
+        description: path of file / folder
+      dirpath:
+        type: string
+        example: /apptester
+        description: Directory path
+      name:
+        type: string
+        example: Docs
+        description: Folder / file name
+      ext:
+        type: string
+        example: ""
+        description: extension of the file
+      fullsize:
+        type: string
+        example: "0"
+        description: Full size is set to 0 for folder
+      modified:
+        type: string
+        example: ""
+        description: set when modified
+      type:
+        type: string
+        example: dir
+        description: type can be dir/file
+      fullfilename:
+        type: string
+        example: /apptester/Docs
+        description: Full file/folder name
+      size:
+        type: string
+        example: ""
+        description: size of the folder
+      modifiedpoch:
+        type: string
+        example: ""
+        description: set when modified
+      isroot:
+        type: number
+        example: 0.0
+        description: whether it can be the root directory or not
+      isshareable:
+        type: number
+        example: 1.0
+        description: whether it can be shareable or not
+      issyncable:
+        type: number
+        example: 1.0
+        description: whether it can be syncable or not
+      isshared:
+        type: number
+        example: ""
+        description: whether it is shared or not
+      canrename:
+        type: number
+        example: 1.0
+        description: whether the files/ folders can be renamed or not
+      showprev:
+        type: number
+        example: 1.0
+        description: whether show preview is set or not
+      canfavorite:
+        type: number
+        example: 1.0
+        description: whether it can be added in favorites or not
+      canupload:
+        type: number
+        example: 597e55127bd96f6bf868086c
+        description: whether it can upload or not
+      candownload:
+        type: number
+        example: 1.0
+        description: whether it can download or not
+      favoritelist:
+        type: number
+        example: 0.0
+        description: favorite id list name
+      favoriteid:
+        type: number
+        example: 0.0
+        description: favorite id of the folder
+      order:
+        type: number
+        example: 0.0
+        description: whether in order or not
+      showquickedit:
+        type: number
+        example: 1.0
+        description: Quick edit option enabled
+      showlockunlock:
+        type: number
+        example: 1.0
+        description: Locking / Unclock enabled
+      showshareoption:
+        type: number
+        example: 0.0
+        description: Sharing options enabled
+      cansetacls:
+        type: number
+        example: 0.0
+        description: 0 - Cannot set Folder Permissions 1 - Can set Folder Permissions
+      validity:
+        type: number
+        example: VALID
+        description: Value will be Valid / Unvalid
+      userfullpath:
+        type: number
+        example: My Files/Docs
+        description: FileCloud Specify path value
+      tagged:
+        type: number
+        example: 0.0
+        description: whether tagged or not
+      commented:
+        type: number
+        example: 0.0
+        description: whether file/folder is commented or not
+      isreshared:
+        type: number
+        example: 0.0
+        description: if file/folder is shared again
+      canmanageshare:
+        type: number
+        example: 0.0
+        description: Able to manage shares
+      locked:
+        type: number
+        example: 0.0
+        description: file/folder is locked or not
+  fileinfo_entry:
+    type: object
+    properties:
+      path:
+        type: string
+        example: ""
+        description: path of file / folder
+      dirpath:
+        type: integer
+        example: ""
+        description: Directory path
+      name:
+        type: string
+        example: favicon.ico
+        description: Folder / file name
+      ext:
+        type: string
+        example: ico
+        description: extension if any set
+      fullsize:
+        type: number
+        example: 1150.0
+        description: Full size is set to 0
+      modified:
+        type: string
+        example: Jan 31, 2018 1:12:21 PM
+        description: set when modified
+      type:
+        type: string
+        example: file
+        description: type can be dir/file
+      fullfilename:
+        type: number
+        example: ""
+        description: Full file/folder name
+      size:
+        type: string
+        example: 1 KB
+        description: OPTIONAL ERROR STRING or SUCCESS MESSAGE
+      modifiedepoch:
+        type: string
+        example: "1517404341"
+        description: set when modified
+      modifiediso:
+        type: string
+        example: 2018-01-31T13:12:21+0000
+        description: specifies modified date and time
+      isroot:
+        type: number
+        example: 0.0
+        description: whether it can be the root directory or not
+      isshareable:
+        type: number
+        example: 0.0
+        description: whether it can be shareable or not
+      issyncable:
+        type: number
+        example: 0.0
+        description: whether it can be syncable or not
+      isshared:
+        type: number
+        example: ""
+        description: whether it is shared or not
+      canrename:
+        type: number
+        example: 0.0
+        description: whether the files/ folders can be renamed or not
+      showprev:
+        type: number
+        example: 0.0
+        description: whether show preview is set or not
+      canfavorite:
+        type: number
+        example: 0.0
+        description: whether it can be added in favorites or not
+      canupload:
+        type: number
+        example: 0.0
+        description: whether it can upload or not
+      candownload:
+        type: number
+        example: 0.0
+        description: whether it can download or not
+      favoritelistid:
+        type: number
+        example: 0.0
+        description: favorite id list name
+      favoriteid:
+        type: number
+        example: 0.0
+        description: favorite id of the folder
+      order:
+        type: number
+        example: 0.0
+        description: whether in order or not
+      showquickedit:
+        type: number
+        example: 1.0
+        description: Quick edit option enabled
+      showlockunlock:
+        type: number
+        example: 1.0
+        description: Locking / Unclock enabled
+      showshareoption:
+        type: number
+        example: 1.0
+        description: Sharing options enabled
+      cansetacls:
+        type: number
+        example: 1.0
+        description: specifies if Security folder permission can be set or no
+      disallowpreviewdownload:
+        type: number
+        example: 0.0
+        description: preview download enabled or disabled
+  permissions_meta:
+    type: object
+    properties:
+      message:
+        type: string
+        example: ""
+        description: any additional information
+  permissions_permission:
+    type: object
+    properties:
+      read:
+        type: string
+        example: "1"
+        description: 1 - set, 0 - not set
+      write:
+        type: string
+        example: "1"
+        description: 1 - set, 0 - not set
+      share:
+        type: string
+        example: "0"
+        description: 1 - set, 0 - not set
+      sync:
+        type: string
+        example: "0"
+        description: 1 - set, 0 - not set
+      issharedtoyou:
+        type: string
+        example: "1"
+        description: 1 - shared, 0 - not shared
+      shareowner:
+        type: string
+        example: sam
+        description: Share owner name
+      emailnotifications:
+        type: string
+        example: "0"
+        description: ""
+  folderproperties_usage:
+    type: object
+    properties:
+      totalfolders:
+        type: number
+        example: 9.0
+        description: Total number of folders
+      totalfiles:
+        type: number
+        example: 112.0
+        description: Total number of files
+      totalsize:
+        type: string
+        example: 755.53 MB
+        description: Overall size of all folders and files
+      versionedsize:
+        type: string
+        example: 8.07 MB
+        description: Total size of all versioned files
+      versionedfiles:
+        type: string
+        example: "10"
+        description: Number of versioned files
+      livefiles:
+        type: string
+        example: "101"
+        description: Number of live files
+      livefolders:
+        type: string
+        example: "8"
+        description: Number of live folders
+      livesize:
+        type: string
+        example: 747.45 MB
+        description: Total size of all live folders and files
+  searchterms_searchterm:
+    type: object
+    properties:
+      term:
+        type: string
+        example: doc
+        description: Search term
+  config_setting:
+    type: object
+    properties:
+      param:
+        type: string
+        example: CUSTOMIZATION_EMAIL_SUBJECT_addusertoshare
+        description: Email Template Name
+      value:
+        type: string
+        example: robert has shared files with you
+        description: Subject value
+  groups_group:
+    type: object
+    properties:
+      groupid:
+        type: string
+        example: 55a77131dc78c18c1d000030
+        description: Group id number
+      groupname:
+        type: string
+        example: EVERYONE
+        description: Name of group
+      read:
+        type: string
+        example: "true"
+        description: True if set, False if not set
+      write:
+        type: string
+        example: "true"
+        description: True if set, False if not set
+      sync:
+        type: string
+        example: "false"
+        description: True if set, False if not set
+      share:
+        type: string
+        example: "false"
+        description: True if set, False if not set
+      download:
+        type: string
+        example: "true"
+        description: True if set, False if not set
+      disallowdelete:
+        type: string
+        example: Disallows delete operation
+        description: True if set, False if not set
+      allowmanage:
+        type: string
+        example: Allows manage share
+        description: True if set, False if not set
+  shares_share:
+    type: object
+    properties:
+      shareid:
+        type: string
+        example: 55a77131dc78c18c1d000030
+        description: Share id number
+      sharename:
+        type: string
+        example: EVERYONE
+        description: Name of the Share
+      sharelocation:
+        type: string
+        example: /john/Folder name
+        description: Location of the shared file
+      readablelocation:
+        type: string
+        example: My Files/Folder name
+        description: Readable location of the shared file
+      shareurl:
+        type: string
+        example: Share URL
+        description: URL of the shared file
+      viewmode:
+        type: string
+        example: ""
+        description: Set if user sets any view mode
+      validityperiod:
+        type: string
+        example: validityperiod
+        description: Expiry date of share
+      sharesizelimit:
+        type: string
+        example: "0"
+        description: Size limit of share
+      maxdownloads:
+        type: string
+        example: "0"
+        description: Maximum download limit is set
+      downloadcount:
+        type: string
+        example: "0"
+        description: No. of time the file has been downloaded
+      viewsize:
+        type: string
+        example: "0"
+        description: Specifies view size
+      thumbsize:
+        type: string
+        example: "0"
+        description: Specifies thumb size
+      allowpublicaccess:
+        type: string
+        example: "1"
+        description: Whether is to allow public access or not
+      allowpublicupload:
+        type: string
+        example: "0"
+        description: Whether is to allow public upload or not
+      allowpublicviewonly:
+        type: string
+        example: "0"
+        description: Whether is to allow public view only or not
+      allowpublicuploadonly:
+        type: string
+        example: "1"
+        description: Whether is to allow public upload only or not
+      isdir:
+        type: string
+        example: "0"
+        description: Whether is directory or not
+      isvalid:
+        type: string
+        example: "1"
+        description: Whether is valid or not
+      createddate:
+        type: string
+        example: 06 Nov 2014 02:43:18 PM
+        description: Created date of share
+      createdts:
+        type: string
+        example: "1438352689"
+        description: Created date of share
+      allowedit:
+        type: string
+        example: "1"
+        description: Whether to allow to edit or not
+      allowdelete:
+        type: string
+        example: "1"
+        description: Whether to allow to delete or not
+      allowsync:
+        type: string
+        example: "1"
+        description: Whether to allow to sync or not
+      allowshare:
+        type: string
+        example: "1"
+        description: Whether to allow share or not
+      shareowner:
+        type: string
+        example: Share Owner name
+        description: Share owner name
+      hidenotifications:
+        type: string
+        example: "1"
+        description: Disable or enable email notification
+      ispublicsecure:
+        type: string
+        example: "1"
+        description: Verify if share ensures public protection
+      defaultfile:
+        type: string
+        example: ""
+        description: Verify if shared file if default type
+      lastaccessdts:
+        type: string
+        example: "1540553400"
+        description: Last accessed date
+      lastaccess:
+        type: string
+        example: 1 minute ago
+        description: Gives information when the share was last accessed
+      recentactivitycount:
+        type: string
+        example: "0"
+        description: Count of the recent activities done
+  activeshares_activeshare:
+    type: object
+    properties:
+      sharename:
+        type: string
+        example: Sales Document
+        description: Share Name
+      accesspath:
+        type: string
+        example: My Files/samsung/Sales Document
+        description: Share Location
+      lastaccess:
+        type: string
+        example: 1 week ago
+        description: Gives information when the share was last accessed
+      visits:
+        type: string
+        example: "26"
+        description: Number of times the share was visited by another users
+  shareactivities_shareactivity:
+    type: object
+    properties:
+      shareid:
+        type: string
+        example: 5a73428d421aa92c12582ae3
+        description: Share Id Number
+      path:
+        type: integer
+        example: Network Shares/Documents/Material List
+        description: Share Location
+      name:
+        type: string
+        example: 4235458_REPAYMENT.pdf
+        description: Name of the file
+      actioncode:
+        type: string
+        example: "1"
+        description: Action-code says the operation performed on the file/folder
+      who:
+        type: string
+        example: James
+        description: The username who modified the shared content
+      when:
+        type: string
+        example: 4 hours ago
+        description: Time when the modification was done
+      how:
+        type: string
+        example: Web browser
+        description: Using which client it was done
+      ip:
+        type: string
+        example: 27.5.114.230
+        description: IP Address
+  users_meta:
+    type: object
+    properties:
+      ispublic:
+        type: string
+        example: "0"
+        description: Is the share public or not
+  users_user:
+    type: object
+    properties:
+      name:
+        type: string
+        example: amy@codelathe.com
+        description: Name of the user
+      read:
+        type: string
+        example: "true"
+        description: True if set, False if not set
+      write:
+        type: string
+        example: "false"
+        description: True if set, False if not set
+      sync:
+        type: string
+        example: "false"
+        description: True if set, False if not set
+      share:
+        type: string
+        example: "true"
+        description: True if set, False if not set
+      download:
+        type: string
+        example: "true"
+        description: True if set, False if not set
+  searchgroups_groups_meta:
+    type: object
+    properties:
+      total:
+        type: string
+        example: "1"
+        description: Total number of groups
+  searchgroups_groups_group:
+    type: object
+    properties:
+      groupid:
+        type: string
+        example: 55a77131dc78c18c1d000030
+        description: Group Id Number
+      groupname:
+        type: string
+        example: EVERYONE
+        description: Name of the group
+      emailid:
+        type: string
+        example: ""
+        description: Group Email ID
+      createdon:
+        type: string
+        example: 2015-Jul-16 02:07:09
+        description: Created On Date and Time
+      autosyncgroup:
+        type: string
+        example: ""
+        description: 1 - set, 0 - notset
+      everyonegroup:
+        type: string
+        example: "1"
+        description: 1 - everyonegroup 0 - not everyonegroup
+      removemembersonsync:
+        type: string
+        example: "0"
+        description: 0|1, 1 - remove AD users automatically from group when it is removed from AD group
+  profiles_profile:
+    type: object
+    properties:
+      userid:
+        type: string
+        example: sam
+        description: Profile Name
+      username:
+        type: string
+        example: sam
+        description: User Name
+      emailid:
+        type: string
+        example: sam@codelathe.com
+        description: User Email ID
+      displayname:
+        type: string
+        example: sam
+        description: Display Name
+      sizelimit:
+        type: string
+        example: "2147483648"
+        description: Total size quota
+      hasprofileimage:
+        type: string
+        example: ""
+        description: Checks if user has profile image
+  rmc_clients_meta:
+    type: object
+    properties:
+      total:
+        type: string
+        example: "4"
+        description: Total number of rmc clients
+  rmc_clients_rmc_client:
+    type: object
+    properties:
+      rid:
+        type: string
+        example: 57be88bae68883fc09000032
+        description: RMC Id number
+      remote_client_id:
+        type: integer
+        example: 593d73b8-12bc-4411-ab2a-fcc6f6f4b9c1
+        description: The unique identifier for the client device
+      remote_client_api_level:
+        type: string
+        example: "4"
+        description: The api-level is 4 (latest required client api-level is 4)
+      remote_client_disp_name:
+        type: string
+        example: file2meDrive (DELL)
+        description: The client device name
+      remote_client_os_type:
+        type: string
+        example: Windows 8/Server 2012
+        description: The client device OS type
+      remote_client_app_version:
+        type: string
+        example: 13.89.0.32427
+        description: The client app version
+      remote_client_os_version:
+        type: string
+        example: 6.2 (Build 9200)
+        description: The device OS version
+      isblocked:
+        type: string
+        example: "0"
+        description: 1|0 - Client device blocked or allowed to login
+      remote_client_last_login:
+        type: string
+        example: 2016-08-25 00:57:14
+        description: The last login date and time of client
+      userid:
+        type: string
+        example: robert
+        description: User name
+      pending_actions_count:
+        type: string
+        example: "0"
+        description: Number of commands pending to be executed on client
+      remote_client_status:
+        type: string
+        example: "10"
+        description: 0|1|2 Default | Waiting for Approval | Approved
+      server_code:
+        type: string
+        example: 8641f85613c80de50cefcb229eeed0b37e15d868
+        description: Server Code
+  rmc_commands_meta:
+    type: object
+    properties:
+      total:
+        type: string
+        example: "4"
+        description: Total number of rmc commands
+  rmc_commands_rmc_command:
+    type: object
+    properties:
+      rid:
+        type: string
+        example: 55c0a896dc78c18004000044
+        description: Rmc Id number
+      remote_command_id:
+        type: string
+        example: "10000"
+        description: Remote Command Id number
+      remote_client_id:
+        type: string
+        example: 5055C1CE-0EEA-4D39-AF7C-01B5968FAB2D-996-0000023191C01A53
+        description: Remote Client Id number
+      message:
+        type: string
+        example: helllloooooooooooooooo
+        description: Message information for that device
+      userid:
+        type: string
+        example: ""
+        description: user information
+  acls_meta:
+    type: object
+    properties:
+      aclid:
+        type: string
+        example: 57a4d58be68883f81100004e
+        description: Search term
+      createddate:
+        type: string
+        example: Aug 5, 2016 1:06 PM
+        description: Search term
+      createdts:
+        type: string
+        example: "1470420363"
+        description: Search term
+      path:
+        type: string
+        example: /robert/samplefolder
+        description: Search term
+      inherit:
+        type: string
+        example: "1"
+        description: Search term
+      usercount:
+        type: string
+        example: "1"
+        description: Search term
+      groupcount:
+        type: string
+        example: "1"
+        description: Search term
+  authenticationinfo_info:
+    type: object
+    properties:
+      profile:
+        type: string
+        example: jammy
+        description: Profile Name
+      displayname:
+        type: string
+        example: jammy
+        description: Display Name
+      peerid:
+        type: string
+        example: jammy
+        description: User name
+      authenticated:
+        type: number
+        example: 1.0
+        description: whether is authenticated or not
+      isguestauthenticated:
+        type: number
+        example: 1.0
+        description: whether is guest authenticated or not
+      hash:
+        type: string
+        example: sha1
+        description: hash value
+      guesthash:
+        type: string
+        example: sha1
+        description: guest hash value
+      guesthashurl:
+        type: string
+        example: ""
+        description: guest hash url value
+      isremote:
+        type: number
+        example: 0.0
+        description: whether is remote or not
+      reasoncode:
+        type: number
+        example: 0.0
+        description: whether reason code set or not
+      OS:
+        type: string
+        example: TONIDO_CLOUD
+        description: always set TONIDO_ClOUD
+      authtype:
+        type: string
+        example: DEFAULT
+        description: specifies the authentication type (DEFAULT | AD | LDAP)
+      enablesaml:
+        type: string
+        example: "0"
+        description: 1|0 specifies whether SAML is enabled or no
+      userlevel:
+        type: string
+        example: FULL
+        description: specifies users access level (FULL | GUEST | LIMITED)
+      userauthtype:
+        type: string
+        example: DEFAULT
+        description: specifies users authentication type (DEFAULT | AD | LDAP)
+  usage:
+    type: object
+    properties:
+      storageusage:
+        type: string
+        example: 755.53 MB
+        description: Used Storage size
+      sizelimit:
+        type: string
+        example: 2 GB
+        description: Total Storage size
+      usagepercent:
+        type: string
+        example: "37"
+        description: Used Storage in percentile
+      totalfolders:
+        type: number
+        example: 37.0
+        description: Total number of folders
+      totalfiles:
+        type: number
+        example: 37.0
+        description: Total number of files
+      totalsize:
+        type: number
+        example: 37.0
+        description: Used Storage in percentile
+      versionedsize:
+        type: string
+        example: "37"
+        description: Total size of all versioned files
+      versionedfiles:
+        type: string
+        example: "37"
+        description: Number of versioned files
+      livefiles:
+        type: string
+        example: "37"
+        description: Number of live files
+      livefolders:
+        type: number
+        example: 37.0
+        description: Number of live folders
+      livesize:
+        type: number
+        example: 37.0
+        description: Total size of all live folders and files
+      recyclefolders:
+        type: string
+        example: "37"
+        description: Number of Recycle Folder
+      recyclefiles:
+        type: string
+        example: "37"
+        description: Number of files in Recycle Folder
+      recyclesize:
+        type: string
+        example: "37"
+        description: Total size of Recycle Folder
+  languages_language:
+    type: object
+    properties:
+      name:
+        type: string
+        example: english
+        description: Name of the Language
+      current:
+        type: integer
+        example: 1
+        description: 0 - Language not set | 1 - Language Set
+  systemstatus_status:
+    type: object
+    properties:
+      appversion:
+        type: number
+        example: 7.0.0.27480
+        description: Name of the Language
+      sdkversion:
+        type: integer
+        example: 0.1.0.0
+        description: 0 - Language not set | 1 - Language Set
+      baseversion:
+        type: number
+        example: 17154.0
+        description: Name of the Language
+      apilevel:
+        type: integer
+        example: 1
+        description: 0 - Language not set | 1 - Language Set
+      peerid:
+        type: number
+        example: jammy
+        description: Name of the Language
+      displayname:
+        type: integer
+        example: jammy
+        description: 0 - Language not set | 1 - Language Set
+      OS:
+        type: number
+        example: TONIDO_CLOUD
+        description: Name of the Language
+      oem:
+        type: integer
+        example: ""
+        description: 0 - Language not set | 1 - Language Set
+      needsupdate:
+        type: number
+        example: 0.0
+        description: Name of the Language
+      iscritical:
+        type: integer
+        example: 0
+        description: 0 - Language not set | 1 - Language Set
+      autoupdate:
+        type: number
+        example: 0.0
+        description: Name of the Language
+      needspluginupdate:
+        type: integer
+        example: 0
+        description: 0 - Language not set | 1 - Language Set
+      iscriticalpluginupdate:
+        type: number
+        example: 0.0
+        description: Name of the Language
+      currentprofile:
+        type: integer
+        example: jammy
+        description: 0 - Language not set | 1 - Language Set
+      numpeersonline:
+        type: number
+        example: 0.0
+        description: Name of the Language
+      uptime:
+        type: integer
+        example: 0
+        description: 0 - Language not set | 1 - Language Set
+      httpport:
+        type: number
+        example: 80.0
+        description: Name of the Language
+      udpport:
+        type: integer
+        example: 0
+        description: 0 - Language not set | 1 - Language Set
+  versions_version:
+    type: object
+    properties:
+      total:
+        type: number
+        example: 10.0
+        description: Total no. of versions available of a file
+      version:
+        $ref: '#/definitions/versions_version_version'
+  results_result:
+    type: object
+    properties:
+      city:
+        type: string
+        example: Dallas
+        description: Specifies the location name
+      latitude:
+        type: string
+        example: "19.1167"
+        description: Gives the latitude information
+      longitude:
+        type: string
+        example: "72.8333"
+        description: Gives the longitude information
+  comments_comment:
+    type: object
+    properties:
+      id:
+        type: string
+        example: 553f4fac5cbcd704090000a4
+        description: Id number of the comment added
+      who:
+        type: string
+        example: darsh
+        description: Who added the comment to that file/folder
+      when:
+        type: string
+        example: 2015-Apr-28 04:15:24
+        description: Time and date the comment was added on the file/folder
+      text:
+        type: string
+        example: hellooooo
+        description: Add comment here
+  emailstatus_status:
+    type: object
+    properties:
+      status:
+        type: string
+        example: "1"
+        description: 0 - fail to send | 1 - sent
+      reason:
+        type: string
+        example: ""
+        description: Reason of failure
+  favoritelists_favoritelist:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "2"
+        description: Id number of favorite list
+      name:
+        type: string
+        example: one
+        description: Favorite list name
+      parentid:
+        type: number
+        example: -1.0
+        description: always set to -1
+      type:
+        type: string
+        example: favorite
+        description: type of favorite list
+      count:
+        type: number
+        example: 2.0
+        description: No. of favorites in list
+  notificationstreams_notificationstream:
+    type: object
+    properties:
+      path:
+        type: string
+        example: My Files/Pictures/image003.jpg
+        description: File / Folder Location
+      dirpath:
+        type: string
+        example: /tester/Pictures1
+        description: Filecloud specific path
+      name:
+        type: string
+        example: image003.jpg
+        description: Name of the file
+      actioncode:
+        type: string
+        example: "3"
+        description: Action-code says the operation performed on the file/folder
+      who:
+        type: string
+        example: usera
+        description: The username who modified the shared content
+      whodisplayname:
+        type: string
+        example: usera
+        description: Display name of the user
+      hasprofileimage:
+        type: string
+        example: "1"
+        description: Profile image of the user
+      when:
+        type: string
+        example: 6 hours ago
+        description: Time when the modification was done
+      how:
+        type: string
+        example: Web browser
+        description: Using which client it was done
+      ip:
+        type: string
+        example: 27.4.81.181
+        description: IP address
+  toasts_meta:
+    type: object
+    properties:
+      total:
+        type: string
+        example: "1"
+        description: Total number of toasts_meta
+  toasts_toast:
+    type: object
+    properties:
+      toastrid:
+        type: string
+        example: 55c0a896dc78c18004000044
+        description: ID value
+      creater:
+        type: string
+        example: Someone
+        description: Username of the user who caused the notification
+      link:
+        type: string
+        example: 'https://abc.company.com/ui/core/index.html?#expl-tabl.%2Fapptester%2FDocs%2FSample '
+        description: Sharelink
+      path:
+        type: string
+        example: /apptester/Docs/Sample/doc4.docx
+        description: Path Value
+      name:
+        type: string
+        example: doc4.docx
+        description: Name of the file
+      ext:
+        type: string
+        example: docx
+        description: File extension
+      dirpath:
+        type: string
+        example: /apptester/Docs/Charlet/Sample
+        description: Directory path
+      displaydirpath:
+        type: string
+        example: My Files/Docs/Charlet/Sample
+        description: FileCloud Specific directory path
+      messagetype:
+        type: string
+        example: file
+        description: Message type
+      type:
+        type: string
+        example: "0"
+        description: Notification type
+      message:
+        type: string
+        example: Someone added file doc4.docx
+        description: Notification message
+      alreadyread:
+        type: string
+        example: "1"
+        description: Notification status 1 - already read, 0 - unread
+      createrhasimage:
+        type: string
+        example: "0"
+        description: User's profile image who caused the notification
+      createrdisplayname:
+        type: string
+        example: Someone
+        description: User's display name who caused the notification
+      when:
+        type: string
+        example: 2017-Jul-20 12:59:51
+        description: Date and time the notification was initiated.
+  getuserconsent:
+    type: object
+    properties:
+      showdialog:
+        type: string
+        example: "1"
+        description: 1 - show user consent dialog, 0 - do not show the dialog
+      consent:
+        type: string
+        example: Information
+        description: User consent message
+  shortcuts_meta:
+    type: object
+    properties:
+      total:
+        type: string
+        example: "1"
+        description: Total number of shortcuts
+  shortcuts_shortcut:
+    type: object
+    properties:
+      rid:
+        type: string
+        example: 55c0a896dc78c18004000044
+        description: ID
+      name:
+        type: string
+        example: SampleDocs
+        description: Name of the Folder
+      owner:
+        type: string
+        example: tester
+        description: Owner Name
+      readablevalue:
+        type: string
+        example: My Files/Folder1/SampleDocs
+        description: FileCloud Specific Path Value
+      value:
+        type: string
+        example: doc4.docx
+        description: Name of the file
+      type:
+        type: string
+        example: "0"
+        description: Shortcut type
+      when:
+        type: string
+        example: 2017-Jul-25 15:15:45
+        description: Date and Time when the shortcut was added
+  profilecreation_profilecreationrecord:
+    type: object
+    properties:
+      creation:
+        type: string
+        example: "1"
+        description: Set to 1 if profile creation enabled
+      domain:
+        type: string
+        example: tonidoid.com
+        description: Set to tonidoid.com
+      creationallowed:
+        type: string
+        example: "1"
+        description: 0|1 - Profile Creation Disabled or Enabled
+      reason:
+        type: string
+        example: ""
+        description: Reason if profile creation disabled
+      savepassword:
+        type: string
+        example: "0"
+        description: Whether password should be saved
+  settings_profilesettings:
+    type: object
+    properties:
+      nickname:
+        type: string
+        example: robert
+        description: Nick name of the profile
+      peerid:
+        type: string
+        example: robert
+        description: Peer Id
+      profileroot:
+        type: string
+        example: ""
+        description: ""
+      location:
+        type: string
+        example: ""
+        description: ""
+      displayname:
+        type: string
+        example: rob
+        description: Displayname of the user
+      email:
+        type: string
+        example: rob@sample.com
+        description: Email Id of the user
+      secretqn:
+        type: string
+        example: What is your favorite color
+        description: Secret question
+      secretans:
+        type: string
+        example: Green
+        description: Secret answer to the secret question
+      hint:
+        type: string
+        example: tree
+        description: Hint for the secret answer
+      dateformat:
+        type: string
+        example: ""
+        description: Format of the date
+      isremote:
+        type: string
+        example: "1"
+        description: ""
+      profileuserdatadir:
+        type: string
+        example: ""
+        description: ""
+      emailverifytag:
+        type: string
+        example: 594505e-6612-46e4-b56b-a498d3b8dac5
+        description: Email Verified Tag Value
+  locks_meta:
+    type: object
+    properties:
+      total:
+        type: string
+        example: "1"
+        description: Total number of locks in a system
+  locks_lock:
+    type: object
+    properties:
+      lockrid:
+        type: string
+        example: 5537464efce8477c0900002f
+        description: id number of lock
+      lockuserid:
+        type: string
+        example: jammy
+        description: name of the user, who locked that file/folder
+      lockpath:
+        type: string
+        example: /usera/City Temperatures.xls
+        description: path of the file/folder locked
+      lockexpiration:
+        type: string
+        example: ""
+        description: if any expiration date set for a locked file/folder
+      lockreadlock:
+        type: string
+        example: "1"
+        description: 1 - restrict download
+  filelockinfos_filelockinfo:
+    type: object
+    properties:
+      locked:
+        type: string
+        example: "1"
+        description: 0 - Unlocked | 1 - Locked
+      readlock:
+        type: string
+        example: "0"
+        description: 0 | 1 Download disabled or enabled when file/folder locked
+      lockedby:
+        type: string
+        example: robert
+        description: Lock owner name
+  metadatasets_meta:
+    type: object
+    properties:
+      total:
+        type: string
+        example: "1"
+        description: Total number of metadata sets
+  metadatasets_metadataset:
+    type: object
+    properties:
+      id:
+        type: string
+        example: 5ad47e3c7ec11b00d000658c
+        description: Metadata Set id
+      name:
+        type: string
+        example: Default
+        description: Metadata Set Name
+      description:
+        type: string
+        example: Default metadata set definition will be automatically bound to every single File and Folder.
+        description: Metadata Set Description
+      type:
+        type: string
+        example: "2"
+        description: Attribute type (ex:integer,text,etc.)
+      disabled:
+        type: string
+        example: ""
+        description: Disable Metadata set
+      allowallpaths:
+        type: string
+        example: ""
+        description: Metadata will be available for all paths
+      attribute0_attributeid:
+        type: string
+        example: 5af84c437ec11b11b8005084
+      attribute0_name:
+        type: string
+        example: Marketing
+      attribute0_description:
+        type: string
+        example: Tag for Marketing
+      attribute0_type:
+        type: string
+        example: "1"
+      attribute0_defaultvalue:
+        type: string
+        example: Presentation
+      attribute0_required:
+        type: string
+        example: ""
+      attribute0_disabled:
+        type: string
+        example: ""
+      attributes_total:
+        type: string
+        example: "1"
+        description: Total number of attributes
+  activities_activitystreamrecord:
+    type: object
+    properties:
+      path:
+        type: string
+        example: /darsh/Club hits
+        description: Specify path for which you want to get the activity list
+      isfile:
+        type: string
+        example: "0"
+        description: 0 - path specified is a folder, 1 - specified path is a file
+      parent:
+        type: string
+        example: //darsh
+        description: Parent path of path specified
+      actioncode:
+        type: string
+        example: "0"
+        description: Action-code says the operation performed on the file/folder
+      who:
+        type: string
+        example: darsh
+        description: Who performed the operation on that file/folder
+      when:
+        type: string
+        description: Time and date the operation was performed on the file/folder
+  versions_version_version:
+    type: object
+    properties:
+      versionnumber:
+        type: number
+        example: Version no.
+        description: version number of the file
+      size:
+        type: string
+        example: Size of the file
+        description: size of file
+      how:
+        type: string
+        example: Agent
+        description: Agent used to upload the file
+      createdon:
+        type: string
+        example: 2014-Nov-03 09:11:13
+        description: file created on date
+      createdby:
+        type: string
+        example: jammy
+        description: Created user's name
+      filename:
+        type: string
+        example: New.txt
+        description: File name
+      sizeinbytes:
+        type: string
+        example: ""
+        description: size of file in bytes
+      fileid:
+        type: string
+        example: 543e12675cbcd7a822000037.
+        description: File id no.
