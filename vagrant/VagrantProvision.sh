@@ -27,6 +27,6 @@ rm composer-setup.php
 chmod a+x composer
 
 #Install Java JRE
-apt install openjdk-11-jre-headless
+apt install -y openjdk-11-jre-headless
 #Install Swagger Codegen
 wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.19/swagger-codegen-cli-2.4.19.jar -O /usr/bin/swagger-codegen-cli.jar
