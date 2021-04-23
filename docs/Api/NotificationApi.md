@@ -1,24 +1,24 @@
 # Swagger\Client\NotificationApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://swaggerfc.getfilecloud.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ackToasts**](NotificationApi.md#ackToasts) | **GET** /core/acktoasts | 
-[**addNotificationFilter**](NotificationApi.md#addNotificationFilter) | **POST** /core/addnotificationfilter | 
-[**deleteToasts**](NotificationApi.md#deleteToasts) | **GET** /core/deletetoasts | 
-[**getNotificationStream**](NotificationApi.md#getNotificationStream) | **POST** /core/getnotificationstream | 
-[**getToasts**](NotificationApi.md#getToasts) | **GET** /core/gettoasts | 
-[**isNotificationFilterSet**](NotificationApi.md#isNotificationFilterSet) | **POST** /core/isnotificationfilterset | 
-[**removeNotificationFilter**](NotificationApi.md#removeNotificationFilter) | **POST** /core/removenotificationfilter | 
+[**acktoasts**](NotificationApi.md#acktoasts) | **GET** /core/acktoasts | Notification_Related_API - acktoasts is used to acknowledge the user alert notification
+[**addnotificationfilter**](NotificationApi.md#addnotificationfilter) | **POST** /core/addnotificationfilter | Notification_Related_API - addnotificationfilter is used to add a notification filter to selected path by the user
+[**deletetoasts**](NotificationApi.md#deletetoasts) | **GET** /core/deletetoasts | Notification_Related_API - deletetoasts is used to delete a notification regarding changed made to a file in a particular path
+[**getnotificationstream**](NotificationApi.md#getnotificationstream) | **POST** /core/getnotificationstream | Notification_Related_API - getnotificationstream is used to get the list of notifications regarding changes made to a file by a user
+[**gettoasts**](NotificationApi.md#gettoasts) | **GET** /core/gettoasts | Notification_Related_API - gettoasts is used to get the list of toast notifications
+[**isnotificationfilterset**](NotificationApi.md#isnotificationfilterset) | **POST** /core/isnotificationfilterset | Notification_Related_API - isnotificationfilterset is used to check if notification filter is set for a particular path
+[**removenotificationfilter**](NotificationApi.md#removenotificationfilter) | **POST** /core/removenotificationfilter | Notification_Related_API - removenotificationfilter is used to remove notification filter which is set for a particular path
 
 
-# **ackToasts**
-> string ackToasts($acktoastids)
+# **acktoasts**
+> \Swagger\Client\Model\Commands acktoasts($acktoastids)
 
+Notification_Related_API - acktoasts is used to acknowledge the user alert notification
 
-
-Acknowledge the user alert notifications
+USed to acknowledge the user alert notifications such as when user makes changes to a file.
 
 ### Example
 ```php
@@ -33,10 +33,10 @@ $apiInstance = new Swagger\Client\Api\NotificationApi(
 $acktoastids = "acktoastids_example"; // string | Specify the toast id
 
 try {
-    $result = $apiInstance->ackToasts($acktoastids);
+    $result = $apiInstance->acktoasts($acktoastids);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NotificationApi->ackToasts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NotificationApi->acktoasts: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -49,56 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **addNotificationFilter**
-> string addNotificationFilter($path)
-
-
-
-Add notification filter to a shared file/folder
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$apiInstance = new Swagger\Client\Api\NotificationApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$path = "path_example"; // string | Path name
-
-try {
-    $result = $apiInstance->addNotificationFilter($path);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling NotificationApi->addNotificationFilter: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **path** | **string**| Path name |
-
-### Return type
-
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -107,16 +58,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **deleteToasts**
-> string deleteToasts($toastrid, $clearallforuser)
+# **addnotificationfilter**
+> \Swagger\Client\Model\Commands addnotificationfilter($path)
 
+Notification_Related_API - addnotificationfilter is used to add a notification filter to selected path by the user
 
-
-Delete a user alerts
+USer can add a notification filter to a shared file/folder
 
 ### Example
 ```php
@@ -128,14 +79,63 @@ $apiInstance = new Swagger\Client\Api\NotificationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$toastrid = "toastrid_example"; // string | Specify the toast id
+$path = "path_example"; // string | Path name which needs notification filter to be added
+
+try {
+    $result = $apiInstance->addnotificationfilter($path);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NotificationApi->addnotificationfilter: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **string**| Path name which needs notification filter to be added |
+
+### Return type
+
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **deletetoasts**
+> \Swagger\Client\Model\Commands deletetoasts($toastrid, $clearallforuser)
+
+Notification_Related_API - deletetoasts is used to delete a notification regarding changed made to a file in a particular path
+
+User can delete a notification alert received regarding a change made to a file by a user.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\NotificationApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$toastrid = "toastrid_example"; // string | Specify the toast id to be deleted
 $clearallforuser = "clearallforuser_example"; // string | (optional) Specify the username (Incase you want to clear all the user alerts for a single user)
 
 try {
-    $result = $apiInstance->deleteToasts($toastrid, $clearallforuser);
+    $result = $apiInstance->deletetoasts($toastrid, $clearallforuser);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NotificationApi->deleteToasts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NotificationApi->deletetoasts: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -144,12 +144,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **toastrid** | **string**| Specify the toast id |
- **clearallforuser** | **string**| (optional) Specify the username (Incase you want to clear all the user alerts for a single user) | [optional]
+ **toastrid** | **string**| Specify the toast id to be deleted |
+ **clearallforuser** | **string**| (optional) Specify the username (Incase you want to clear all the user alerts for a single user) |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -157,17 +157,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getNotificationStream**
-> string getNotificationStream()
+# **getnotificationstream**
+> \Swagger\Client\Model\Notificationstreams getnotificationstream()
 
+Notification_Related_API - getnotificationstream is used to get the list of notifications regarding changes made to a file by a user
 
-
-Get the list of notifications
+USer can get the list of notifications in the system to see the changes made to a file.
 
 ### Example
 ```php
@@ -181,10 +181,10 @@ $apiInstance = new Swagger\Client\Api\NotificationApi(
 );
 
 try {
-    $result = $apiInstance->getNotificationStream();
+    $result = $apiInstance->getnotificationstream();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NotificationApi->getNotificationStream: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NotificationApi->getnotificationstream: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -194,7 +194,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Notificationstreams**](../Model/Notificationstreams.md)
 
 ### Authorization
 
@@ -202,17 +202,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getToasts**
-> string getToasts()
+# **gettoasts**
+> \Swagger\Client\Model\Toasts gettoasts()
 
+Notification_Related_API - gettoasts is used to get the list of toast notifications
 
-
-Get the list of user alert Notifications
+USed to get the list of toast Notifications
 
 ### Example
 ```php
@@ -226,10 +226,10 @@ $apiInstance = new Swagger\Client\Api\NotificationApi(
 );
 
 try {
-    $result = $apiInstance->getToasts();
+    $result = $apiInstance->gettoasts();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NotificationApi->getToasts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NotificationApi->gettoasts: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -239,7 +239,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Toasts**](../Model/Toasts.md)
 
 ### Authorization
 
@@ -247,17 +247,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **isNotificationFilterSet**
-> string isNotificationFilterSet($path)
+# **isnotificationfilterset**
+> \Swagger\Client\Model\Commands isnotificationfilterset($path)
 
+Notification_Related_API - isnotificationfilterset is used to check if notification filter is set for a particular path
 
-
-Is notification filter set or not of a shared file/folder
+USer can check if notification filter is set or not for a shared file/folder
 
 ### Example
 ```php
@@ -269,13 +269,13 @@ $apiInstance = new Swagger\Client\Api\NotificationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$path = "path_example"; // string | Path name
+$path = "path_example"; // string | Path name which needs notification filter to be set
 
 try {
-    $result = $apiInstance->isNotificationFilterSet($path);
+    $result = $apiInstance->isnotificationfilterset($path);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NotificationApi->isNotificationFilterSet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NotificationApi->isnotificationfilterset: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -284,11 +284,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| Path name |
+ **path** | **string**| Path name which needs notification filter to be set |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -297,16 +297,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **removeNotificationFilter**
-> string removeNotificationFilter($path)
+# **removenotificationfilter**
+> \Swagger\Client\Model\Commands removenotificationfilter($path)
 
+Notification_Related_API - removenotificationfilter is used to remove notification filter which is set for a particular path
 
-
-Remove notification filter of a shared file/folder
+USer can remove the notification filter which is set for a shared file/folder
 
 ### Example
 ```php
@@ -318,13 +318,13 @@ $apiInstance = new Swagger\Client\Api\NotificationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$path = "path_example"; // string | Path name
+$path = "path_example"; // string | Path name which requires notification filter to be removed
 
 try {
-    $result = $apiInstance->removeNotificationFilter($path);
+    $result = $apiInstance->removenotificationfilter($path);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling NotificationApi->removeNotificationFilter: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling NotificationApi->removenotificationfilter: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -333,11 +333,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| Path name |
+ **path** | **string**| Path name which requires notification filter to be removed |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -346,7 +346,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

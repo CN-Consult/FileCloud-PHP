@@ -1,28 +1,28 @@
 # Swagger\Client\FavoriteApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://swaggerfc.getfilecloud.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addFavoriteList**](FavoriteApi.md#addFavoriteList) | **POST** /core/addfavoritelist | 
-[**clearFavoritesInNamedList**](FavoriteApi.md#clearFavoritesInNamedList) | **POST** /core/clearfavoritesinnamedlist | 
-[**getAllFavoriteLists**](FavoriteApi.md#getAllFavoriteLists) | **GET** /core/getallfavoritelists | 
-[**getFavoriteListForItem**](FavoriteApi.md#getFavoriteListForItem) | **GET** /core/getfavoritelistforitem | 
-[**getFavoritesInList**](FavoriteApi.md#getFavoritesInList) | **GET** /core/getfavoritesinlist | 
-[**getFavoritesInNamedList**](FavoriteApi.md#getFavoritesInNamedList) | **GET** /core/getfavoritesinnamedlist | 
-[**removeFavoriteList**](FavoriteApi.md#removeFavoriteList) | **POST** /core/removefavoritelist | 
-[**replaceFavoriteList**](FavoriteApi.md#replaceFavoriteList) | **POST** /core/replacefavoritelist | 
-[**setFavorite**](FavoriteApi.md#setFavorite) | **POST** /core/setfavorite | 
-[**unsetFavorite**](FavoriteApi.md#unsetFavorite) | **POST** /core/unsetfavorite | 
-[**updateFavoriteList**](FavoriteApi.md#updateFavoriteList) | **POST** /core/updatefavoritelist | 
+[**addfavoritelist**](FavoriteApi.md#addfavoritelist) | **POST** /core/addfavoritelist | Favorite_Related_API - addfavoritelist is used to add files to a favorite list in the system
+[**clearfavoritesinnamedlist**](FavoriteApi.md#clearfavoritesinnamedlist) | **POST** /core/clearfavoritesinnamedlist | Favorite_Related_API - clearfavoritesinnamedlist is used to remove files from the favorite list
+[**getallfavoritelists**](FavoriteApi.md#getallfavoritelists) | **GET** /core/getallfavoritelists | Favorite_Related_API - getallfavoritelists is used to retrieve all the favorite lists in system
+[**getfavoritelistforitem**](FavoriteApi.md#getfavoritelistforitem) | **GET** /core/getfavoritelistforitem | Favorite_Related_API - getfavoritelistforitem is used to get all the available favorite lists for a selected item
+[**getfavoritesinlist**](FavoriteApi.md#getfavoritesinlist) | **GET** /core/getfavoritesinlist | Favorite_Related_API - getfavoritesinlist is used to get all the items in a favorite list
+[**getfavoritesinnamedlist**](FavoriteApi.md#getfavoritesinnamedlist) | **GET** /core/getfavoritesinnamedlist | Favorite_Related_API - getfavoritesinnamedlist is used to get all the items from the name of favorite list specified
+[**removefavoritelist**](FavoriteApi.md#removefavoritelist) | **POST** /core/removefavoritelist | Favorite_Related_API - removefavoritelist is used to remove the favorite list from system
+[**replacefavoritelist**](FavoriteApi.md#replacefavoritelist) | **POST** /core/replacefavoritelist | Favorite_Related_API - replacefavoritelist is used to replace a favorite list
+[**setfavorite**](FavoriteApi.md#setfavorite) | **POST** /core/setfavorite | Favorite_Related_API - setfavorite is used to add a file to a favorite list
+[**unsetfavorite**](FavoriteApi.md#unsetfavorite) | **POST** /core/unsetfavorite | Favorite_Related_API - unsetfavorite is used to remove a file from the favorite list
+[**updatefavoritelist**](FavoriteApi.md#updatefavoritelist) | **POST** /core/updatefavoritelist | Favorite_Related_API - updatefavoritelist is used to update an existing favorite list
 
 
-# **addFavoriteList**
-> string addFavoriteList($name)
+# **addfavoritelist**
+> \Swagger\Client\Model\Commands addfavoritelist($name)
 
+Favorite_Related_API - addfavoritelist is used to add files to a favorite list in the system
 
-
-User can add new favorite list in the system (HTTP POST)
+User can add files to either an existing or new favorite list in the system
 
 ### Example
 ```php
@@ -37,10 +37,10 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
 $name = "name_example"; // string | Name of the file to be added to favorites.
 
 try {
-    $result = $apiInstance->addFavoriteList($name);
+    $result = $apiInstance->addfavoritelist($name);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->addFavoriteList: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->addfavoritelist: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -62,16 +62,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **clearFavoritesInNamedList**
-> string clearFavoritesInNamedList($name)
+# **clearfavoritesinnamedlist**
+> \Swagger\Client\Model\Commands clearfavoritesinnamedlist($name)
 
+Favorite_Related_API - clearfavoritesinnamedlist is used to remove files from the favorite list
 
-
-User can clear favorites from the named list
+User can remove files from the existing favorite lists.
 
 ### Example
 ```php
@@ -86,10 +86,10 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
 $name = "name_example"; // string | Name of the Favorite List
 
 try {
-    $result = $apiInstance->clearFavoritesInNamedList($name);
+    $result = $apiInstance->clearfavoritesinnamedlist($name);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->clearFavoritesInNamedList: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->clearfavoritesinnamedlist: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -111,16 +111,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getAllFavoriteLists**
-> string getAllFavoriteLists($type)
+# **getallfavoritelists**
+> \Swagger\Client\Model\Favoritelists getallfavoritelists($type)
 
+Favorite_Related_API - getallfavoritelists is used to retrieve all the favorite lists in system
 
-
-User can get all the favorites list of the system
+User can view all the existing favorites lists which are present in the system
 
 ### Example
 ```php
@@ -135,10 +135,10 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
 $type = "type_example"; // string | Type here is favorites
 
 try {
-    $result = $apiInstance->getAllFavoriteLists($type);
+    $result = $apiInstance->getallfavoritelists($type);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->getAllFavoriteLists: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->getallfavoritelists: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Favoritelists**](../Model/Favoritelists.md)
 
 ### Authorization
 
@@ -159,17 +159,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getFavoriteListForItem**
-> string getFavoriteListForItem($path)
+# **getfavoritelistforitem**
+> \Swagger\Client\Model\Favoritelists getfavoritelistforitem($path)
 
+Favorite_Related_API - getfavoritelistforitem is used to get all the available favorite lists for a selected item
 
-
-User can get favorite list available for the item
+User can get all the available favorite lists for the item
 
 ### Example
 ```php
@@ -184,10 +184,10 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
 $path = "path_example"; // string | Specify the path of file
 
 try {
-    $result = $apiInstance->getFavoriteListForItem($path);
+    $result = $apiInstance->getfavoritelistforitem($path);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->getFavoriteListForItem: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->getfavoritelistforitem: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Favoritelists**](../Model/Favoritelists.md)
 
 ### Authorization
 
@@ -208,17 +208,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getFavoritesInList**
-> string getFavoritesInList($id)
+# **getfavoritesinlist**
+> \Swagger\Client\Model\Entries getfavoritesinlist($id)
 
+Favorite_Related_API - getfavoritesinlist is used to get all the items in a favorite list
 
-
-User can get all the favorites from list
+User can get all the items which are associated to a selected favorite list
 
 ### Example
 ```php
@@ -233,10 +233,10 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
 $id = "id_example"; // string | Id of the Favorite List
 
 try {
-    $result = $apiInstance->getFavoritesInList($id);
+    $result = $apiInstance->getfavoritesinlist($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->getFavoritesInList: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->getfavoritesinlist: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Entries**](../Model/Entries.md)
 
 ### Authorization
 
@@ -257,17 +257,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getFavoritesInNamedList**
-> string getFavoritesInNamedList($name)
+# **getfavoritesinnamedlist**
+> \Swagger\Client\Model\Entries getfavoritesinnamedlist($name)
 
+Favorite_Related_API - getfavoritesinnamedlist is used to get all the items from the name of favorite list specified
 
-
-User can get all the favorites from named list
+User can get all the items which are present by specifying the name of a favorite list
 
 ### Example
 ```php
@@ -282,10 +282,10 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
 $name = "name_example"; // string | Name of the Favorite List
 
 try {
-    $result = $apiInstance->getFavoritesInNamedList($name);
+    $result = $apiInstance->getfavoritesinnamedlist($name);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->getFavoritesInNamedList: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->getfavoritesinnamedlist: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -298,56 +298,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **removeFavoriteList**
-> string removeFavoriteList($id)
-
-
-
-User can remove favorite list from the system (HTTP POST)
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$apiInstance = new Swagger\Client\Api\FavoriteApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$id = "id_example"; // string | Id no. of the favorite list to be deleted
-
-try {
-    $result = $apiInstance->removeFavoriteList($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->removeFavoriteList: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Id no. of the favorite list to be deleted |
-
-### Return type
-
-**string**
+[**\Swagger\Client\Model\Entries**](../Model/Entries.md)
 
 ### Authorization
 
@@ -356,16 +307,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **replaceFavoriteList**
-> string replaceFavoriteList($id, $count)
+# **removefavoritelist**
+> \Swagger\Client\Model\Commands removefavoritelist($id)
 
+Favorite_Related_API - removefavoritelist is used to remove the favorite list from system
 
-
-User replace favorite list
+User can remove the existing favorite list from the system
 
 ### Example
 ```php
@@ -377,14 +328,13 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = "id_example"; // string | Id number of the Favorite list
-$count = "count_example"; // string | Number of files
+$id = "id_example"; // string | Id number of the favorite list to be deleted
 
 try {
-    $result = $apiInstance->replaceFavoriteList($id, $count);
+    $result = $apiInstance->removefavoritelist($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->replaceFavoriteList: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->removefavoritelist: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -393,12 +343,62 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| Id number of the Favorite list |
+ **id** | **string**| Id number of the favorite list to be deleted |
+
+### Return type
+
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **replacefavoritelist**
+> \Swagger\Client\Model\Commands replacefavoritelist($id, $count)
+
+Favorite_Related_API - replacefavoritelist is used to replace a favorite list
+
+User can replace a favorite list in system
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\FavoriteApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$id = "id_example"; // string | Id number of the favorite list
+$count = "count_example"; // string | Number of files
+
+try {
+    $result = $apiInstance->replacefavoritelist($id, $count);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FavoriteApi->replacefavoritelist: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Id number of the favorite list |
  **count** | **string**| Number of files |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -407,16 +407,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **setFavorite**
-> string setFavorite($name, $id)
+# **setfavorite**
+> \Swagger\Client\Model\Commands setfavorite($id, $name)
 
+Favorite_Related_API - setfavorite is used to add a file to a favorite list
 
-
-User can add file to their Favorite list in the system (HTTP POST)
+User can add file to their Favorite list in the system
 
 ### Example
 ```php
@@ -428,14 +428,14 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = "id_example"; // string | Id number of the favorite list
 $name = "name_example"; // string | Name of the file to be added to favorites.
-$id = "id_example"; // string | Id number of the Favorite list
 
 try {
-    $result = $apiInstance->setFavorite($name, $id);
+    $result = $apiInstance->setfavorite($id, $name);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->setFavorite: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->setfavorite: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -444,12 +444,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **string**| Id number of the favorite list |
  **name** | **string**| Name of the file to be added to favorites. |
- **id** | **string**| Id number of the Favorite list |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -458,16 +458,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **unsetFavorite**
-> string unsetFavorite($id, $name)
+# **unsetfavorite**
+> \Swagger\Client\Model\Commands unsetfavorite($id, $name)
 
+Favorite_Related_API - unsetfavorite is used to remove a file from the favorite list
 
-
-User can remove file from their Favorite list in the system (HTTP POST)
+User can remove a file from their Favorite list in the system
 
 ### Example
 ```php
@@ -479,14 +479,14 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = "id_example"; // string | Id number of the Favorite list
+$id = "id_example"; // string | Id number of the favorite list
 $name = "name_example"; // string | Name of the file to be added to favorites.
 
 try {
-    $result = $apiInstance->unsetFavorite($id, $name);
+    $result = $apiInstance->unsetfavorite($id, $name);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->unsetFavorite: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->unsetfavorite: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -495,12 +495,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| Id number of the Favorite list |
+ **id** | **string**| Id number of the favorite list |
  **name** | **string**| Name of the file to be added to favorites. |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -509,16 +509,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **updateFavoriteList**
-> string updateFavoriteList($id, $name)
+# **updatefavoritelist**
+> \Swagger\Client\Model\Commands updatefavoritelist($id, $name)
 
+Favorite_Related_API - updatefavoritelist is used to update an existing favorite list
 
-
-User can update favorite list
+User can update an existing favorite list
 
 ### Example
 ```php
@@ -530,14 +530,14 @@ $apiInstance = new Swagger\Client\Api\FavoriteApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = "id_example"; // string | Id number of the Favorite list
+$id = "id_example"; // string | Id number of the favorite list
 $name = "name_example"; // string | Name of the file to be added to favorites.
 
 try {
-    $result = $apiInstance->updateFavoriteList($id, $name);
+    $result = $apiInstance->updatefavoritelist($id, $name);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FavoriteApi->updateFavoriteList: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FavoriteApi->updatefavoritelist: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -546,12 +546,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **string**| Id number of the Favorite list |
+ **id** | **string**| Id number of the favorite list |
  **name** | **string**| Name of the file to be added to favorites. |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -560,7 +560,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

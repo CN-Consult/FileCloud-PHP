@@ -1,54 +1,56 @@
 # Swagger\Client\ShareApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://swaggerfc.getfilecloud.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addGroupToShare**](ShareApi.md#addGroupToShare) | **POST** /core/addgrouptoshare | 
-[**addUserToShare**](ShareApi.md#addUserToShare) | **POST** /core/addusertoshare | 
-[**createProfileOnInvite**](ShareApi.md#createProfileOnInvite) | **POST** /core/createprofileoninvite | 
-[**deleteGroupFromShare**](ShareApi.md#deleteGroupFromShare) | **POST** /core/deletegroupfromshare | 
-[**deleteShare**](ShareApi.md#deleteShare) | **POST** /core/deleteshare | 
-[**deleteUserFromShare**](ShareApi.md#deleteUserFromShare) | **POST** /core/deleteuserfromshare | 
-[**getEmailSubject**](ShareApi.md#getEmailSubject) | **GET** /core/getemailsubject | 
-[**getEmailTemplate**](ShareApi.md#getEmailTemplate) | **GET** /core/getemailtemplate | 
-[**getGroupAccessForShare**](ShareApi.md#getGroupAccessForShare) | **GET** /core/getgroupaccessforshare | 
-[**getMostActiveShares**](ShareApi.md#getMostActiveShares) | **GET** /core/getmostactiveshares | 
-[**getPrivateUrlForEmail**](ShareApi.md#getPrivateUrlForEmail) | **GET** /core/getprivateurlforemail | 
-[**getPublicShareAuthInfo**](ShareApi.md#getPublicShareAuthInfo) | **GET** /core/getpublicshareauthinfo | 
-[**getRandomPassword**](ShareApi.md#getRandomPassword) | **GET** /core/getrandompassword | 
-[**getRecentShareActivityForUser**](ShareApi.md#getRecentShareActivityForUser) | **GET** /core/getrecentshareactivityforuser | 
-[**getShareActivityForShare**](ShareApi.md#getShareActivityForShare) | **POST** /core/getshareactivityforshare | 
-[**getShareForId**](ShareApi.md#getShareForId) | **GET** /core/getshareforid | 
-[**getShareForPath**](ShareApi.md#getShareForPath) | **GET** /core/getshareforpath | 
-[**getSharePassword**](ShareApi.md#getSharePassword) | **GET** /core/getsharepassword | 
-[**getShares**](ShareApi.md#getShares) | **GET** /core/getshares | 
-[**getSharesFilter**](ShareApi.md#getSharesFilter) | **GET** /core/getsharesfilter | 
-[**getUploadForm**](ShareApi.md#getUploadForm) | **GET** /core/getuploadform | 
-[**getUrlForEmail**](ShareApi.md#getUrlForEmail) | **GET** /core/geturlforemail | 
-[**getUserAccessForShare**](ShareApi.md#getUserAccessForShare) | **GET** /core/getuseraccessforshare | 
-[**getUsersForShare**](ShareApi.md#getUsersForShare) | **GET** /core/getusersforshare | 
-[**leaveShare**](ShareApi.md#leaveShare) | **GET** /core/leaveshare | 
-[**loginProtectedShare**](ShareApi.md#loginProtectedShare) | **POST** /core/loginprotectedshare | 
-[**quickShare**](ShareApi.md#quickShare) | **POST** /core/quickshare | 
-[**searchGroups**](ShareApi.md#searchGroups) | **GET** /core/searchgroups | 
-[**searchProfile**](ShareApi.md#searchProfile) | **GET** /core/searchprofile | 
-[**sendEmail**](ShareApi.md#sendEmail) | **POST** /core/sendemail | 
-[**sendShareToEmail**](ShareApi.md#sendShareToEmail) | **POST** /core/sendsharetoemail | 
-[**setAllowPublicAccess**](ShareApi.md#setAllowPublicAccess) | **GET** /core/setallowpublicaccess | 
-[**setGroupAccessForShare**](ShareApi.md#setGroupAccessForShare) | **GET** /core/setgroupaccessforshare | 
-[**setUserAccessForShare**](ShareApi.md#setUserAccessForShare) | **GET** /core/setuseraccessforshare | 
-[**share**](ShareApi.md#share) | **POST** /core/share | 
-[**updateShare**](ShareApi.md#updateShare) | **POST** /core/updateshare | 
-[**updateShareLink**](ShareApi.md#updateShareLink) | **GET** /core/updatesharelink | 
+[**addgrouptoshare**](ShareApi.md#addgrouptoshare) | **POST** /core/addgrouptoshare | Share_Related_API - addgrouptoshare is used to add an existing group to a privately shared file/folder
+[**addusertoshare**](ShareApi.md#addusertoshare) | **POST** /core/addusertoshare | Share_Related_API - addusertoshare is used to add an existing user to access the privately shared file/folder
+[**createprofileoninvite**](ShareApi.md#createprofileoninvite) | **POST** /core/adduserstoshare | Share_Related_API - This endpoint allows adding multiple users to a single share in one go
+[**createprofileoninvite_0**](ShareApi.md#createprofileoninvite_0) | **POST** /core/createprofileoninvite | Share_Related_API - createprofileoninvite is used to create a new user account for the user who doesn&#39;t exist on FC system
+[**deletegroupfromshare**](ShareApi.md#deletegroupfromshare) | **POST** /core/deletegroupfromshare | Share_Related_API - deletegroupfromshare is used to delete a group from the exisiting privately shared file/folder which was already shared to the group previously
+[**deleteshare**](ShareApi.md#deleteshare) | **POST** /core/deleteshare | Share_Related_API - deleteshare is used to remove the already shared file/folder which was shared to a user previously
+[**deleteuserfromshare**](ShareApi.md#deleteuserfromshare) | **POST** /core/deleteuserfromshare | Share_Related_API - deleteuserfromshare is used to remove a user from a privately shared file/folder
+[**getemailsubject**](ShareApi.md#getemailsubject) | **POST** /core/getemailsubject | Share_Related_API - getemailsubject is used to get email subject to send it to the user
+[**getemailtemplate**](ShareApi.md#getemailtemplate) | **POST** /core/getemailtemplate | Share_Related_API - getemailtemplate is used to get email template to send it to the user
+[**getgroupaccessforshare**](ShareApi.md#getgroupaccessforshare) | **GET** /core/getgroupaccessforshare | Share_Related_API - getgroupaccessforshare is used to get permission details of a group for shared file/folder
+[**getmanageablesharesall**](ShareApi.md#getmanageablesharesall) | **GET** /core/getmanageablesharesall | Share_Related_API - getmanageablesharesall is used to get details of all the managed shares.
+[**getmanageablesharesforpath**](ShareApi.md#getmanageablesharesforpath) | **GET** /core/getmanageablesharesforpath | Share_Related_API - getmanageablesharesforpath is used to get information about manageable shares for a particular path.Also shows the shared child paths
+[**getmostactiveshares**](ShareApi.md#getmostactiveshares) | **POST** /core/getmostactiveshares | Share_Related_API - getmostactiveshares is used to get information about the shared item which was accessed more number of times.
+[**getprivateurlforemail**](ShareApi.md#getprivateurlforemail) | **GET** /core/getprivateurlforemail | Share_Related_API - getprivateurlforemail is used to get a unique and short private url link to access the shared file/folder
+[**getpublicshareauthinfo**](ShareApi.md#getpublicshareauthinfo) | **POST** /core/getpublicshareauthinfo | Share_Related_API - getpublicshareauthinfo
+[**getrandompassword**](ShareApi.md#getrandompassword) | **GET** /core/getrandompassword | Share_Related_API - getrandompassword is used to get a random password generated by the FC system in order to access the share
+[**getrecentshareactivityforuser**](ShareApi.md#getrecentshareactivityforuser) | **GET** /core/getrecentshareactivityforuser | Share_Related_API - getrecentshareactivityforuser
+[**getshareactivityforshare**](ShareApi.md#getshareactivityforshare) | **POST** /core/getshareactivityforshare | Share_Related_API - getshareactivityforshare is used to get the list of share activities
+[**getshareforid**](ShareApi.md#getshareforid) | **POST** /core/getshareforid | Share_Related_API - getshareforid
+[**getshareforpath**](ShareApi.md#getshareforpath) | **POST** /core/getshareforpath | Share_Related_API - getshareforpath is used to get all details of the share by specifying the shared file/folder path
+[**getsharepassword**](ShareApi.md#getsharepassword) | **GET** /core/getsharepassword | Share_Related_API - getsharepassword
+[**getshares**](ShareApi.md#getshares) | **GET** /core/getshares | Share_Related_API - getshares is used to get information about all the shares done in a system
+[**getsharesfilter**](ShareApi.md#getsharesfilter) | **GET** /core/getsharesfilter | Share_Related_API - getsharesfilter is used to get information about the shares done in a system by specifying the path
+[**getuploadform**](ShareApi.md#getuploadform) | **GET** /core/getuploadform | Share_Related_API - getuploadform is used to get a upload form for a publicly shared folder with upload permission
+[**geturlforemail**](ShareApi.md#geturlforemail) | **GET** /core/geturlforemail | Share_Related_API - geturlforemail is used to get a share url link while sharing the file/folder through email
+[**getuseraccessforshare**](ShareApi.md#getuseraccessforshare) | **GET** /core/getuseraccessforshare | Share_Related_API - getuseraccessforshare is used to get permission details of a user for a shared file/folder
+[**leaveshare**](ShareApi.md#leaveshare) | **GET** /core/leaveshare | Share_Related_API - leaveshare is used to leave from an already shared file/folder by a user
+[**loginprotectedshare**](ShareApi.md#loginprotectedshare) | **POST** /core/loginprotectedshare | Share_Related_API - loginprotectedshare is used to login to access the protected share
+[**quickshare**](ShareApi.md#quickshare) | **POST** /core/quickshare | Share_Related_API - quickshare is used to share files to a user by generating link in system
+[**searchgroups**](ShareApi.md#searchgroups) | **POST** /core/searchgroups | Share_Related_API - searchgroups is used to search for existing groups in the system in order to add to a shared file or folder
+[**searchprofiles**](ShareApi.md#searchprofiles) | **POST** /core/searchprofiles | Share_Related_API - searchprofiles is used to search for a user to share a file/folder
+[**sendemail**](ShareApi.md#sendemail) | **POST** /core/sendemail | Share_Related_API - sendemail is used to send email to the user
+[**sendsharetoemail**](ShareApi.md#sendsharetoemail) | **POST** /core/sendsharetoemail | Share_Related_API - sendsharetoemail is used to send the shared file or folder through email
+[**setallowpublicaccess**](ShareApi.md#setallowpublicaccess) | **GET** /core/setallowpublicaccess | Share_Related_API - setallowpublicaccess is used to set either a private or public access to a shared file
+[**setgroupaccessforshare**](ShareApi.md#setgroupaccessforshare) | **GET** /core/setgroupaccessforshare | Share_Related_API - setgroupaccessforshare is used to set permission details of a group for shared file/folder
+[**setuseraccessforshare**](ShareApi.md#setuseraccessforshare) | **GET** /core/setuseraccessforshare | Share_Related_API - setuseraccessforshare is used to set permission details of a user for shared file/folder
+[**share**](ShareApi.md#share) | **GET** /core/share | Share_Related_API - share is used to download a publicly shared file
+[**updateshare**](ShareApi.md#updateshare) | **POST** /core/updateshare | Share_Related_API - updateshare is used to update a share information
+[**updatesharelink**](ShareApi.md#updatesharelink) | **POST** /core/updatesharelink | Share_Related_API - updatesharelink is used to update the url link of a shared file/folder
 
 
-# **addGroupToShare**
-> string addGroupToShare($groupid, $shareid)
+# **addgrouptoshare**
+> \Swagger\Client\Model\Commands addgrouptoshare($groupid, $shareid)
 
+Share_Related_API - addgrouptoshare is used to add an existing group to a privately shared file/folder
 
-
-User can add a group to access privately  shared files in the system
+User can add a group to access privately shared files in the system
 
 ### Example
 ```php
@@ -60,14 +62,14 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$groupid = "groupid_example"; // string | Group Id number
-$shareid = "shareid_example"; // string | Share Id number
+$groupid = "groupid_example"; // string | Group ID number of the group to be added to private share
+$shareid = "shareid_example"; // string | Share ID number
 
 try {
-    $result = $apiInstance->addGroupToShare($groupid, $shareid);
+    $result = $apiInstance->addgrouptoshare($groupid, $shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->addGroupToShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->addgrouptoshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -76,12 +78,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupid** | **string**| Group Id number |
- **shareid** | **string**| Share Id number |
+ **groupid** | **string**| Group ID number of the group to be added to private share |
+ **shareid** | **string**| Share ID number |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -90,14 +92,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **addUserToShare**
-> string addUserToShare($userid, $shareid)
+# **addusertoshare**
+> \Swagger\Client\Model\Commands addusertoshare($userid, $shareid)
 
-
+Share_Related_API - addusertoshare is used to add an existing user to access the privately shared file/folder
 
 User can add selective user's to access private shared files in the system
 
@@ -111,14 +113,14 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$userid = "userid_example"; // string | Specify the user's email id
-$shareid = "shareid_example"; // string | Share Id number
+$userid = "userid_example"; // string | Specify the user's email id you want to share the file to
+$shareid = "shareid_example"; // string | Share ID number
 
 try {
-    $result = $apiInstance->addUserToShare($userid, $shareid);
+    $result = $apiInstance->addusertoshare($userid, $shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->addUserToShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->addusertoshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -127,12 +129,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **string**| Specify the user&#39;s email id |
- **shareid** | **string**| Share Id number |
+ **userid** | **string**| Specify the user&#39;s email id you want to share the file to |
+ **shareid** | **string**| Share ID number |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -141,16 +143,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **createProfileOnInvite**
-> string createProfileOnInvite($emailid)
+# **createprofileoninvite**
+> \Swagger\Client\Model\Commands createprofileoninvite($shareid, $users, $sendemail, $custom_subject, $custom_message, $adduserstoshare_subject, $adduserstoshare_body, $addusertoshare_emails, $addnewuserstoshare_subject, $addnewuserstoshare_body, $addnewusertoshare_emails, $adduserstoshare_limited_subject, $adduserstoshare_limited_body, $addusertoshare_limited_emails, $addnewuserstoshare_limited_subject, $addnewuserstoshare_limited_body, $addnewusertoshare_limited_emails)
 
+Share_Related_API - This endpoint allows adding multiple users to a single share in one go
 
-
-Create a user profile on share invite
+Used to add a comma separated list of users to a file/folder share.
 
 ### Example
 ```php
@@ -162,13 +164,29 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$emailid = "emailid_example"; // string | Specify the emailid of the user to invite
+$shareid = "shareid_example"; // string | Id of the share users are being added to.
+$users = "users_example"; // string | Comma separated list of user emails.
+$sendemail = "sendemail_example"; // string | Specifies whether the email should be sent to all invited users (this also relies on the System configuration)
+$custom_subject = "custom_subject_example"; // string | A common, custom subject that will be used for all emails sent to users added to share
+$custom_message = "custom_message_example"; // string | A custom message that will be added to saved email templates, replacing the ^MESSAGE^ placeholder. If that placeholder doesn't exist a separate email containing that message will be sent.
+$adduserstoshare_subject = "adduserstoshare_subject_example"; // string | A custom subject for emails sent to existing, non-external (limited) users
+$adduserstoshare_body = "adduserstoshare_body_example"; // string | A custom email body that will be sent to existing, non-external (limited) users
+$addusertoshare_emails = "addusertoshare_emails_example"; // string | A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won't be added to the share.
+$addnewuserstoshare_subject = "addnewuserstoshare_subject_example"; // string | A custom subject for emails sent to invited users that will be added to the system as a non-external (limited) user.
+$addnewuserstoshare_body = "addnewuserstoshare_body_example"; // string | A custom email body that will be sent to invited users that will be added to the system as a non-external (limited) user.
+$addnewusertoshare_emails = "addnewusertoshare_emails_example"; // string | A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won't be added to the share!
+$adduserstoshare_limited_subject = "adduserstoshare_limited_subject_example"; // string | A custom subject for existing, external (limited) users
+$adduserstoshare_limited_body = "adduserstoshare_limited_body_example"; // string | A custom email body that will be sent to existing, external (limited) users
+$addusertoshare_limited_emails = "addusertoshare_limited_emails_example"; // string | A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won't be added to the share!
+$addnewuserstoshare_limited_subject = "addnewuserstoshare_limited_subject_example"; // string | A custom subject for emails sent to non-existing, external (limited) users
+$addnewuserstoshare_limited_body = "addnewuserstoshare_limited_body_example"; // string | A custom email body that will be sent to non-existing, external (limited) users
+$addnewusertoshare_limited_emails = "addnewusertoshare_limited_emails_example"; // string | A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won't be added to the share!
 
 try {
-    $result = $apiInstance->createProfileOnInvite($emailid);
+    $result = $apiInstance->createprofileoninvite($shareid, $users, $sendemail, $custom_subject, $custom_message, $adduserstoshare_subject, $adduserstoshare_body, $addusertoshare_emails, $addnewuserstoshare_subject, $addnewuserstoshare_body, $addnewusertoshare_emails, $adduserstoshare_limited_subject, $adduserstoshare_limited_body, $addusertoshare_limited_emails, $addnewuserstoshare_limited_subject, $addnewuserstoshare_limited_body, $addnewusertoshare_limited_emails);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->createProfileOnInvite: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->createprofileoninvite: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -177,11 +195,27 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailid** | **string**| Specify the emailid of the user to invite |
+ **shareid** | **string**| Id of the share users are being added to. |
+ **users** | **string**| Comma separated list of user emails. |
+ **sendemail** | **string**| Specifies whether the email should be sent to all invited users (this also relies on the System configuration) | [optional]
+ **custom_subject** | **string**| A common, custom subject that will be used for all emails sent to users added to share | [optional]
+ **custom_message** | **string**| A custom message that will be added to saved email templates, replacing the ^MESSAGE^ placeholder. If that placeholder doesn&#39;t exist a separate email containing that message will be sent. | [optional]
+ **adduserstoshare_subject** | **string**| A custom subject for emails sent to existing, non-external (limited) users | [optional]
+ **adduserstoshare_body** | **string**| A custom email body that will be sent to existing, non-external (limited) users | [optional]
+ **addusertoshare_emails** | **string**| A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won&#39;t be added to the share. | [optional]
+ **addnewuserstoshare_subject** | **string**| A custom subject for emails sent to invited users that will be added to the system as a non-external (limited) user. | [optional]
+ **addnewuserstoshare_body** | **string**| A custom email body that will be sent to invited users that will be added to the system as a non-external (limited) user. | [optional]
+ **addnewusertoshare_emails** | **string**| A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won&#39;t be added to the share! | [optional]
+ **adduserstoshare_limited_subject** | **string**| A custom subject for existing, external (limited) users | [optional]
+ **adduserstoshare_limited_body** | **string**| A custom email body that will be sent to existing, external (limited) users | [optional]
+ **addusertoshare_limited_emails** | **string**| A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won&#39;t be added to the share! | [optional]
+ **addnewuserstoshare_limited_subject** | **string**| A custom subject for emails sent to non-existing, external (limited) users | [optional]
+ **addnewuserstoshare_limited_body** | **string**| A custom email body that will be sent to non-existing, external (limited) users | [optional]
+ **addnewusertoshare_limited_emails** | **string**| A comma-separated list of additional emails, to whom that email will be sent. NOTE- those users won&#39;t be added to the share! | [optional]
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -190,16 +224,67 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **deleteGroupFromShare**
-> string deleteGroupFromShare($groupid, $shareid)
+# **createprofileoninvite_0**
+> \Swagger\Client\Model\Commands createprofileoninvite_0($email, $shareid)
 
+Share_Related_API - createprofileoninvite is used to create a new user account for the user who doesn't exist on FC system
 
+Used to Create a user profile for a non existing user to access the shared file/folder. Profile invite is sent via email.
 
-User can remove the group from access to privately  shared files in the system
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$email = "email_example"; // string | Specify the emailid of the user to invite
+$shareid = "shareid_example"; // string | Specify the share ID of the user to invite
+
+try {
+    $result = $apiInstance->createprofileoninvite_0($email, $shareid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShareApi->createprofileoninvite_0: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **string**| Specify the emailid of the user to invite |
+ **shareid** | **string**| Specify the share ID of the user to invite |
+
+### Return type
+
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **deletegroupfromshare**
+> \Swagger\Client\Model\Commands deletegroupfromshare($groupid, $shareid)
+
+Share_Related_API - deletegroupfromshare is used to delete a group from the exisiting privately shared file/folder which was already shared to the group previously
+
+User can remove the group from access to privately shared files in the system
 
 ### Example
 ```php
@@ -215,10 +300,10 @@ $groupid = "groupid_example"; // string | Group Id number
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $apiInstance->deleteGroupFromShare($groupid, $shareid);
+    $result = $apiInstance->deletegroupfromshare($groupid, $shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->deleteGroupFromShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->deletegroupfromshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -232,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -241,16 +326,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **deleteShare**
-> string deleteShare($shareid)
+# **deleteshare**
+> \Swagger\Client\Model\Commands deleteshare($shareid)
 
+Share_Related_API - deleteshare is used to remove the already shared file/folder which was shared to a user previously
 
-
-User can delete share
+User can delete share and remove the access of share which was done to a shared user previously.
 
 ### Example
 ```php
@@ -262,13 +347,13 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$shareid = "shareid_example"; // string | Share Id number
+$shareid = "shareid_example"; // string | Share Id number of file/folder for which the share has to be removed
 
 try {
-    $result = $apiInstance->deleteShare($shareid);
+    $result = $apiInstance->deleteshare($shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->deleteShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->deleteshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -277,11 +362,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
+ **shareid** | **string**| Share Id number of file/folder for which the share has to be removed |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -290,16 +375,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **deleteUserFromShare**
-> string deleteUserFromShare($userid, $shareid)
+# **deleteuserfromshare**
+> \Swagger\Client\Model\Commands deleteuserfromshare($userid, $shareid)
 
+Share_Related_API - deleteuserfromshare is used to remove a user from a privately shared file/folder
 
-
-User can remove a user from access to private shared files in the system
+User can delete the shared users from a particular private share of file/folder
 
 ### Example
 ```php
@@ -311,14 +396,14 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$userid = "userid_example"; // string | Specify the user's email id
+$userid = "userid_example"; // string | Specify the email id of user to be removed from share
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $apiInstance->deleteUserFromShare($userid, $shareid);
+    $result = $apiInstance->deleteuserfromshare($userid, $shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->deleteUserFromShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->deleteuserfromshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -327,12 +412,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userid** | **string**| Specify the user&#39;s email id |
+ **userid** | **string**| Specify the email id of user to be removed from share |
  **shareid** | **string**| Share Id number |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -341,16 +426,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getEmailSubject**
-> string getEmailSubject($op, $param)
+# **getemailsubject**
+> \Swagger\Client\Model\Config getemailsubject($op, $param, $toemailid, $keepuserplaceholders)
 
+Share_Related_API - getemailsubject is used to get email subject to send it to the user
 
-
-Get email subject
+Get email subject is used to get email sujbect to be sent to user.
 
 ### Example
 ```php
@@ -362,14 +447,16 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$op = "op_example"; // string | Operation
+$op = "op_example"; // string | Operation... Ie, 'getemailsubject'
 $param = "param_example"; // string | Template name
+$toemailid = "toemailid_example"; // string | To email id
+$keepuserplaceholders = "keepuserplaceholders_example"; // string | When it's set to 1 the user-related placeholders(^TOEMAILID^ , ^TO^) are not being replaced when fetching the template. Only common, 'global' values, are replaced with the values.
 
 try {
-    $result = $apiInstance->getEmailSubject($op, $param);
+    $result = $apiInstance->getemailsubject($op, $param, $toemailid, $keepuserplaceholders);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getEmailSubject: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getemailsubject: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -378,12 +465,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **op** | **string**| Operation |
+ **op** | **string**| Operation... Ie, &#39;getemailsubject&#39; |
  **param** | **string**| Template name |
+ **toemailid** | **string**| To email id | [optional]
+ **keepuserplaceholders** | **string**| When it&#39;s set to 1 the user-related placeholders(^TOEMAILID^ , ^TO^) are not being replaced when fetching the template. Only common, &#39;global&#39; values, are replaced with the values. | [optional]
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Config**](../Model/Config.md)
 
 ### Authorization
 
@@ -391,15 +480,15 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getEmailTemplate**
-> getEmailTemplate($op, $templatename, $sharename, $shareurl, $toemailid)
+# **getemailtemplate**
+> string getemailtemplate($templatename, $sharename, $shareurl, $toemailid, $keepuserplaceholders)
 
-
+Share_Related_API - getemailtemplate is used to get email template to send it to the user
 
 Get email template to send it to the user
 
@@ -413,16 +502,17 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$op = "op_example"; // string | Operation name
-$templatename = "templatename_example"; // string | Template Name
-$sharename = "sharename_example"; // string | Share Name
+$templatename = "templatename_example"; // string | Template name
+$sharename = "sharename_example"; // string | Share name
 $shareurl = "shareurl_example"; // string | Share URL
-$toemailid = "toemailid_example"; // string | To email id
+$toemailid = "toemailid_example"; // string | To Email ID
+$keepuserplaceholders = "keepuserplaceholders_example"; // string | When it's set to 1 the user-related placeholders(^TOEMAILID^ , ^TO^) are not being replaced when fetching the template. Only common, 'global' values, are replaced with the values.
 
 try {
-    $apiInstance->getEmailTemplate($op, $templatename, $sharename, $shareurl, $toemailid);
+    $result = $apiInstance->getemailtemplate($templatename, $sharename, $shareurl, $toemailid, $keepuserplaceholders);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getEmailTemplate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getemailtemplate: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -431,15 +521,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **op** | **string**| Operation name |
- **templatename** | **string**| Template Name |
- **sharename** | **string**| Share Name |
+ **templatename** | **string**| Template name |
+ **sharename** | **string**| Share name |
  **shareurl** | **string**| Share URL |
- **toemailid** | **string**| To email id |
+ **toemailid** | **string**| To Email ID |
+ **keepuserplaceholders** | **string**| When it&#39;s set to 1 the user-related placeholders(^TOEMAILID^ , ^TO^) are not being replaced when fetching the template. Only common, &#39;global&#39; values, are replaced with the values. | [optional]
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -447,17 +537,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/html
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getGroupAccessForShare**
-> string getGroupAccessForShare($shareid)
+# **getgroupaccessforshare**
+> \Swagger\Client\Model\Groups getgroupaccessforshare($shareid)
 
+Share_Related_API - getgroupaccessforshare is used to get permission details of a group for shared file/folder
 
-
-User can get group access details for share
+User can get group access details for a shared file or folder
 
 ### Example
 ```php
@@ -472,10 +562,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 $shareid = "shareid_example"; // string | Share Id number
 
 try {
-    $result = $apiInstance->getGroupAccessForShare($shareid);
+    $result = $apiInstance->getgroupaccessforshare($shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getGroupAccessForShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getgroupaccessforshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -488,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Groups**](../Model/Groups.md)
 
 ### Authorization
 
@@ -496,15 +586,115 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getMostActiveShares**
-> string getMostActiveShares()
+# **getmanageablesharesall**
+> \Swagger\Client\Model\Shares getmanageablesharesall($op)
 
+Share_Related_API - getmanageablesharesall is used to get details of all the managed shares.
 
+Get all the manageable shares
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$op = "op_example"; // string | Operation API to be performed
+
+try {
+    $result = $apiInstance->getmanageablesharesall($op);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShareApi->getmanageablesharesall: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **op** | **string**| Operation API to be performed |
+
+### Return type
+
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getmanageablesharesforpath**
+> \Swagger\Client\Model\Shares getmanageablesharesforpath($path, $showchildpaths)
+
+Share_Related_API - getmanageablesharesforpath is used to get information about manageable shares for a particular path.Also shows the shared child paths
+
+User can get details of managable share for a specific path
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$path = "path_example"; // string | Path of the shared folder
+$showchildpaths = "showchildpaths_example"; // string | Path of the child folders
+
+try {
+    $result = $apiInstance->getmanageablesharesforpath($path, $showchildpaths);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShareApi->getmanageablesharesforpath: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **string**| Path of the shared folder |
+ **showchildpaths** | **string**| Path of the child folders |
+
+### Return type
+
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getmostactiveshares**
+> \Swagger\Client\Model\Activeshares getmostactiveshares()
+
+Share_Related_API - getmostactiveshares is used to get information about the shared item which was accessed more number of times.
 
 API that gets the most active shares for the user logged in. Most active share is defined by the number of times the share is accessed for any reason.
 
@@ -520,10 +710,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 );
 
 try {
-    $result = $apiInstance->getMostActiveShares();
+    $result = $apiInstance->getmostactiveshares();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getMostActiveShares: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getmostactiveshares: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -533,7 +723,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Activeshares**](../Model/Activeshares.md)
 
 ### Authorization
 
@@ -541,17 +731,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getPrivateUrlForEmail**
-> getPrivateUrlForEmail($shareid)
+# **getprivateurlforemail**
+> string getprivateurlforemail($shareid)
 
+Share_Related_API - getprivateurlforemail is used to get a unique and short private url link to access the shared file/folder
 
-
-Get Private Url for the shared file/folder
+A unique private url is generated which can be accessed by the user to view/edit/share/download the privately shared file/folder
 
 ### Example
 ```php
@@ -563,12 +753,13 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$shareid = "shareid_example"; // string | Share Id number
+$shareid = "shareid_example"; // string | Share Id Number
 
 try {
-    $apiInstance->getPrivateUrlForEmail($shareid);
+    $result = $apiInstance->getprivateurlforemail($shareid);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getPrivateUrlForEmail: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getprivateurlforemail: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -577,11 +768,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
+ **shareid** | **string**| Share Id Number |
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -589,15 +780,15 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: string
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getPublicShareAuthInfo**
-> string getPublicShareAuthInfo($path)
+# **getpublicshareauthinfo**
+> \Swagger\Client\Model\Commands getpublicshareauthinfo($path)
 
-
+Share_Related_API - getpublicshareauthinfo
 
 Get public share authentication info
 
@@ -614,10 +805,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 $path = "path_example"; // string | Specify the share path
 
 try {
-    $result = $apiInstance->getPublicShareAuthInfo($path);
+    $result = $apiInstance->getpublicshareauthinfo($path);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getPublicShareAuthInfo: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getpublicshareauthinfo: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -630,7 +821,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -638,17 +829,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getRandomPassword**
-> string getRandomPassword()
+# **getrandompassword**
+> \Swagger\Client\Model\Commands getrandompassword()
 
+Share_Related_API - getrandompassword is used to get a random password generated by the FC system in order to access the share
 
-
-Get random password for protected share
+User gets a random password while sharing using protected share option
 
 ### Example
 ```php
@@ -662,10 +853,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 );
 
 try {
-    $result = $apiInstance->getRandomPassword();
+    $result = $apiInstance->getrandompassword();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getRandomPassword: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getrandompassword: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -675,7 +866,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -683,17 +874,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getRecentShareActivityForUser**
-> string getRecentShareActivityForUser()
+# **getrecentshareactivityforuser**
+> \Swagger\Client\Model\Shareactivities getrecentshareactivityforuser()
 
+Share_Related_API - getrecentshareactivityforuser
 
-
-API to get the recent share activity from all shares for the user logged in.
+API to get the top share activity from all shares for the user logged in.
 
 ### Example
 ```php
@@ -707,10 +898,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 );
 
 try {
-    $result = $apiInstance->getRecentShareActivityForUser();
+    $result = $apiInstance->getrecentshareactivityforuser();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getRecentShareActivityForUser: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getrecentshareactivityforuser: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -720,7 +911,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shareactivities**](../Model/Shareactivities.md)
 
 ### Authorization
 
@@ -728,17 +919,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getShareActivityForShare**
-> string getShareActivityForShare()
+# **getshareactivityforshare**
+> \Swagger\Client\Model\Shareactivities getshareactivityforshare($shareid)
 
+Share_Related_API - getshareactivityforshare is used to get the list of share activities
 
-
-Get the list of share activity
+USed to get the list of share activities
 
 ### Example
 ```php
@@ -750,58 +941,13 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$shareid = "shareid_example"; // string | Share ID
 
 try {
-    $result = $apiInstance->getShareActivityForShare();
+    $result = $apiInstance->getshareactivityforshare($shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getShareActivityForShare: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**string**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getShareForId**
-> string getShareForId($shareid)
-
-
-
-User can get share details by using shareid
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$apiInstance = new Swagger\Client\Api\ShareApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$shareid = "shareid_example"; // string | Share Id number
-
-try {
-    $result = $apiInstance->getShareForId($shareid);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getShareForId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getshareactivityforshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -810,11 +956,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
+ **shareid** | **string**| Share ID |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shareactivities**](../Model/Shareactivities.md)
 
 ### Authorization
 
@@ -822,17 +968,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getShareForPath**
-> string getShareForPath($path)
+# **getshareforid**
+> \Swagger\Client\Model\Shares getshareforid($shareid)
 
+Share_Related_API - getshareforid
 
-
-User can get share details by using path
+Get the list of share activityUser can get share details by using shareid
 
 ### Example
 ```php
@@ -844,13 +990,13 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$path = "path_example"; // string | Path of shared file/folder
+$shareid = "shareid_example"; // string | Share Id Number
 
 try {
-    $result = $apiInstance->getShareForPath($path);
+    $result = $apiInstance->getshareforid($shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getShareForPath: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getshareforid: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -859,11 +1005,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **path** | **string**| Path of shared file/folder |
+ **shareid** | **string**| Share Id Number |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
 
 ### Authorization
 
@@ -871,15 +1017,64 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getSharePassword**
-> string getSharePassword($shareid)
+# **getshareforpath**
+> \Swagger\Client\Model\Shares getshareforpath($path)
 
+Share_Related_API - getshareforpath is used to get all details of the share by specifying the shared file/folder path
 
+User can get share details or information about a particular share by specifying the path of the shared file or folder
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$path = "path_example"; // string | Path of shared file/folder to get details
+
+try {
+    $result = $apiInstance->getshareforpath($path);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShareApi->getshareforpath: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **string**| Path of shared file/folder to get details |
+
+### Return type
+
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getsharepassword**
+> \Swagger\Client\Model\Shares getsharepassword($shareid)
+
+Share_Related_API - getsharepassword
 
 Get protected share password
 
@@ -896,10 +1091,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 $shareid = "shareid_example"; // string | Specify the share Id
 
 try {
-    $result = $apiInstance->getSharePassword($shareid);
+    $result = $apiInstance->getsharepassword($shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getSharePassword: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getsharepassword: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -912,7 +1107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
 
 ### Authorization
 
@@ -920,17 +1115,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getShares**
-> string getShares()
+# **getshares**
+> \Swagger\Client\Model\Shares getshares()
 
+Share_Related_API - getshares is used to get information about all the shares done in a system
 
-
-User can get all the shares in system
+User can get information about all the shares done for a file/folder in system
 
 ### Example
 ```php
@@ -944,10 +1139,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 );
 
 try {
-    $result = $apiInstance->getShares();
+    $result = $apiInstance->getshares();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getShares: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getshares: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -957,7 +1152,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
 
 ### Authorization
 
@@ -965,17 +1160,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getSharesFilter**
-> string getSharesFilter($location)
+# **getsharesfilter**
+> \Swagger\Client\Model\Shares getsharesfilter($location)
 
+Share_Related_API - getsharesfilter is used to get information about the shares done in a system by specifying the path
 
-
-User can get the share information of shared file/folder in the system
+User can get the share information of shared file/folder in the system by specifying a particular path
 
 ### Example
 ```php
@@ -990,10 +1185,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 $location = "location_example"; // string | Specify the location with the filename to be shared
 
 try {
-    $result = $apiInstance->getSharesFilter($location);
+    $result = $apiInstance->getsharesfilter($location);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getSharesFilter: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getsharesfilter: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1006,7 +1201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
 
 ### Authorization
 
@@ -1014,17 +1209,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getUploadForm**
-> getUploadForm($shareid)
+# **getuploadform**
+> string getuploadform($shareid)
 
+Share_Related_API - getuploadform is used to get a upload form for a publicly shared folder with upload permission
 
-
-User get the upload form for publicly shared folder with upload permissions
+User can get the upload form with all the upload permissions specified while sharing a folder publicly to a user
 
 ### Example
 ```php
@@ -1036,111 +1231,13 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$shareid = "shareid_example"; // string | Share Id number
+$shareid = "shareid_example"; // string | Share Id Number of the publicly shared folder
 
 try {
-    $apiInstance->getUploadForm($shareid);
-} catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getUploadForm: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getUrlForEmail**
-> getUrlForEmail($shareid, $sharename)
-
-
-
-Get Url for the shared file/folder
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$apiInstance = new Swagger\Client\Api\ShareApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$shareid = "shareid_example"; // string | Share Id number
-$sharename = "sharename_example"; // string | Share name
-
-try {
-    $apiInstance->getUrlForEmail($shareid, $sharename);
-} catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getUrlForEmail: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
- **sharename** | **string**| Share name |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getUserAccessForShare**
-> string getUserAccessForShare($shareid)
-
-
-
-User can get user access details for share
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$apiInstance = new Swagger\Client\Api\ShareApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$shareid = "shareid_example"; // string | Share Id number
-
-try {
-    $result = $apiInstance->getUserAccessForShare($shareid);
+    $result = $apiInstance->getuploadform($shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getUserAccessForShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->getuploadform: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1149,7 +1246,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
+ **shareid** | **string**| Share Id Number of the publicly shared folder |
 
 ### Return type
 
@@ -1161,17 +1258,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: string
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getUsersForShare**
-> string getUsersForShare($shareid)
+# **geturlforemail**
+> string geturlforemail($shareid, $sharename)
 
+Share_Related_API - geturlforemail is used to get a share url link while sharing the file/folder through email
 
-
-User can get a list of users added to that share.
+A share url link is generated by the system when user shares a file or folder through an email.
 
 ### Example
 ```php
@@ -1183,13 +1280,14 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$shareid = "shareid_example"; // string | Share Id number
+$shareid = "shareid_example"; // string | Share Id Number
+$sharename = "sharename_example"; // string | Share Name
 
 try {
-    $result = $apiInstance->getUsersForShare($shareid);
+    $result = $apiInstance->geturlforemail($shareid, $sharename);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->getUsersForShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->geturlforemail: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1198,7 +1296,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
+ **shareid** | **string**| Share Id Number |
+ **sharename** | **string**| Share Name |
 
 ### Return type
 
@@ -1210,17 +1309,66 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: string
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **leaveShare**
-> string leaveShare($path)
+# **getuseraccessforshare**
+> \Swagger\Client\Model\Users getuseraccessforshare($shareid)
 
+Share_Related_API - getuseraccessforshare is used to get permission details of a user for a shared file/folder
 
+User can get details of the user's access (such as read,download,upload, etc.) for a shared file or folder
 
-User can leave a shared file/folder
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ShareApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$shareid = "shareid_example"; // string | Share Id Number of the shared file/folder
+
+try {
+    $result = $apiInstance->getuseraccessforshare($shareid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ShareApi->getuseraccessforshare: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shareid** | **string**| Share Id Number of the shared file/folder |
+
+### Return type
+
+[**\Swagger\Client\Model\Users**](../Model/Users.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **leaveshare**
+> \Swagger\Client\Model\Commands leaveshare($path)
+
+Share_Related_API - leaveshare is used to leave from an already shared file/folder by a user
+
+User can leave from an existing shared file/folder
 
 ### Example
 ```php
@@ -1235,10 +1383,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 $path = "path_example"; // string | Path of the shared file/folder
 
 try {
-    $result = $apiInstance->leaveShare($path);
+    $result = $apiInstance->leaveshare($path);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->leaveShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->leaveshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1251,7 +1399,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -1259,17 +1407,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **loginProtectedShare**
-> string loginProtectedShare($fullquerystring, $password, $path)
+# **loginprotectedshare**
+> \Swagger\Client\Model\Commands loginprotectedshare($fullquerystring, $password, $path)
 
+Share_Related_API - loginprotectedshare is used to login to access the protected share
 
-
-Login to protected share
+USer has to login to the FC system and enter the share password in order to access the protected share
 
 ### Example
 ```php
@@ -1286,10 +1434,10 @@ $password = "password_example"; // string | Password for protected share
 $path = "path_example"; // string | Specify the shared path
 
 try {
-    $result = $apiInstance->loginProtectedShare($fullquerystring, $password, $path);
+    $result = $apiInstance->loginprotectedshare($fullquerystring, $password, $path);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->loginProtectedShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->loginprotectedshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1304,7 +1452,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -1313,16 +1461,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **quickShare**
-> string quickShare($sharelocation)
+# **quickshare**
+> \Swagger\Client\Model\Shares quickshare($sharelocation, $showadvancedsharedialog)
 
+Share_Related_API - quickshare is used to share files to a user by generating link in system
 
-
-User can share file's to other by generating a link in the system (HTTP POST)
+User can share files to others by generating a link in the system (HTTP POST)
 
 ### Example
 ```php
@@ -1335,12 +1483,13 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     new GuzzleHttp\Client()
 );
 $sharelocation = "sharelocation_example"; // string | Specify the location with the filename to be shared
+$showadvancedsharedialog = "showadvancedsharedialog_example"; // string | whether advanced share dialog should be displayed or no. Vales can be 0 or 1(0 - when a new public share is created, 1 - otherwise (a new private share is created or an existing share is being accessed))
 
 try {
-    $result = $apiInstance->quickShare($sharelocation);
+    $result = $apiInstance->quickshare($sharelocation, $showadvancedsharedialog);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->quickShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->quickshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1350,10 +1499,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sharelocation** | **string**| Specify the location with the filename to be shared |
+ **showadvancedsharedialog** | **string**| whether advanced share dialog should be displayed or no. Vales can be 0 or 1(0 - when a new public share is created, 1 - otherwise (a new private share is created or an existing share is being accessed)) | [optional]
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
 
 ### Authorization
 
@@ -1362,16 +1512,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **searchGroups**
-> string searchGroups()
+# **searchgroups**
+> \Swagger\Client\Model\Searchgroups searchgroups()
 
+Share_Related_API - searchgroups is used to search for existing groups in the system in order to add to a shared file or folder
 
-
-Search for groups in system to share a file/folder
+USer can search for groups in the system to add a group to a shared folder or file.
 
 ### Example
 ```php
@@ -1385,10 +1535,10 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 );
 
 try {
-    $result = $apiInstance->searchGroups();
+    $result = $apiInstance->searchgroups();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->searchGroups: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->searchgroups: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1398,7 +1548,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Searchgroups**](../Model/Searchgroups.md)
 
 ### Authorization
 
@@ -1406,17 +1556,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **searchProfile**
-> string searchProfile($filter)
+# **searchprofiles**
+> \Swagger\Client\Model\Profiles searchprofiles($filter, $context, $shareid)
 
+Share_Related_API - searchprofiles is used to search for a user to share a file/folder
 
-
-Search for profile in system to share a file/folder
+USer can search for profile in system either by using a username or email to share a file/folder to the user.
 
 ### Example
 ```php
@@ -1429,12 +1579,14 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     new GuzzleHttp\Client()
 );
 $filter = "filter_example"; // string | Partial name/email for search
+$context = "context_example"; // string | when context=share additional, share-related information is being sent in the response
+$shareid = "shareid_example"; // string | used only when context=share
 
 try {
-    $result = $apiInstance->searchProfile($filter);
+    $result = $apiInstance->searchprofiles($filter, $context, $shareid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->searchProfile: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->searchprofiles: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1444,10 +1596,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter** | **string**| Partial name/email for search |
+ **context** | **string**| when context&#x3D;share additional, share-related information is being sent in the response | [optional]
+ **shareid** | **string**| used only when context&#x3D;share | [optional]
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Profiles**](../Model/Profiles.md)
 
 ### Authorization
 
@@ -1455,17 +1609,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **sendEmail**
-> string sendEmail($from, $toemailid, $message, $subject, $userid, $publicshare, $replyto)
+# **sendemail**
+> \Swagger\Client\Model\Emailstatus sendemail($from, $toemailid, $message, $subject, $userid, $publicshare, $replyto, $shouldsendemail, $bccemailid)
 
+Share_Related_API - sendemail is used to send email to the user
 
-
-Send email to the user
+User can Send an email to another user by filling out the required fields in the email template
 
 ### Example
 ```php
@@ -1477,19 +1631,21 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$from = "from_example"; // string | From user name
-$toemailid = "toemailid_example"; // string | To email id
-$message = "message_example"; // string | Email template
-$subject = "subject_example"; // string | subject of email
-$userid = "userid_example"; // string | user id
-$publicshare = "publicshare_example"; // string | share Id
-$replyto = "replyto_example"; // string | Reply to email id
+$from = "from_example"; // string | From User Name
+$toemailid = "toemailid_example"; // string | To Email ID
+$message = "message_example"; // string | Email Template
+$subject = "subject_example"; // string | Subject of the email
+$userid = "userid_example"; // string | User ID
+$publicshare = "publicshare_example"; // string | Share ID
+$replyto = "replyto_example"; // string | Reply To Email ID
+$shouldsendemail = "shouldsendemail_example"; // string | Email to be sent or not
+$bccemailid = "bccemailid_example"; // string | Email id in bcc field
 
 try {
-    $result = $apiInstance->sendEmail($from, $toemailid, $message, $subject, $userid, $publicshare, $replyto);
+    $result = $apiInstance->sendemail($from, $toemailid, $message, $subject, $userid, $publicshare, $replyto, $shouldsendemail, $bccemailid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->sendEmail: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->sendemail: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1498,17 +1654,19 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **string**| From user name |
- **toemailid** | **string**| To email id |
- **message** | **string**| Email template |
- **subject** | **string**| subject of email |
- **userid** | **string**| user id |
- **publicshare** | **string**| share Id |
- **replyto** | **string**| Reply to email id |
+ **from** | **string**| From User Name |
+ **toemailid** | **string**| To Email ID |
+ **message** | **string**| Email Template |
+ **subject** | **string**| Subject of the email |
+ **userid** | **string**| User ID |
+ **publicshare** | **string**| Share ID |
+ **replyto** | **string**| Reply To Email ID |
+ **shouldsendemail** | **string**| Email to be sent or not |
+ **bccemailid** | **string**| Email id in bcc field |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Emailstatus**](../Model/Emailstatus.md)
 
 ### Authorization
 
@@ -1517,16 +1675,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **sendShareToEmail**
-> sendShareToEmail($from, $toemailid, $sharename, $sharelocation, $url, $message, $publicshare, $replyto)
+# **sendsharetoemail**
+> \Swagger\Client\Model\Emailstatus sendsharetoemail($from, $toemailid, $sharename, $sharelocation, $url, $message, $subject, $userid, $publicshare, $replyto)
 
+Share_Related_API - sendsharetoemail is used to send the shared file or folder through email
 
-
-Send shared file/folder to email
+User can send a shared file/folder to email of the recipient
 
 ### Example
 ```php
@@ -1538,19 +1696,22 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$from = "from_example"; // string | from name
-$toemailid = "toemailid_example"; // string | to email id
-$sharename = "sharename_example"; // string | share name of file/folder
-$sharelocation = "sharelocation_example"; // string | share location of the file/folder
-$url = "url_example"; // string | share url of the file/folder
-$message = "message_example"; // string | message text
-$publicshare = "publicshare_example"; // string | public share id
-$replyto = "replyto_example"; // string | reply to email
+$from = "from_example"; // string | From User Name
+$toemailid = "toemailid_example"; // string | To Email ID
+$sharename = "sharename_example"; // string | Share name of the file/folder
+$sharelocation = "sharelocation_example"; // string | Share location of the file/folder
+$url = "url_example"; // string | Share url of the file/folder
+$message = "message_example"; // string | Email Template
+$subject = "subject_example"; // string | Subject of the email
+$userid = "userid_example"; // string | User ID
+$publicshare = "publicshare_example"; // string | Share ID
+$replyto = "replyto_example"; // string | Reply To Email ID
 
 try {
-    $apiInstance->sendShareToEmail($from, $toemailid, $sharename, $sharelocation, $url, $message, $publicshare, $replyto);
+    $result = $apiInstance->sendsharetoemail($from, $toemailid, $sharename, $sharelocation, $url, $message, $subject, $userid, $publicshare, $replyto);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->sendShareToEmail: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->sendsharetoemail: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1559,18 +1720,20 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **from** | **string**| from name |
- **toemailid** | **string**| to email id |
- **sharename** | **string**| share name of file/folder |
- **sharelocation** | **string**| share location of the file/folder |
- **url** | **string**| share url of the file/folder |
- **message** | **string**| message text |
- **publicshare** | **string**| public share id |
- **replyto** | **string**| reply to email |
+ **from** | **string**| From User Name |
+ **toemailid** | **string**| To Email ID |
+ **sharename** | **string**| Share name of the file/folder |
+ **sharelocation** | **string**| Share location of the file/folder |
+ **url** | **string**| Share url of the file/folder |
+ **message** | **string**| Email Template |
+ **subject** | **string**| Subject of the email |
+ **userid** | **string**| User ID |
+ **publicshare** | **string**| Share ID |
+ **replyto** | **string**| Reply To Email ID |
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\Emailstatus**](../Model/Emailstatus.md)
 
 ### Authorization
 
@@ -1579,16 +1742,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **setAllowPublicAccess**
-> string setAllowPublicAccess($shareid, $allowpublicaccess, $allowpublicupload, $allowpublicviewonly)
+# **setallowpublicaccess**
+> \Swagger\Client\Model\Commands setallowpublicaccess($shareid, $allowpublicaccess, $allowpublicupload, $allowpublicviewonly, $allowpublicuploadonly)
 
+Share_Related_API - setallowpublicaccess is used to set either a private or public access to a shared file
 
-
-User can set a shared file to public or private access in the system
+User can use custom permissions when creating a share. User can set a shared file to public or private access in the system
 
 ### Example
 ```php
@@ -1601,15 +1764,16 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     new GuzzleHttp\Client()
 );
 $shareid = "shareid_example"; // string | Share Id number
-$allowpublicaccess = 8.14; // float | If set to 1 - allow public access , 0 - private access only
-$allowpublicupload = 8.14; // float | If set to 1 - allow public upload , 0 - private upload only
-$allowpublicviewonly = 8.14; // float | If set to 1 - allow public view , 0 - private view only
+$allowpublicaccess = "allowpublicaccess_example"; // string | If set to 1 - allow public access , 0 - private access only
+$allowpublicupload = "allowpublicupload_example"; // string | If set to 1 - allow public access , 0 - private access only
+$allowpublicviewonly = "allowpublicviewonly_example"; // string | If set to 1 - allow public access , 0 - private access only
+$allowpublicuploadonly = "allowpublicuploadonly_example"; // string | If set to 1 - allow public access , 0 - private access only
 
 try {
-    $result = $apiInstance->setAllowPublicAccess($shareid, $allowpublicaccess, $allowpublicupload, $allowpublicviewonly);
+    $result = $apiInstance->setallowpublicaccess($shareid, $allowpublicaccess, $allowpublicupload, $allowpublicviewonly, $allowpublicuploadonly);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->setAllowPublicAccess: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->setallowpublicaccess: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1619,13 +1783,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **shareid** | **string**| Share Id number |
- **allowpublicaccess** | **float**| If set to 1 - allow public access , 0 - private access only |
- **allowpublicupload** | **float**| If set to 1 - allow public upload , 0 - private upload only |
- **allowpublicviewonly** | **float**| If set to 1 - allow public view , 0 - private view only |
+ **allowpublicaccess** | **string**| If set to 1 - allow public access , 0 - private access only |
+ **allowpublicupload** | **string**| If set to 1 - allow public access , 0 - private access only |
+ **allowpublicviewonly** | **string**| If set to 1 - allow public access , 0 - private access only |
+ **allowpublicuploadonly** | **string**| If set to 1 - allow public access , 0 - private access only |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -1633,17 +1798,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **setGroupAccessForShare**
-> string setGroupAccessForShare($shareid, $groupid, $downloadwritesharesync)
+# **setgroupaccessforshare**
+> \Swagger\Client\Model\Commands setgroupaccessforshare($shareid, $groupid, $downloadwritesharesync)
 
+Share_Related_API - setgroupaccessforshare is used to set permission details of a group for shared file/folder
 
-
-User can set download/write/share/sync permission for the shared file/folder in the system
+User can set download/write/share/sync permission for a group for the shared file/folder in the system
 
 ### Example
 ```php
@@ -1657,13 +1822,13 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
 );
 $shareid = "shareid_example"; // string | Share Id
 $groupid = "groupid_example"; // string | Group Id
-$downloadwritesharesync = "downloadwritesharesync_example"; // string | Set to true or false
+$downloadwritesharesync = "downloadwritesharesync_example"; // string | Set to True or False
 
 try {
-    $result = $apiInstance->setGroupAccessForShare($shareid, $groupid, $downloadwritesharesync);
+    $result = $apiInstance->setgroupaccessforshare($shareid, $groupid, $downloadwritesharesync);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->setGroupAccessForShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->setgroupaccessforshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1674,11 +1839,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **shareid** | **string**| Share Id |
  **groupid** | **string**| Group Id |
- **downloadwritesharesync** | **string**| Set to true or false |
+ **downloadwritesharesync** | **string**| Set to True or False |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -1686,17 +1851,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **setUserAccessForShare**
-> string setUserAccessForShare($shareid, $userid, $downloadwritesharesync)
+# **setuseraccessforshare**
+> \Swagger\Client\Model\Commands setuseraccessforshare($shareid, $userid, $downloadwritesharesync)
 
+Share_Related_API - setuseraccessforshare is used to set permission details of a user for shared file/folder
 
-
-User can set download/write/share/sync permission for the shared file/folder in the system
+User can set download/write/share/sync permission for a user for the shared file/folder in the system
 
 ### Example
 ```php
@@ -1708,15 +1873,15 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$shareid = "shareid_example"; // string | Share Id number
-$userid = "userid_example"; // string | User email id
-$downloadwritesharesync = "downloadwritesharesync_example"; // string | Set to true or false
+$shareid = "shareid_example"; // string | Share Id
+$userid = "userid_example"; // string | User Id
+$downloadwritesharesync = "downloadwritesharesync_example"; // string | Set to True or False
 
 try {
-    $result = $apiInstance->setUserAccessForShare($shareid, $userid, $downloadwritesharesync);
+    $result = $apiInstance->setuseraccessforshare($shareid, $userid, $downloadwritesharesync);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->setUserAccessForShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->setuseraccessforshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1725,13 +1890,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
- **userid** | **string**| User email id |
- **downloadwritesharesync** | **string**| Set to true or false |
+ **shareid** | **string**| Share Id |
+ **userid** | **string**| User Id |
+ **downloadwritesharesync** | **string**| Set to True or False |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -1739,17 +1904,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **share**
-> share($mode, $path)
+> string share($mode, $path)
 
+Share_Related_API - share is used to download a publicly shared file
 
-
-Downloads publicly shared file
+User can download a publicly shared file
 
 ### Example
 ```php
@@ -1765,7 +1930,8 @@ $mode = "mode_example"; // string | single file download
 $path = "path_example"; // string | Shared file path
 
 try {
-    $apiInstance->share($mode, $path);
+    $result = $apiInstance->share($mode, $path);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShareApi->share: ', $e->getMessage(), PHP_EOL;
 }
@@ -1781,7 +1947,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -1790,14 +1956,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **updateShare**
-> string updateShare($shareid, $sharename, $sharelocation, $viewmode, $validityperiod, $sharesizelimit, $maxdownloads, $hidenotification, $sharepassword)
+# **updateshare**
+> \Swagger\Client\Model\Shares updateshare($shareid, $sharename, $sharelocation, $viewmode, $validityperiod, $sharesizelimit, $maxdownloads, $hidenotification, $sharepassword, $allowpublicaccess, $allowpublicupload, $allowpublicviewonly, $allowpublicuploadonly, $newshareowner, $defaultfile)
 
-
+Share_Related_API - updateshare is used to update a share information
 
 User can update the share information in the system
 
@@ -1811,21 +1977,27 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$shareid = "shareid_example"; // string | Share Id number
-$sharename = "sharename_example"; // string | Share name
-$sharelocation = "sharelocation_example"; // string | Specify the location with the filename to be shared
+$shareid = "shareid_example"; // string | Share Id
+$sharename = "sharename_example"; // string | Share Name
+$sharelocation = "sharelocation_example"; // string | Specify the location with the filename/folder to be shared
 $viewmode = "viewmode_example"; // string | DEFAULT
-$validityperiod = 8.14; // float | Set the expiry date of share here
-$sharesizelimit = 8.14; // float | Set the limit
-$maxdownloads = 8.14; // float | Set the maximum times download limit
-$hidenotification = 8.14; // float | Set 1 to disable email notification
-$sharepassword = 8.14; // float | Set the password for protected share
+$validityperiod = "validityperiod_example"; // string | Set the expiry date of share here
+$sharesizelimit = new \stdClass; // object | Set the size limit for the share
+$maxdownloads = new \stdClass; // object | Set the maximum times download limit
+$hidenotification = "hidenotification_example"; // string | Set 1 to disable email notification
+$sharepassword = "sharepassword_example"; // string | Set the password for protected share
+$allowpublicaccess = new \stdClass; // object | set as public share or not
+$allowpublicupload = new \stdClass; // object | set public upload permission
+$allowpublicviewonly = new \stdClass; // object | set public view permission
+$allowpublicuploadonly = new \stdClass; // object | set public upload only for the share
+$newshareowner = new \stdClass; // object | set a new share owner for the share
+$defaultfile = "defaultfile_example"; // string | set a file in the public share as the default preview for that share
 
 try {
-    $result = $apiInstance->updateShare($shareid, $sharename, $sharelocation, $viewmode, $validityperiod, $sharesizelimit, $maxdownloads, $hidenotification, $sharepassword);
+    $result = $apiInstance->updateshare($shareid, $sharename, $sharelocation, $viewmode, $validityperiod, $sharesizelimit, $maxdownloads, $hidenotification, $sharepassword, $allowpublicaccess, $allowpublicupload, $allowpublicviewonly, $allowpublicuploadonly, $newshareowner, $defaultfile);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->updateShare: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->updateshare: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1834,19 +2006,25 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
- **sharename** | **string**| Share name |
- **sharelocation** | **string**| Specify the location with the filename to be shared |
- **viewmode** | **string**| DEFAULT |
- **validityperiod** | **float**| Set the expiry date of share here |
- **sharesizelimit** | **float**| Set the limit |
- **maxdownloads** | **float**| Set the maximum times download limit |
- **hidenotification** | **float**| Set 1 to disable email notification |
- **sharepassword** | **float**| Set the password for protected share |
+ **shareid** | **string**| Share Id |
+ **sharename** | **string**| Share Name | [optional]
+ **sharelocation** | **string**| Specify the location with the filename/folder to be shared | [optional]
+ **viewmode** | **string**| DEFAULT | [optional]
+ **validityperiod** | **string**| Set the expiry date of share here | [optional]
+ **sharesizelimit** | [**object**](../Model/.md)| Set the size limit for the share | [optional]
+ **maxdownloads** | [**object**](../Model/.md)| Set the maximum times download limit | [optional]
+ **hidenotification** | **string**| Set 1 to disable email notification | [optional]
+ **sharepassword** | **string**| Set the password for protected share | [optional]
+ **allowpublicaccess** | [**object**](../Model/.md)| set as public share or not | [optional]
+ **allowpublicupload** | [**object**](../Model/.md)| set public upload permission | [optional]
+ **allowpublicviewonly** | [**object**](../Model/.md)| set public view permission | [optional]
+ **allowpublicuploadonly** | [**object**](../Model/.md)| set public upload only for the share | [optional]
+ **newshareowner** | [**object**](../Model/.md)| set a new share owner for the share | [optional]
+ **defaultfile** | **string**| set a file in the public share as the default preview for that share | [optional]
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shares**](../Model/Shares.md)
 
 ### Authorization
 
@@ -1855,16 +2033,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **updateShareLink**
-> string updateShareLink($shareid, $oldsharelink, $newsharelink)
+# **updatesharelink**
+> \Swagger\Client\Model\Commands updatesharelink($shareid, $oldsharelink, $newsharelink)
 
+Share_Related_API - updatesharelink is used to update the url link of a shared file/folder
 
-
-User can set download/write/share/sync permission for the shared file/folder in the system
+User can update the share url link of a shared file or folder in the system
 
 ### Example
 ```php
@@ -1876,15 +2054,15 @@ $apiInstance = new Swagger\Client\Api\ShareApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$shareid = "shareid_example"; // string | Share Id number
+$shareid = "shareid_example"; // string | Share Id
 $oldsharelink = "oldsharelink_example"; // string | Old share link
 $newsharelink = "newsharelink_example"; // string | New share link
 
 try {
-    $result = $apiInstance->updateShareLink($shareid, $oldsharelink, $newsharelink);
+    $result = $apiInstance->updatesharelink($shareid, $oldsharelink, $newsharelink);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShareApi->updateShareLink: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShareApi->updatesharelink: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1893,13 +2071,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **shareid** | **string**| Share Id number |
+ **shareid** | **string**| Share Id |
  **oldsharelink** | **string**| Old share link |
  **newsharelink** | **string**| New share link |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -1907,8 +2085,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

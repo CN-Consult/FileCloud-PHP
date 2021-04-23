@@ -1,20 +1,20 @@
 # Swagger\Client\ShortcutsApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://swaggerfc.getfilecloud.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addShortcut**](ShortcutsApi.md#addShortcut) | **GET** /core/addshortcut | 
-[**deleteShortcut**](ShortcutsApi.md#deleteShortcut) | **GET** /core/deleteshortcut | 
-[**getShortcuts**](ShortcutsApi.md#getShortcuts) | **GET** /core/getshortcuts | 
+[**addshortcut**](ShortcutsApi.md#addshortcut) | **POST** /core/addshortcut | Shortcut_Related_API - addshortcut is used to create a shortcut to access a path easily.
+[**deleteshortcut**](ShortcutsApi.md#deleteshortcut) | **POST** /core/deleteshortcut | Shortcut_Related_API - deleteshortcut is used to delete the existing shortcut in the system
+[**getshortcuts**](ShortcutsApi.md#getshortcuts) | **POST** /core/getshortcuts | Shortcut_Related_API - getshortcuts is used to get the list of all shortcuts
 
 
-# **addShortcut**
-> string addShortcut($scname, $scvalue, $sctype)
+# **addshortcut**
+> \Swagger\Client\Model\Commands addshortcut($scname, $scvalue, $sctype)
 
+Shortcut_Related_API - addshortcut is used to create a shortcut to access a path easily.
 
-
-Add Shortcut
+User can add a Shortcut which creates a link for the user to access any path
 
 ### Example
 ```php
@@ -31,10 +31,10 @@ $scvalue = "scvalue_example"; // string | Specify the path of the folder
 $sctype = "sctype_example"; // string | Specify the type of shortcuts
 
 try {
-    $result = $apiInstance->addShortcut($scname, $scvalue, $sctype);
+    $result = $apiInstance->addshortcut($scname, $scvalue, $sctype);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShortcutsApi->addShortcut: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShortcutsApi->addshortcut: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -57,17 +57,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **deleteShortcut**
-> string deleteShortcut($rid)
+# **deleteshortcut**
+> \Swagger\Client\Model\Commands deleteshortcut($rid)
 
+Shortcut_Related_API - deleteshortcut is used to delete the existing shortcut in the system
 
-
-Delete Shortcut
+USer can delete the shortcut which was created for easy access to any path
 
 ### Example
 ```php
@@ -82,10 +82,10 @@ $apiInstance = new Swagger\Client\Api\ShortcutsApi(
 $rid = "rid_example"; // string | Specify the id
 
 try {
-    $result = $apiInstance->deleteShortcut($rid);
+    $result = $apiInstance->deleteshortcut($rid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShortcutsApi->deleteShortcut: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShortcutsApi->deleteshortcut: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -106,17 +106,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getShortcuts**
-> string getShortcuts($start, $limit)
+# **getshortcuts**
+> \Swagger\Client\Model\Shortcuts getshortcuts($start, $limit)
 
+Shortcut_Related_API - getshortcuts is used to get the list of all shortcuts
 
-
-Get list of Shortcuts
+USer can get the list of all available shortcuts in the system
 
 ### Example
 ```php
@@ -132,10 +132,10 @@ $start = "start_example"; // string | Specify as 0
 $limit = "limit_example"; // string | Specify as 10
 
 try {
-    $result = $apiInstance->getShortcuts($start, $limit);
+    $result = $apiInstance->getshortcuts($start, $limit);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ShortcutsApi->getShortcuts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ShortcutsApi->getshortcuts: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Shortcuts**](../Model/Shortcuts.md)
 
 ### Authorization
 
@@ -157,8 +157,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

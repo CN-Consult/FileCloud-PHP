@@ -1,20 +1,20 @@
 # Swagger\Client\ActivityApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://swaggerfc.getfilecloud.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getActivityStream**](ActivityApi.md#getActivityStream) | **GET** /core/getactivitystream | 
-[**getAuditGeoIpData**](ActivityApi.md#getAuditGeoIpData) | **POST** /core/getauditgeoipdata | 
-[**showHideActivity**](ActivityApi.md#showHideActivity) | **POST** /core/showhideactivity | 
+[**getactivitystream**](ActivityApi.md#getactivitystream) | **POST** /core/getactivitystream | Activity_Related_API - getactivitystream gets all the activities of the file/folder
+[**getauditgeoipdata**](ActivityApi.md#getauditgeoipdata) | **POST** /core/getauditgeoipdata | Activity_Related_API - getauditgeoipdata displays the geo-location of a request made
+[**showhideactivity**](ActivityApi.md#showhideactivity) | **GET** /core/showhideactivity | Activity_Related_API - showhideactivity is used to hide the activity panel from user portal
 
 
-# **getActivityStream**
-> string getActivityStream($parent)
+# **getactivitystream**
+> \Swagger\Client\Model\Activities getactivitystream($parent)
 
+Activity_Related_API - getactivitystream gets all the activities of the file/folder
 
-
-Get all the activity of the file/folder
+Users can track the actions which are performed on a file or folder, which are displayed in the User Portal.
 
 ### Example
 ```php
@@ -29,10 +29,10 @@ $apiInstance = new Swagger\Client\Api\ActivityApi(
 $parent = "parent_example"; // string | Specify the path for which you want to get the activity list
 
 try {
-    $result = $apiInstance->getActivityStream($parent);
+    $result = $apiInstance->getactivitystream($parent);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ActivityApi->getActivityStream: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ActivityApi->getactivitystream: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Activities**](../Model/Activities.md)
 
 ### Authorization
 
@@ -53,17 +53,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getAuditGeoIpData**
-> string getAuditGeoIpData($op, $ipaddress)
+# **getauditgeoipdata**
+> \Swagger\Client\Model\Results getauditgeoipdata($op, $ipaddress)
 
+Activity_Related_API - getauditgeoipdata displays the geo-location of a request made
 
-
-Get the geoip data
+USer will be able to see the geo-location and ip information about the activities.
 
 ### Example
 ```php
@@ -76,13 +76,13 @@ $apiInstance = new Swagger\Client\Api\ActivityApi(
     new GuzzleHttp\Client()
 );
 $op = "op_example"; // string | Specify the operation name
-$ipaddress = "ipaddress_example"; // string | Specify the ipaddress
+$ipaddress = "ipaddress_example"; // string | Specify the ipaddress of the request made
 
 try {
-    $result = $apiInstance->getAuditGeoIpData($op, $ipaddress);
+    $result = $apiInstance->getauditgeoipdata($op, $ipaddress);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ActivityApi->getAuditGeoIpData: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ActivityApi->getauditgeoipdata: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -92,11 +92,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **op** | **string**| Specify the operation name |
- **ipaddress** | **string**| Specify the ipaddress |
+ **ipaddress** | **string**| Specify the ipaddress of the request made |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Results**](../Model/Results.md)
 
 ### Authorization
 
@@ -105,16 +105,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **showHideActivity**
-> string showHideActivity($collapse)
+# **showhideactivity**
+> \Swagger\Client\Model\Commands showhideactivity($collapse)
 
+Activity_Related_API - showhideactivity is used to hide the activity panel from user portal
 
-
-Hide Activity panel
+Users will not be able to see the Activity panel if the activity column is disabled or hidden.
 
 ### Example
 ```php
@@ -129,10 +129,10 @@ $apiInstance = new Swagger\Client\Api\ActivityApi(
 $collapse = "collapse_example"; // string | Set as 1 to hide activity panel
 
 try {
-    $result = $apiInstance->showHideActivity($collapse);
+    $result = $apiInstance->showhideactivity($collapse);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ActivityApi->showHideActivity: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ActivityApi->showhideactivity: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

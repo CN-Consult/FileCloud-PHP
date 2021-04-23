@@ -1,18 +1,18 @@
 # Swagger\Client\PrivacyApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://swaggerfc.getfilecloud.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAnonymousUserConsent**](PrivacyApi.md#getAnonymousUserConsent) | **GET** /core/getanonymoususerconsent | 
-[**getUserConsent**](PrivacyApi.md#getUserConsent) | **GET** /core/getuserconsent | 
-[**privacyConsentAccept**](PrivacyApi.md#privacyConsentAccept) | **GET** /core/privacyconsentaccept | 
+[**getanonymoususerconsent**](PrivacyApi.md#getanonymoususerconsent) | **GET** /core/getanonymoususerconsent | Privacy_Related_API - getanonymoususerconsent is used such that that all anonymous users provide explicit consent to track personally identifiable information (PII).
+[**getuserconsent**](PrivacyApi.md#getuserconsent) | **GET** /core/getuserconsent | Privacy_Related_API - getuserconsent is used such that that all users provide explicit consent to track personally identifiable information (PII).
+[**privacyconsentaccept**](PrivacyApi.md#privacyconsentaccept) | **GET** /core/privacyconsentaccept | Privacy_Related_API - privacyconsentaccept is used to accept the privacy notice when user logs into the system if the setting is set
 
 
-# **getAnonymousUserConsent**
-> string getAnonymousUserConsent()
+# **getanonymoususerconsent**
+> \Swagger\Client\Model\Getuserconsent getanonymoususerconsent()
 
-
+Privacy_Related_API - getanonymoususerconsent is used such that that all anonymous users provide explicit consent to track personally identifiable information (PII).
 
 API that displays the privacy information for the anonymous user (when accessing public share) in the user UI in order to get acknowledgement.
 
@@ -28,10 +28,10 @@ $apiInstance = new Swagger\Client\Api\PrivacyApi(
 );
 
 try {
-    $result = $apiInstance->getAnonymousUserConsent();
+    $result = $apiInstance->getanonymoususerconsent();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PrivacyApi->getAnonymousUserConsent: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PrivacyApi->getanonymoususerconsent: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -41,7 +41,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Getuserconsent**](../Model/Getuserconsent.md)
 
 ### Authorization
 
@@ -49,17 +49,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getUserConsent**
-> string getUserConsent()
+# **getuserconsent**
+> \Swagger\Client\Model\Getuserconsent getuserconsent()
 
+Privacy_Related_API - getuserconsent is used such that that all users provide explicit consent to track personally identifiable information (PII).
 
-
-API that displays the privacy information for the user in the user UI in order to get acknowledgement.
+API that displays the privacy information for the user in the user UI in order to get acknowledgement. This API will ask for consent from users while accessing, viewing or downloading files from FileCloud.
 
 ### Example
 ```php
@@ -73,10 +73,10 @@ $apiInstance = new Swagger\Client\Api\PrivacyApi(
 );
 
 try {
-    $result = $apiInstance->getUserConsent();
+    $result = $apiInstance->getuserconsent();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PrivacyApi->getUserConsent: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PrivacyApi->getuserconsent: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -86,7 +86,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Getuserconsent**](../Model/Getuserconsent.md)
 
 ### Authorization
 
@@ -94,17 +94,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **privacyConsentAccept**
-> string privacyConsentAccept()
+# **privacyconsentaccept**
+> \Swagger\Client\Model\Commands privacyconsentaccept()
 
+Privacy_Related_API - privacyconsentaccept is used to accept the privacy notice when user logs into the system if the setting is set
 
-
-API that updates the privacy consent for the user.
+API that updates the privacy consent for the user when user accepts the privay notice when he logs into user portal if the setting is set
 
 ### Example
 ```php
@@ -118,10 +118,10 @@ $apiInstance = new Swagger\Client\Api\PrivacyApi(
 );
 
 try {
-    $result = $apiInstance->privacyConsentAccept();
+    $result = $apiInstance->privacyconsentaccept();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PrivacyApi->privacyConsentAccept: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PrivacyApi->privacyconsentaccept: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -131,7 +131,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -139,8 +139,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

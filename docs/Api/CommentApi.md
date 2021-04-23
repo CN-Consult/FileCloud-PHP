@@ -1,20 +1,20 @@
 # Swagger\Client\CommentApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://swaggerfc.getfilecloud.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addCommentForItem**](CommentApi.md#addCommentForItem) | **POST** /core/addcommentforitem | 
-[**getCommentsForItem**](CommentApi.md#getCommentsForItem) | **GET** /core/getcommentsforitem | 
-[**removeCommentForItem**](CommentApi.md#removeCommentForItem) | **POST** /core/removecommentforitem | 
+[**addcommentforitem**](CommentApi.md#addcommentforitem) | **POST** /core/addcommentforitem | Comment_Related_API - addcommentforitem lets user add comments for a file or folder
+[**getcommentsforitem**](CommentApi.md#getcommentsforitem) | **POST** /core/getcommentsforitem | Comment_Related_API - getcommentsforitem lets user read comments for a file or folder
+[**removecommentforitem**](CommentApi.md#removecommentforitem) | **POST** /core/removecommentforitem | Comment_Related_API - removecommentforitem lets user delete comments for a file or folder
 
 
-# **addCommentForItem**
-> string addCommentForItem($fullpath, $parent, $isfile, $text)
+# **addcommentforitem**
+> \Swagger\Client\Model\Comments addcommentforitem($fullpath, $parent, $isfile, $text)
 
+Comment_Related_API - addcommentforitem lets user add comments for a file or folder
 
-
-Add a comment to a file/folder
+User can add details about the status of a file or the purpose for a folder in the Comments section
 
 ### Example
 ```php
@@ -29,13 +29,13 @@ $apiInstance = new Swagger\Client\Api\CommentApi(
 $fullpath = "fullpath_example"; // string | Specify the full path where you want to add comment
 $parent = "parent_example"; // string | Specify the parent name
 $isfile = "isfile_example"; // string | Specify 0 if the path is a folder , 1 if the path is a file
-$text = "text_example"; // string | Add the comment you want to add
+$text = "text_example"; // string | Add the comment you want to add for a file/folder
 
 try {
-    $result = $apiInstance->addCommentForItem($fullpath, $parent, $isfile, $text);
+    $result = $apiInstance->addcommentforitem($fullpath, $parent, $isfile, $text);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CommentApi->addCommentForItem: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CommentApi->addcommentforitem: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -47,11 +47,11 @@ Name | Type | Description  | Notes
  **fullpath** | **string**| Specify the full path where you want to add comment |
  **parent** | **string**| Specify the parent name |
  **isfile** | **string**| Specify 0 if the path is a folder , 1 if the path is a file |
- **text** | **string**| Add the comment you want to add |
+ **text** | **string**| Add the comment you want to add for a file/folder |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Comments**](../Model/Comments.md)
 
 ### Authorization
 
@@ -60,16 +60,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getCommentsForItem**
-> string getCommentsForItem($fullpath)
+# **getcommentsforitem**
+> \Swagger\Client\Model\Comments getcommentsforitem($fullpath)
 
+Comment_Related_API - getcommentsforitem lets user read comments for a file or folder
 
-
-Gets all the comment of a file/folder
+User can read all comments about the status of a file or the purpose for a folder in the Comments section
 
 ### Example
 ```php
@@ -81,13 +81,13 @@ $apiInstance = new Swagger\Client\Api\CommentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$fullpath = "fullpath_example"; // string | Specify the full path where you want to add comment
+$fullpath = "fullpath_example"; // string | Specify the full path where you want to add
 
 try {
-    $result = $apiInstance->getCommentsForItem($fullpath);
+    $result = $apiInstance->getcommentsforitem($fullpath);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CommentApi->getCommentsForItem: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CommentApi->getcommentsforitem: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -96,11 +96,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fullpath** | **string**| Specify the full path where you want to add comment |
+ **fullpath** | **string**| Specify the full path where you want to add |
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Comments**](../Model/Comments.md)
 
 ### Authorization
 
@@ -108,17 +108,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **removeCommentForItem**
-> string removeCommentForItem($fullpath, $id)
+# **removecommentforitem**
+> \Swagger\Client\Model\Commands removecommentforitem($fullpath, $id)
 
+Comment_Related_API - removecommentforitem lets user delete comments for a file or folder
 
-
-Remove the comment from the file/folder
+User can delete a single or all comments associated with the file or folder in the Comments section
 
 ### Example
 ```php
@@ -134,10 +134,10 @@ $fullpath = "fullpath_example"; // string | Specify the full path where you want
 $id = "id_example"; // string | Id number of the comment
 
 try {
-    $result = $apiInstance->removeCommentForItem($fullpath, $id);
+    $result = $apiInstance->removecommentforitem($fullpath, $id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CommentApi->removeCommentForItem: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CommentApi->removecommentforitem: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

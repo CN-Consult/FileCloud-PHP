@@ -1,19 +1,19 @@
 # Swagger\Client\VersioningApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *https://swaggerfc.getfilecloud.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteAllVersions**](VersioningApi.md#deleteAllVersions) | **POST** /core/deleteallversions | 
-[**deleteVersion**](VersioningApi.md#deleteVersion) | **POST** /core/deleteversion | 
-[**downloadVersionedFile**](VersioningApi.md#downloadVersionedFile) | **POST** /core/downloadversionedfile | 
-[**getVersions**](VersioningApi.md#getVersions) | **GET** /core/getversions | 
+[**deleteallversions**](VersioningApi.md#deleteallversions) | **POST** /core/deleteallversions | Versioning_Related_API - deleteallversions is used to delete all the older versions of a file which are present on the site
+[**deleteversion**](VersioningApi.md#deleteversion) | **POST** /core/deleteversion | Versioning_Related_API - deleteversion
+[**downloadversionedfile**](VersioningApi.md#downloadversionedfile) | **POST** /core/downloadversionedfile | Versioning_Related_API - downloadversionedfile is used to download a file which was uploaded previously with changes to the system
+[**getversions**](VersioningApi.md#getversions) | **POST** /core/getversions | Versioning_Related_API - getversions is used to get all the previous versio of files which are stored in the system
 
 
-# **deleteAllVersions**
-> string deleteAllVersions()
+# **deleteallversions**
+> \Swagger\Client\Model\Commands deleteallversions()
 
-
+Versioning_Related_API - deleteallversions is used to delete all the older versions of a file which are present on the site
 
 User can delete all the previous versions of all files in the system
 
@@ -29,10 +29,10 @@ $apiInstance = new Swagger\Client\Api\VersioningApi(
 );
 
 try {
-    $result = $apiInstance->deleteAllVersions();
+    $result = $apiInstance->deleteallversions();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VersioningApi->deleteAllVersions: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VersioningApi->deleteallversions: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
 
 ### Authorization
 
@@ -50,15 +50,15 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **deleteVersion**
-> string deleteVersion($filepath, $filename, $fileid)
+# **deleteversion**
+> \Swagger\Client\Model\Commands deleteversion($filepath, $filename, $fileid)
 
-
+Versioning_Related_API - deleteversion
 
 User can delete the previous version of a file in the system
 
@@ -77,10 +77,63 @@ $filename = "filename_example"; // string | File name
 $fileid = "fileid_example"; // string | File Id number
 
 try {
-    $result = $apiInstance->deleteVersion($filepath, $filename, $fileid);
+    $result = $apiInstance->deleteversion($filepath, $filename, $fileid);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VersioningApi->deleteVersion: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VersioningApi->deleteversion: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filepath** | **string**| Specify the path where the file resides |
+ **filename** | **string**| File name |
+ **fileid** | **string**| File Id number |
+
+### Return type
+
+[**\Swagger\Client\Model\Commands**](../Model/Commands.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **downloadversionedfile**
+> string downloadversionedfile($filepath, $filename, $fileid)
+
+Versioning_Related_API - downloadversionedfile is used to download a file which was uploaded previously with changes to the system
+
+USer can download the previous versioned file in FileCould System from a specific path (HTTP POST)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\VersioningApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$filepath = "filepath_example"; // string | Specify the path where the file resides
+$filename = "filename_example"; // string | File name
+$fileid = "fileid_example"; // string | File Id number
+
+try {
+    $result = $apiInstance->downloadversionedfile($filepath, $filename, $fileid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling VersioningApi->downloadversionedfile: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -104,68 +157,16 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **downloadVersionedFile**
-> downloadVersionedFile($filepath, $filename, $fileid)
+# **getversions**
+> \Swagger\Client\Model\Versions getversions($filepath, $filename)
 
+Versioning_Related_API - getversions is used to get all the previous versio of files which are stored in the system
 
-
-Download previous versioned file in FileCould System (HTTP POST)
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$apiInstance = new Swagger\Client\Api\VersioningApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$filepath = "filepath_example"; // string | Path of the file where it resides and with the name of the file to be downloaded.
-$filename = "filename_example"; // string | Name of the file to be downloaded
-$fileid = "fileid_example"; // string | Id no of file
-
-try {
-    $apiInstance->downloadVersionedFile($filepath, $filename, $fileid);
-} catch (Exception $e) {
-    echo 'Exception when calling VersioningApi->downloadVersionedFile: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filepath** | **string**| Path of the file where it resides and with the name of the file to be downloaded. |
- **filename** | **string**| Name of the file to be downloaded |
- **fileid** | **string**| Id no of file |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/x-www-form-urlencoded
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getVersions**
-> string getVersions($filepath, $filename)
-
-
-
-User can get previous versions of a file in the system
+User can get all the available previous versions of a file which are present in the system
 
 ### Example
 ```php
@@ -181,10 +182,10 @@ $filepath = "filepath_example"; // string | Specify the path where the file resi
 $filename = "filename_example"; // string | File name
 
 try {
-    $result = $apiInstance->getVersions($filepath, $filename);
+    $result = $apiInstance->getversions($filepath, $filename);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VersioningApi->getVersions: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VersioningApi->getversions: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -198,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\Versions**](../Model/Versions.md)
 
 ### Authorization
 
@@ -206,8 +207,8 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
