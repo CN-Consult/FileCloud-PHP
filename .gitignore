@@ -1,3 +1,5 @@
 .*
 .*/*
 SwaggerClient-php/*
+composer.lock
+vendor/
