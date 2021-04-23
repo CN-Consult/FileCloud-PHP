@@ -1,6 +1,3 @@
-.idea/*
-.vagrant/*
-.SwaggerClient-php/*
-.swagger-codegen
-.swagger-codegen-ignore
-.swagger-codegen/*
+.*
+.*/*
+SwaggerClient-php/*
